@@ -1,0 +1,225 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #ffffff;
+  background: #06070d;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 5vw, 4rem);
+}
+
+/* ---- Discrete spectrum bands, each phasing in and out on its own ---- */
+.refraction {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.band {
+  position: absolute;
+  top: -30%;
+  height: 160%;
+  width: 36%;
+  mix-blend-mode: screen;
+  filter: blur(21px);
+  will-change: opacity, scale;
+}
+
+/* Each band: a softly defined, gently angled plane of colour */
+.c1 {
+  left: -10%;
+  rotate: -16deg;
+  background: linear-gradient(90deg, transparent 7%, #1d2c74 36%, #1d2c74 64%, transparent 93%);
+  animation: bandPhase 90s ease-in-out -7s infinite;
+}
+.c2 {
+  left: 9%;
+  rotate: -9deg;
+  background: linear-gradient(90deg, transparent 7%, #2b3fa6 36%, #2b3fa6 64%, transparent 93%);
+  animation: bandPhase 90s ease-in-out -25s infinite;
+}
+.c3 {
+  left: 28%;
+  rotate: -14deg;
+  background: linear-gradient(90deg, transparent 7%, #5038b0 36%, #5038b0 64%, transparent 93%);
+  animation: bandPhase 90s ease-in-out -43s infinite;
+}
+.c4 {
+  left: 47%;
+  rotate: -1deg;
+  background: linear-gradient(90deg, transparent 7%, #7a3aa2 36%, #7a3aa2 64%, transparent 93%);
+  animation: bandPhase 90s ease-in-out -61s infinite;
+}
+.c5 {
+  left: 66%;
+  rotate: -12deg;
+  background: linear-gradient(90deg, transparent 7%, #a23f72 36%, #a23f72 64%, transparent 93%);
+  animation: bandPhase 90s ease-in-out -79s infinite;
+}
+
+/* Vignette + central veil — depth and headline legibility */
+.depth {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(72% 52% at 50% 46%, rgba(4, 5, 12, 0.38) 0%, rgba(4, 5, 12, 0) 72%),
+    linear-gradient(
+      90deg,
+      rgba(3, 4, 10, 0.78) 0%,
+      rgba(3, 4, 10, 0) 16%,
+      rgba(3, 4, 10, 0) 84%,
+      rgba(3, 4, 10, 0.78) 100%
+    ),
+    radial-gradient(
+      140% 105% at 50% 42%,
+      transparent 52%,
+      rgba(3, 4, 10, 0.4) 86%,
+      rgba(3, 4, 10, 0.72) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 4, 10, 0.42) 0%,
+      transparent 16%,
+      transparent 82%,
+      rgba(3, 4, 10, 0.5) 100%
+    );
+}
+
+/* ---- Nav ---- */
+.nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.16);
+}
+
+.logo {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.menu {
+  background: none;
+  border: none;
+  padding: 6px;
+  margin: -6px;
+  cursor: pointer;
+  color: #ffffff;
+  display: inline-flex;
+  transition: opacity 0.2s ease;
+}
+.menu:hover {
+  opacity: 0.65;
+}
+
+/* ---- Centre content ---- */
+.center {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--teal-bright);
+  margin: 0 0 1.6rem;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0;
+  max-width: 28ch;
+  text-wrap: balance;
+  color: #ffffff;
+}
+
+.rule {
+  display: block;
+  width: 90px;
+  height: 1px;
+  margin: 1.8rem auto;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.subhead {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.8;
+  color: var(--slate);
+  margin: 0;
+  max-width: 34ch;
+}
+
+/* ---- Chevron ---- */
+.chevron {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  animation: bob 2.6s ease-in-out infinite;
+}
+
+/* ---- Keyframes ---- */
+@keyframes bandPhase {
+  0%,
+  100% {
+    opacity: 0.4;
+    scale: 0.97;
+  }
+  50% {
+    opacity: 0.9;
+    scale: 1.06;
+  }
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .band,
+  .chevron {
+    animation: none !important;
+  }
+  .band {
+    opacity: 0.55;
+    scale: 1;
+  }
+  .refraction {
+    transition: none;
+  }
+}

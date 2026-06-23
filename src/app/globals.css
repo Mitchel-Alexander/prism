@@ -18,6 +18,7 @@
   --color-slate: var(--slate);
   --font-sans: var(--font-inter);
   --font-display: var(--font-playfair);
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Liberation Mono", monospace;
 }
 
 * {

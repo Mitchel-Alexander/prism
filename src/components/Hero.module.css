@@ -6,7 +6,7 @@
   flex-direction: column;
   overflow: hidden;
   color: #ffffff;
-  background: #06070d;
+  background: #0b0e1c;
   padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 5vw, 4rem);
 }
 
@@ -26,39 +26,69 @@
   width: 36%;
   mix-blend-mode: screen;
   filter: blur(21px);
-  will-change: opacity, scale;
+  will-change: opacity, scale, translate;
+}
+
+@keyframes driftA {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  35% {
+    translate: 7% 4%;
+  }
+  70% {
+    translate: -5% 6%;
+  }
+}
+@keyframes driftB {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  35% {
+    translate: -7% 5%;
+  }
+  70% {
+    translate: 6% -4%;
+  }
 }
 
 /* Each band: a softly defined, gently angled plane of colour */
 .c1 {
   left: -10%;
   rotate: -16deg;
-  background: linear-gradient(90deg, transparent 7%, #1d2c74 36%, #1d2c74 64%, transparent 93%);
-  animation: bandPhase 90s ease-in-out -7s infinite;
+  background: linear-gradient(90deg, transparent 7%, #2a3da0 36%, #2a3da0 64%, transparent 93%);
+  animation: bandPhase 63s ease-in-out -5s infinite,
+    driftA 26s ease-in-out -3s infinite;
 }
 .c2 {
   left: 9%;
   rotate: -9deg;
-  background: linear-gradient(90deg, transparent 7%, #2b3fa6 36%, #2b3fa6 64%, transparent 93%);
-  animation: bandPhase 90s ease-in-out -25s infinite;
+  background: linear-gradient(90deg, transparent 7%, #3c55cc 36%, #3c55cc 64%, transparent 93%);
+  animation: bandPhase 63s ease-in-out -17s infinite,
+    driftB 31s ease-in-out -11s infinite;
 }
 .c3 {
   left: 28%;
   rotate: -14deg;
-  background: linear-gradient(90deg, transparent 7%, #5038b0 36%, #5038b0 64%, transparent 93%);
-  animation: bandPhase 90s ease-in-out -43s infinite;
+  background: linear-gradient(90deg, transparent 7%, #6a4cd6 36%, #6a4cd6 64%, transparent 93%);
+  animation: bandPhase 63s ease-in-out -30s infinite,
+    driftA 22s ease-in-out -8s infinite;
 }
 .c4 {
   left: 47%;
   rotate: -1deg;
-  background: linear-gradient(90deg, transparent 7%, #7a3aa2 36%, #7a3aa2 64%, transparent 93%);
-  animation: bandPhase 90s ease-in-out -61s infinite;
+  background: linear-gradient(90deg, transparent 7%, #9a52c8 36%, #9a52c8 64%, transparent 93%);
+  animation: bandPhase 63s ease-in-out -43s infinite,
+    driftB 34s ease-in-out -17s infinite;
 }
 .c5 {
   left: 66%;
   rotate: -12deg;
-  background: linear-gradient(90deg, transparent 7%, #a23f72 36%, #a23f72 64%, transparent 93%);
-  animation: bandPhase 90s ease-in-out -79s infinite;
+  background: linear-gradient(90deg, transparent 7%, #c75a98 36%, #c75a98 64%, transparent 93%);
+  animation: bandPhase 63s ease-in-out -55s infinite,
+    driftA 28s ease-in-out -5s infinite;
 }
 
 /* Vignette + central veil — depth and headline legibility */
@@ -68,26 +98,26 @@
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(72% 52% at 50% 46%, rgba(4, 5, 12, 0.38) 0%, rgba(4, 5, 12, 0) 72%),
+    radial-gradient(72% 52% at 50% 46%, rgba(9, 12, 26, 0.24) 0%, rgba(9, 12, 26, 0) 72%),
     linear-gradient(
       90deg,
-      rgba(3, 4, 10, 0.78) 0%,
-      rgba(3, 4, 10, 0) 16%,
-      rgba(3, 4, 10, 0) 84%,
-      rgba(3, 4, 10, 0.78) 100%
+      rgba(7, 9, 22, 0.68) 0%,
+      rgba(7, 9, 22, 0) 16%,
+      rgba(7, 9, 22, 0) 84%,
+      rgba(7, 9, 22, 0.68) 100%
     ),
     radial-gradient(
       140% 105% at 50% 42%,
-      transparent 52%,
-      rgba(3, 4, 10, 0.4) 86%,
-      rgba(3, 4, 10, 0.72) 100%
+      transparent 56%,
+      rgba(7, 9, 22, 0.28) 86%,
+      rgba(7, 9, 22, 0.5) 100%
     ),
     linear-gradient(
       180deg,
-      rgba(3, 4, 10, 0.42) 0%,
+      rgba(7, 9, 22, 0.3) 0%,
       transparent 16%,
       transparent 82%,
-      rgba(3, 4, 10, 0.5) 100%
+      rgba(7, 9, 22, 0.38) 100%
     );
 }
 

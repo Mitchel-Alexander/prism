@@ -4,8 +4,8 @@
   text-align: center;
   padding: clamp(4.5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 4rem);
   background:
-    radial-gradient(120% 95% at 50% -15%, rgba(72, 62, 156, 0.3), transparent 58%),
-    #07090f;
+    radial-gradient(120% 95% at 50% -15%, rgba(96, 84, 196, 0.32), transparent 58%),
+    #0b0e1c;
 }
 
 .bannerInner {
@@ -40,17 +40,17 @@
 
 .mission {
   background:
-    radial-gradient(85% 65% at 18% 6%, rgba(46, 60, 158, 0.26), transparent 62%),
-    radial-gradient(62% 55% at 100% 100%, rgba(58, 72, 175, 0.16), transparent 60%),
-    #07090f;
+    radial-gradient(85% 65% at 18% 6%, rgba(62, 82, 200, 0.28), transparent 62%),
+    radial-gradient(62% 55% at 100% 100%, rgba(78, 98, 210, 0.18), transparent 60%),
+    #0b0e1c;
 }
 
 .work {
   border-top: 0.5px solid rgba(255, 255, 255, 0.08);
   background:
-    radial-gradient(85% 65% at 84% 6%, rgba(132, 52, 142, 0.26), transparent 62%),
-    radial-gradient(62% 55% at 0% 100%, rgba(154, 58, 110, 0.16), transparent 60%),
-    #07090f;
+    radial-gradient(85% 65% at 84% 6%, rgba(168, 72, 180, 0.28), transparent 62%),
+    radial-gradient(62% 55% at 0% 100%, rgba(190, 80, 135, 0.18), transparent 60%),
+    #0b0e1c;
 }
 
 .inner {

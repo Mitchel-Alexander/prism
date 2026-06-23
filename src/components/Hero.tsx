@@ -41,7 +41,7 @@ export function Hero() {
 
       <header className={styles.nav}>
         <img
-          src="/logo-prism-white.png"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo-prism-white.png`}
           alt="PRISM — Partnership for Research Into Sentient Machines"
           className={styles.logo}
           width={138}

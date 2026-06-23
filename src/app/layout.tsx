@@ -21,7 +21,9 @@ const SITE_DESCRIPTION =
 export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
-  icons: { icon: "/favicon.png" },
+  icons: {
+    icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon.png`,
+  },
 };
 
 export default function RootLayout({

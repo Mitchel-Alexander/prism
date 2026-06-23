@@ -10,6 +10,8 @@
   --c-faint: #8b93a1; /* numerals */
   --c-border: rgba(24, 33, 47, 0.14);
   --c-border-strong: rgba(24, 33, 47, 0.32);
+  --c-frame: rgba(62, 80, 126, 0.3); /* section-panel border — slate-blue, from the hero */
+  --c-panel: var(--c-bg); /* panel fill (matches the sheet on light sections) */
 
   position: relative;
   z-index: 1;
@@ -19,6 +21,7 @@
   border-top-right-radius: 20px;
   overflow: hidden;
   box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.45);
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0;
 }
 
 /* ---- Section shells ---- */
@@ -26,33 +29,35 @@
 .work,
 .partners,
 .opportunities {
-  padding: clamp(4rem, 9vw, 8rem) clamp(1.25rem, 5vw, 4rem);
+  padding: clamp(0.75rem, 1.6vw, 1.25rem) clamp(1.25rem, 5vw, 4rem);
 }
 
+/* Each section's content sits in a rounded panel (the "general section" frame);
+   items inside keep their own borders → nested-border look. The frame is an
+   open loop: a gradient border, solid at the top and fading out toward the
+   bottom, so the panels feel less boxy. */
 .inner {
   max-width: 1080px;
   margin: 0 auto;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+  background:
+    linear-gradient(var(--c-panel), var(--c-panel)) padding-box,
+    linear-gradient(to bottom, var(--c-frame), var(--c-frame) 42%, transparent 92%)
+      border-box;
 }
 
-/* ---- Two-column section layout (label left, content right) ---- */
-.split {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-.splitLabel {
+/* ---- Section label — centred above each panel (the section heading) ---- */
+.sectionLabel {
   font-family: var(--font-sans);
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
   font-weight: 600;
-  color: var(--c-muted);
-  margin: 0;
-}
-
-.splitContent {
-  min-width: 0;
+  color: #6c7585; /* always sits on the light sheet, above the panel */
+  text-align: center;
+  margin: 0 0 1.25rem;
 }
 
 .splitLead {
@@ -64,14 +69,7 @@
   max-width: 42ch;
 }
 
-@media (min-width: 860px) {
-  .split {
-    grid-template-columns: minmax(140px, 1fr) 3.2fr;
-    gap: 3.5rem;
-  }
-}
-
-/* ---- Mission: heading, intro, single-line aims ---- */
+/* ---- Mission & values: framing heading + intro, then two side-by-side cards ---- */
 .missionHeading {
   font-family: var(--font-display);
   font-weight: 600;
@@ -92,86 +90,136 @@
   max-width: 58ch;
 }
 
-.steps {
-  margin-top: 2.5rem;
+/* Two cards (Mission | Values), white-filled to lift off the off-white section
+   background. Neutral — no accent colour, per the dropped-colour direction. */
+.dualBoxes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 2.75rem;
+}
+
+@media (min-width: 720px) {
+  .dualBoxes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.missionBox {
+  display: flex;
+  flex-direction: column;
+  /* Flat tile: slate-blue accent border (from the hero palette), no fill or
+     shadow so it matches the other tiles. Radius matches the section frame. */
+  border: 1px solid rgba(62, 80, 126, 0.22);
+  border-radius: 18px;
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.boxTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  line-height: 1.15;
+  color: var(--c-ink);
+  margin: 0 0 0.85rem;
+}
+
+.boxLead {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.4vw, 1.08rem);
+  line-height: 1.6;
+  color: var(--c-body);
+  margin: 0;
+}
+
+.boxList {
+  margin-top: 1.5rem;
   border-top: 0.5px solid var(--c-border);
 }
 
-.step {
-  display: flex;
-  align-items: baseline;
-  gap: 1.1rem;
-  padding: 1.15rem 0;
+.boxItem {
+  padding: 0.95rem 0;
   border-bottom: 0.5px solid var(--c-border);
-}
-
-.num {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  color: var(--c-faint);
-  flex-shrink: 0;
-}
-
-.stepText {
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.45vw, 1.08rem);
+  font-size: clamp(0.96rem, 1.3vw, 1.04rem);
   line-height: 1.5;
   color: var(--c-body);
   margin: 0;
 }
 
-.stepText strong {
+.boxItem strong {
   font-weight: 600;
   color: var(--c-ink);
 }
 
-/* ---- Our work: demarcated project cards ---- */
-.workList {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+/* ---- Our work: an edge-to-edge grid of project tiles framed by hairline
+   dividers, with mono metadata top + bottom (borrowed from the Oxford HAI Lab
+   events grid, kept in PRISM's neutral palette). ---- */
+.workGrid {
+  display: grid;
+  grid-template-columns: 1fr;
   margin-top: 2.75rem;
+  border-top: 0.5px solid var(--c-border);
+  border-left: 0.5px solid var(--c-border);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .workGrid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .workItem {
-  display: block;
-  padding: clamp(1.75rem, 3vw, 2.5rem);
-  border: 0.5px solid var(--c-border);
-  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.6rem, 2.6vw, 2.35rem);
+  border-right: 0.5px solid var(--c-border);
+  border-bottom: 0.5px solid var(--c-border);
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 a.workItem:hover {
-  border-color: var(--c-border-strong);
+  background-color: rgba(24, 33, 47, 0.035);
+}
+
+.workType {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  color: var(--c-muted);
+  margin-bottom: 1.1rem;
 }
 
 .workTitle {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
   line-height: 1.2;
   color: var(--c-ink);
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.75rem;
 }
 
 .workDesc {
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.4vw, 1.08rem);
-  line-height: 1.65;
+  font-size: clamp(0.98rem, 1.3vw, 1.05rem);
+  line-height: 1.6;
   color: var(--c-body);
   margin: 0;
-  max-width: 68ch;
 }
 
+/* Mono link pinned to the tile's bottom edge so footers align across a row */
 .workLink {
   display: inline-flex;
   align-items: center;
-  margin-top: 1.25rem;
+  margin-top: auto;
+  padding-top: 1.75rem;
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   letter-spacing: 0.04em;
   color: var(--c-muted);
   transition: color 0.2s ease;
@@ -180,10 +228,9 @@ a.workItem:hover .workLink {
   color: var(--c-ink);
 }
 
-/* ---- Partners: an editorial name grid ---- */
+/* ---- Partners: an editorial stacked name list — one organisation per row with
+   a rule between each (inherits the default light theme + framed panel) ---- */
 .partnerGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   margin-top: 0.5rem;
   border-top: 0.5px solid var(--c-border);
 }
@@ -191,9 +238,9 @@ a.workItem:hover .workLink {
 .partner {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
   color: var(--c-ink);
-  padding: 1.5rem 1rem 1.5rem 0;
+  padding: clamp(1.25rem, 2.2vw, 1.7rem) 0;
   border-bottom: 0.5px solid var(--c-border);
 }
 
@@ -206,7 +253,7 @@ a.workItem:hover .workLink {
 
 .oppCard {
   border: 0.5px solid var(--c-border);
-  border-radius: 14px;
+  border-radius: 18px;
   padding: clamp(1.75rem, 3vw, 2.5rem);
 }
 

@@ -1,4 +1,5 @@
 import styles from "./Hero.module.css";
+import { NavMenu } from "./NavMenu";
 
 // Deterministic PRNG so the generated mosaic is identical on the server and on
 // the client (no hydration mismatch — must not use Math.random here).
@@ -80,7 +81,7 @@ function Mosaic() {
         // branching fronts (neuronal-cascade-like) rather than straight waves.
         const mx = (ax + bx + cx) / 3;
         const my = (ay + by + cy) / 3;
-        const phase = noise(mx / 150, my / 150) * 8 + (mx / W) * 1.6;
+        const phase = noise(mx / 150, my / 150) * 16 + (mx / W) * 3.2;
         tiles.push(
           <polygon
             key={k++}
@@ -127,21 +128,7 @@ export function Hero() {
           width={138}
           height={30}
         />
-        <button className={styles.menu} type="button" aria-label="Open menu">
-          <svg
-            width="26"
-            height="26"
-            viewBox="0 0 26 26"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          >
-            <line x1="4" y1="8" x2="22" y2="8" />
-            <line x1="4" y1="13" x2="22" y2="13" />
-            <line x1="4" y1="18" x2="22" y2="18" />
-          </svg>
-        </button>
+        <NavMenu />
       </header>
 
       <div className={styles.center}>

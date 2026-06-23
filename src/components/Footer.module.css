@@ -1,0 +1,96 @@
+/* Dark footer — bookends the dark hero and closes the over-scroll gap at the
+   very bottom of the page (sits in the z-index:1 layer that rolls over the hero). */
+.footer {
+  position: relative;
+  z-index: 1;
+  background: #0b0e1c;
+  color: #ffffff;
+  padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 5vw, 4rem)
+    clamp(2rem, 4vw, 3rem);
+}
+
+.inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 760px) {
+  .inner {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.brand {
+  max-width: 40ch;
+}
+.logo {
+  height: 32px;
+  width: auto;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.brandLine {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+.colLabel {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.2rem;
+}
+.link {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.link:hover {
+  color: #ffffff;
+}
+.ext {
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+.bottom {
+  max-width: 1080px;
+  margin: clamp(3rem, 6vw, 5rem) auto 0;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.copy,
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+}

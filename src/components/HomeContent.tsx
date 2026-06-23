@@ -16,23 +16,47 @@ const STEPS = [
   },
 ];
 
-// Our work + projects we run or support. Links are live; copy is draft for review.
-const PROJECTS: { title: string; desc: string; href?: string }[] = [
+// PLACEHOLDER values — draft for review. Replace with PRISM's actual stated values.
+const VALUES = [
   {
+    lead: "Rigour",
+    rest: "we follow the evidence and reason carefully, even on hard questions.",
+  },
+  {
+    lead: "Humility",
+    rest: "we hold uncertainty honestly and avoid overclaiming about machine minds.",
+  },
+  {
+    lead: "Moral seriousness",
+    rest: "we take the possibility of digital suffering and moral status seriously.",
+  },
+  {
+    lead: "Collaboration",
+    rest: "we build across disciplines and institutions, not in isolation.",
+  },
+];
+
+// Our work + projects we run or support. Links are live; copy is draft for review.
+const PROJECTS: { type: string; title: string; desc: string; href?: string }[] = [
+  {
+    type: "Podcast",
     title: "Exploring Machine Consciousness",
     desc: "Our podcast brings leading thinkers in philosophy, cognitive science, and AI to a curious general audience. Each episode explores a different facet of whether — and how — machines might be conscious.",
   },
   {
+    type: "Guide",
     title: "Digital Minds Guide",
     desc: "An accessible, in-depth guide to the science and ethics of digital minds. It gathers the key questions, evidence, and arguments into one clear resource for newcomers and experts alike.",
     href: "https://digitalminds.guide/",
   },
   {
+    type: "Newsletter",
     title: "Digital Minds Newsletter",
     desc: "A regular newsletter tracking developments in digital minds research, policy, and public debate — keeping the community current on a fast-moving field.",
     href: "https://www.digitalminds.news/",
   },
   {
+    type: "Research partner",
     title: "Cambridge Digital Minds",
     desc: "We support several of Cambridge Digital Minds' projects, helping advance rigorous academic work on AI consciousness and moral status. Our collaboration spans research, events, and field-building.",
     href: "https://digitalminds.cam/",
@@ -45,7 +69,6 @@ const PARTNERS = [
   "Cambridge Digital Minds",
   "Eleos AI Research",
   "NYU Center for Mind, Ethics & Policy",
-  "Sentience Institute",
 ];
 
 // Template opportunities — confirm/replace with PRISM's live calls and roles.
@@ -69,129 +92,128 @@ const OPPORTUNITIES: { title: string; body: string; cta: string; href: string }[
 export function HomeContent() {
   return (
     <div className={styles.below}>
-      <section className={styles.mission}>
+      <section className={styles.mission} id="mission">
+        <p className={styles.sectionLabel}>Our mission</p>
         <div className={styles.inner}>
-          <div className={styles.split}>
-            <p className={styles.splitLabel}>Our mission</p>
-            <div className={styles.splitContent}>
-              <h2 className={styles.missionHeading}>
-                Preparing society for conscious machines
-              </h2>
-              <p className={styles.missionIntro}>
-                PRISM works to ready the world for the possibility of
-                consciousness, sentience, and moral status in artificial minds —
-                across three connected aims.
+          <h2 className={styles.missionHeading}>
+            Preparing society for conscious machines
+          </h2>
+          <p className={styles.missionIntro}>
+            PRISM works to ready the world for the possibility of consciousness,
+            sentience, and moral status in artificial minds.
+          </p>
+          <div className={styles.dualBoxes}>
+            <div className={styles.missionBox}>
+              <h3 className={styles.boxTitle}>Mission</h3>
+              <p className={styles.boxLead}>
+                We pursue this through three connected aims.
               </p>
-              <div className={styles.steps}>
-                {STEPS.map((s, i) => (
-                  <div className={styles.step} key={s.lead}>
-                    <span className={styles.num}>
-                      {String(i + 1).padStart(2, "0")}
+              <div className={styles.boxList}>
+                {STEPS.map((s) => (
+                  <p className={styles.boxItem} key={s.lead}>
+                    <strong>{s.lead}</strong> {s.rest}
+                  </p>
+                ))}
+              </div>
+            </div>
+            <div className={styles.missionBox}>
+              <h3 className={styles.boxTitle}>Values</h3>
+              <p className={styles.boxLead}>
+                The commitments that guide how we work.
+              </p>
+              <div className={styles.boxList}>
+                {VALUES.map((v) => (
+                  <p className={styles.boxItem} key={v.lead}>
+                    <strong>{v.lead}</strong> {v.rest}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.work} id="work">
+        <p className={styles.sectionLabel}>Our work</p>
+        <div className={styles.inner}>
+          <p className={styles.splitLead}>
+            We grow the emerging field through expert workshops, partnerships,
+            and convenings. By connecting researchers, philosophers, and
+            policymakers, we help turn scattered work into a coherent community.
+          </p>
+          <div className={styles.workGrid}>
+            {PROJECTS.map((p) => {
+              const inner = (
+                <>
+                  <span className={styles.workType}>{p.type}</span>
+                  <h3 className={styles.workTitle}>{p.title}</h3>
+                  <p className={styles.workDesc}>{p.desc}</p>
+                  {p.href && (
+                    <span className={styles.workLink}>
+                      {new URL(p.href).hostname.replace(/^www\./, "")}
+                      <span aria-hidden="true">&nbsp;↗</span>
                     </span>
-                    <p className={styles.stepText}>
-                      <strong>{s.lead}</strong> {s.rest}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+                  )}
+                </>
+              );
+              return p.href ? (
+                <a
+                  className={styles.workItem}
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={p.title}
+                >
+                  {inner}
+                </a>
+              ) : (
+                <div className={styles.workItem} key={p.title}>
+                  {inner}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className={styles.work}>
+      <section className={styles.partners} id="partners">
+        <p className={styles.sectionLabel}>Partners</p>
         <div className={styles.inner}>
-          <div className={styles.split}>
-            <p className={styles.splitLabel}>Our work</p>
-            <div className={styles.splitContent}>
-              <p className={styles.splitLead}>
-                We grow the emerging field through expert workshops,
-                partnerships, and convenings. By connecting researchers,
-                philosophers, and policymakers, we help turn scattered work into
-                a coherent community.
-              </p>
-              <div className={styles.workList}>
-                {PROJECTS.map((p) => {
-                  const inner = (
-                    <>
-                      <h3 className={styles.workTitle}>{p.title}</h3>
-                      <p className={styles.workDesc}>{p.desc}</p>
-                      {p.href && (
-                        <span className={styles.workLink}>
-                          {new URL(p.href).hostname.replace(/^www\./, "")}
-                          <span aria-hidden="true">&nbsp;↗</span>
-                        </span>
-                      )}
-                    </>
-                  );
-                  return p.href ? (
-                    <a
-                      className={styles.workItem}
-                      href={p.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      key={p.title}
-                    >
-                      {inner}
-                    </a>
-                  ) : (
-                    <div className={styles.workItem} key={p.title}>
-                      {inner}
-                    </div>
-                  );
-                })}
+          <p className={styles.splitLead}>
+            We build the field together — collaborating with researchers,
+            institutes, and organisations advancing the science and ethics of
+            digital minds.
+          </p>
+          <div className={styles.partnerGrid}>
+            {PARTNERS.map((p) => (
+              <div className={styles.partner} key={p}>
+                {p}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.partners}>
+      <section className={styles.opportunities} id="opportunities">
+        <p className={styles.sectionLabel}>Opportunities</p>
         <div className={styles.inner}>
-          <div className={styles.split}>
-            <p className={styles.splitLabel}>Partners</p>
-            <div className={styles.splitContent}>
-              <p className={styles.splitLead}>
-                We build the field together — collaborating with researchers,
-                institutes, and organisations advancing the science and ethics
-                of digital minds.
-              </p>
-              <div className={styles.partnerGrid}>
-                {PARTNERS.map((p) => (
-                  <div className={styles.partner} key={p}>
-                    {p}
-                  </div>
-                ))}
+          <p className={styles.splitLead}>
+            If this resonates with you, there are several ways to take part in
+            our work and join the community.
+          </p>
+          <div className={styles.oppCards}>
+            {OPPORTUNITIES.map((o) => (
+              <div className={styles.oppCard} key={o.title}>
+                <h3 className={styles.oppTitle}>{o.title}</h3>
+                <p className={styles.oppBody}>{o.body}</p>
+                <a className={styles.oppCta} href={o.href}>
+                  {o.cta}
+                  <span aria-hidden="true" className={styles.oppArrow}>
+                    →
+                  </span>
+                </a>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.opportunities}>
-        <div className={styles.inner}>
-          <div className={styles.split}>
-            <p className={styles.splitLabel}>Opportunities</p>
-            <div className={styles.splitContent}>
-              <p className={styles.splitLead}>
-                If this resonates with you, there are several ways to take part
-                in our work and join the community.
-              </p>
-              <div className={styles.oppCards}>
-                {OPPORTUNITIES.map((o) => (
-                  <div className={styles.oppCard} key={o.title}>
-                    <h3 className={styles.oppTitle}>{o.title}</h3>
-                    <p className={styles.oppBody}>{o.body}</p>
-                    <a className={styles.oppCta} href={o.href}>
-                      {o.cta}
-                      <span aria-hidden="true" className={styles.oppArrow}>
-                        →
-                      </span>
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

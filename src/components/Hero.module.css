@@ -75,7 +75,7 @@
    grid position, so the brightening travels across as diagonal wave patterns. */
 .shimmer {
   animation-name: ripple;
-  animation-duration: 3.2s;
+  animation-duration: 6.4s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   will-change: opacity;
@@ -144,20 +144,6 @@
   height: 30px;
   width: auto;
   display: block;
-}
-
-.menu {
-  background: none;
-  border: none;
-  padding: 6px;
-  margin: -6px;
-  cursor: pointer;
-  color: #ffffff;
-  display: inline-flex;
-  transition: opacity 0.2s ease;
-}
-.menu:hover {
-  opacity: 0.65;
 }
 
 /* ---- Centre content ---- */

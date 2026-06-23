@@ -36,12 +36,17 @@ const VALUES = [
   },
 ];
 
-// Our work + projects we run or support. Links are live; copy is draft for review.
+// PRISM's field-building projects (podcast, events, guide, newsletter). Draft for review.
 const PROJECTS: { type: string; title: string; desc: string; href?: string }[] = [
   {
     type: "Podcast",
     title: "Exploring Machine Consciousness",
     desc: "Our podcast brings leading thinkers in philosophy, cognitive science, and AI to a curious general audience. Each episode explores a different facet of whether — and how — machines might be conscious.",
+  },
+  {
+    type: "Events",
+    title: "Workshops & convenings",
+    desc: "We bring researchers, philosophers, and practitioners together through expert workshops and gatherings — building connections and shared agendas across a young, scattered field.",
   },
   {
     type: "Guide",
@@ -55,20 +60,16 @@ const PROJECTS: { type: string; title: string; desc: string; href?: string }[] =
     desc: "A regular newsletter tracking developments in digital minds research, policy, and public debate — keeping the community current on a fast-moving field.",
     href: "https://www.digitalminds.news/",
   },
-  {
-    type: "Research partner",
-    title: "Cambridge Digital Minds",
-    desc: "We support several of Cambridge Digital Minds' projects, helping advance rigorous academic work on AI consciousness and moral status. Our collaboration spans research, events, and field-building.",
-    href: "https://digitalminds.cam/",
-  },
 ];
 
-// PLACEHOLDER partners — illustrative ecosystem orgs, NOT confirmed partnerships.
-// Replace with PRISM's actual partner organisations before publishing.
-const PARTNERS = [
+// Collaborators PRISM works with on its projects (Lucius's framing — collaboration,
+// not formal partnership). DRAFT — confirm phrasing; TODO: add "AICI/RP" once its
+// full name is known, and decide org names vs. "researchers at X".
+const COLLABORATORS = [
   "Cambridge Digital Minds",
-  "Eleos AI Research",
+  "University of Oxford",
   "NYU Center for Mind, Ethics & Policy",
+  "Eleos AI Research",
 ];
 
 // Template opportunities — confirm/replace with PRISM's live calls and roles.
@@ -99,8 +100,9 @@ export function HomeContent() {
             Preparing society for conscious machines
           </h2>
           <p className={styles.missionIntro}>
-            PRISM works to ready the world for the possibility of consciousness,
-            sentience, and moral status in artificial minds.
+            PRISM is a non-profit building the field of digital minds research —
+            readying the world for the possibility of consciousness, sentience,
+            and moral status in artificial minds.
           </p>
           <div className={styles.dualBoxes}>
             <div className={styles.missionBox}>
@@ -137,9 +139,10 @@ export function HomeContent() {
         <p className={styles.sectionLabel}>Our work</p>
         <div className={styles.inner}>
           <p className={styles.splitLead}>
-            We grow the emerging field through expert workshops, partnerships,
-            and convenings. By connecting researchers, philosophers, and
-            policymakers, we help turn scattered work into a coherent community.
+            We build the field through public-facing projects — a podcast,
+            events, an introductory guide, and a newsletter — several run in
+            collaboration with researchers and organisations across digital
+            minds.
           </p>
           <div className={styles.workGrid}>
             {PROJECTS.map((p) => {
@@ -176,18 +179,17 @@ export function HomeContent() {
         </div>
       </section>
 
-      <section className={styles.partners} id="partners">
-        <p className={styles.sectionLabel}>Partners</p>
+      <section className={styles.partners} id="collaborators">
+        <p className={styles.sectionLabel}>Collaborators</p>
         <div className={styles.inner}>
           <p className={styles.splitLead}>
-            We build the field together — collaborating with researchers,
-            institutes, and organisations advancing the science and ethics of
-            digital minds.
+            Much of our work is carried out in collaboration with researchers
+            and organisations across the field of digital minds.
           </p>
           <div className={styles.partnerGrid}>
-            {PARTNERS.map((p) => (
-              <div className={styles.partner} key={p}>
-                {p}
+            {COLLABORATORS.map((c) => (
+              <div className={styles.partner} key={c}>
+                {c}
               </div>
             ))}
           </div>

@@ -5,7 +5,7 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const EXPLORE = [
   { label: "Mission", href: "#mission" },
   { label: "Our work", href: "#work" },
-  { label: "Partners", href: "#partners" },
+  { label: "Collaborators", href: "#collaborators" },
   { label: "Get involved", href: "#opportunities" },
 ];
 

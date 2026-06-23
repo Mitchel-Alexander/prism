@@ -228,8 +228,8 @@ a.workItem:hover .workLink {
   color: var(--c-ink);
 }
 
-/* ---- Partners: an editorial stacked name list — one organisation per row with
-   a rule between each (inherits the default light theme + framed panel) ---- */
+/* ---- Collaborators: an editorial stacked name list — one organisation per row
+   with a rule between each (inherits the default light theme + framed panel) ---- */
 .partnerGrid {
   margin-top: 0.5rem;
   border-top: 0.5px solid var(--c-border);

@@ -8,6 +8,8 @@ export function Hero() {
         <span className={styles.glow2} />
       </div>
       <div className={styles.facets} aria-hidden="true" />
+      <div className={styles.facetsHi} aria-hidden="true" />
+      <div className={styles.facetsHi2} aria-hidden="true" />
       <div className={styles.depth} aria-hidden="true" />
       <div className={styles.grain} aria-hidden="true" />
 

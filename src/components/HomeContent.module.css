@@ -1,33 +1,24 @@
-/* ---- Rollover wrapper: scrolls up over the sticky hero, covering it ---- */
+/* ---- Rollover wrapper: LIGHT content that scrolls up over the dark hero ----
+   The content theme is driven by these variables — adjust them to lighten or
+   darken the whole content area without touching individual rules. */
 .below {
+  --c-bg: #f5f6f9;
+  --c-ink: #18212f; /* headings / strong */
+  --c-lead: #39424f; /* section intro lead */
+  --c-body: #525b69; /* body copy */
+  --c-muted: #6c7585; /* labels, links, kickers */
+  --c-faint: #8b93a1; /* numerals */
+  --c-border: rgba(24, 33, 47, 0.14);
+  --c-border-strong: rgba(24, 33, 47, 0.32);
+
   position: relative;
   z-index: 1;
-  background: #0b0e1c;
+  background: var(--c-bg);
+  color: var(--c-body);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   overflow: hidden;
   box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.45);
-}
-
-/* ---- Mission heading + intro (merged in from the old standalone banner) ---- */
-.missionHeading {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(2rem, 4.6vw, 3.3rem);
-  line-height: 1.12;
-  letter-spacing: -0.01em;
-  margin: 0 0 1.2rem;
-  max-width: 20ch;
-  color: #ffffff;
-}
-
-.missionIntro {
-  font-family: var(--font-sans);
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  line-height: 1.7;
-  color: #c7ccd6;
-  margin: 0;
-  max-width: 58ch;
 }
 
 /* ---- Section shells ---- */
@@ -35,89 +26,7 @@
 .work,
 .partners,
 .opportunities {
-  color: #ffffff;
   padding: clamp(4rem, 9vw, 8rem) clamp(1.25rem, 5vw, 4rem);
-}
-
-.mission {
-  background:
-    radial-gradient(120% 62% at 80% -12%, rgba(68, 88, 138, 0.3), transparent 60%),
-    radial-gradient(85% 48% at 104% -6%, rgba(76, 94, 142, 0.22), transparent 56%),
-    radial-gradient(72% 60% at 12% 40%, rgba(56, 74, 124, 0.18), transparent 64%),
-    #0b0e1c;
-}
-
-.work {
-  background:
-    radial-gradient(85% 65% at 84% 6%, rgba(68, 88, 138, 0.3), transparent 62%),
-    radial-gradient(62% 55% at 0% 100%, rgba(52, 70, 118, 0.2), transparent 60%),
-    #0b0e1c;
-}
-
-.partners {
-  background:
-    radial-gradient(80% 60% at 8% 2%, rgba(68, 88, 138, 0.26), transparent 60%),
-    radial-gradient(70% 55% at 100% 98%, rgba(52, 70, 118, 0.18), transparent 60%),
-    #0b0e1c;
-}
-
-.opportunities {
-  background:
-    radial-gradient(88% 62% at 94% 6%, rgba(70, 90, 140, 0.3), transparent 60%),
-    radial-gradient(64% 55% at 2% 100%, rgba(52, 70, 118, 0.18), transparent 60%),
-    #0b0e1c;
-}
-
-/* Section intro line (Partners / Opportunities) */
-.lead {
-  font-family: var(--font-sans);
-  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
-  line-height: 1.7;
-  color: #aab2c0;
-  margin: 0 0 2.5rem;
-  max-width: 56ch;
-}
-
-/* ---- Partners: an editorial name grid ---- */
-.partnerGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  margin-top: 0.5rem;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.14);
-}
-
-.partner {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
-  color: #e6e9f1;
-  padding: 1.5rem 1rem 1.5rem 0;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
-}
-
-/* ---- Opportunities: cards + CTA link ---- */
-.oppsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2.5rem;
-  margin-top: 2.5rem;
-}
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  margin-top: 1.1rem;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #c3cbe0;
-  text-decoration: none;
-  transition: color 0.2s ease, gap 0.2s ease;
-}
-.cta:hover {
-  color: #ffffff;
-  gap: 0.7em;
 }
 
 .inner {
@@ -125,20 +34,67 @@
   margin: 0 auto;
 }
 
-.eyebrow {
+/* ---- Two-column section layout (label left, content right) ---- */
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.splitLabel {
   font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 0.72rem;
   font-weight: 600;
-  color: #99a3bf;
-  margin: 0 0 1.5rem;
+  color: var(--c-muted);
+  margin: 0;
 }
 
-/* ---- Mission: single-line aims ---- */
+.splitContent {
+  min-width: 0;
+}
+
+.splitLead {
+  font-family: var(--font-sans);
+  font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+  line-height: 1.5;
+  color: var(--c-lead);
+  margin: 0 0 2.5rem;
+  max-width: 42ch;
+}
+
+@media (min-width: 860px) {
+  .split {
+    grid-template-columns: minmax(140px, 1fr) 3.2fr;
+    gap: 3.5rem;
+  }
+}
+
+/* ---- Mission: heading, intro, single-line aims ---- */
+.missionHeading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 4.6vw, 3.3rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.2rem;
+  max-width: 20ch;
+  color: var(--c-ink);
+}
+
+.missionIntro {
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--c-body);
+  margin: 0;
+  max-width: 58ch;
+}
+
 .steps {
   margin-top: 2.5rem;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.14);
+  border-top: 0.5px solid var(--c-border);
 }
 
 .step {
@@ -146,108 +102,149 @@
   align-items: baseline;
   gap: 1.1rem;
   padding: 1.15rem 0;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 0.5px solid var(--c-border);
 }
 
 .num {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   letter-spacing: 0.08em;
-  color: #7d8497;
+  color: var(--c-faint);
   flex-shrink: 0;
 }
 
 .stepText {
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  font-size: clamp(1rem, 1.45vw, 1.08rem);
   line-height: 1.5;
-  color: #aab2c0;
+  color: var(--c-body);
   margin: 0;
 }
 
 .stepText strong {
   font-weight: 600;
-  color: #ffffff;
+  color: var(--c-ink);
 }
 
-/* ---- Our work: single-line project list ---- */
+/* ---- Our work: demarcated project cards ---- */
 .workList {
-  margin-top: 2.5rem;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2.75rem;
 }
 
 .workItem {
-  display: flex;
-  align-items: baseline;
-  gap: 0.9rem;
-  padding: 1.25rem 0;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
+  display: block;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border: 0.5px solid var(--c-border);
+  border-radius: 14px;
   text-decoration: none;
   color: inherit;
+  transition: border-color 0.2s ease;
+}
+
+a.workItem:hover {
+  border-color: var(--c-border-strong);
 }
 
 .workTitle {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-  line-height: 1.25;
-  color: #ffffff;
-  flex-shrink: 0;
+  font-weight: 600;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  line-height: 1.2;
+  color: var(--c-ink);
+  margin: 0 0 0.85rem;
 }
 
 .workDesc {
   font-family: var(--font-sans);
-  font-size: 0.96rem;
-  line-height: 1.5;
-  color: #aab2c0;
-  flex: 1;
+  font-size: clamp(1rem, 1.4vw, 1.08rem);
+  line-height: 1.65;
+  color: var(--c-body);
+  margin: 0;
+  max-width: 68ch;
 }
 
-.workArrow {
-  flex-shrink: 0;
-  color: #99a3bf;
-  font-size: 1.05rem;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-a.workItem:hover .workTitle {
-  color: #ffffff;
-}
-a.workItem:hover .workDesc {
-  color: #c7ccd6;
-}
-a.workItem:hover .workArrow {
-  color: #ffffff;
-  transform: translate(2px, -2px);
-}
-
-.kicker {
-  display: block;
+.workLink {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.25rem;
   font-family: var(--font-mono);
-  text-transform: uppercase;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  color: #99a3bf;
-  margin-bottom: 0.9rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--c-muted);
+  transition: color 0.2s ease;
+}
+a.workItem:hover .workLink {
+  color: var(--c-ink);
 }
 
-.projectTitle {
+/* ---- Partners: an editorial name grid ---- */
+.partnerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-top: 0.5rem;
+  border-top: 0.5px solid var(--c-border);
+}
+
+.partner {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  color: var(--c-ink);
+  padding: 1.5rem 1rem 1.5rem 0;
+  border-bottom: 0.5px solid var(--c-border);
+}
+
+/* ---- Opportunities: outlined cards + uppercase CTA ---- */
+.oppCards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.oppCard {
+  border: 0.5px solid var(--c-border);
+  border-radius: 14px;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.oppTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
   line-height: 1.2;
-  margin: 0 0 0.8rem;
-  color: #ffffff;
+  color: var(--c-ink);
+  margin: 0 0 1rem;
 }
 
-.projectBody {
+.oppBody {
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: clamp(1rem, 1.4vw, 1.08rem);
   line-height: 1.7;
-  color: #aab2c0;
-  margin: 0;
-  max-width: 56ch;
+  color: var(--c-body);
+  margin: 0 0 1.75rem;
+  max-width: 64ch;
 }
 
-/* (Mission aims and Work list are single-column lists; Opportunities and
-   Partners use auto-fit grids — no fixed-column breakpoint needed.) */
+.oppCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--c-muted);
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+.oppCta:hover {
+  color: var(--c-ink);
+  gap: 1.2rem;
+}
+.oppArrow {
+  font-size: 1.05rem;
+}

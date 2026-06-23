@@ -32,23 +32,18 @@ const PROJECTS = [
 
 export function HomeContent() {
   return (
-    <>
-      <section className={styles.banner}>
-        <div className={styles.bannerInner}>
-          <h2 className={styles.bannerHeading}>
+    <div className={styles.below}>
+      <section className={styles.mission}>
+        <div className={styles.inner}>
+          <p className={styles.eyebrow}>Our mission</p>
+          <h2 className={styles.missionHeading}>
             Preparing society for conscious machines
           </h2>
-          <p className={styles.bannerText}>
+          <p className={styles.missionIntro}>
             PRISM works to ready the world for the possibility of consciousness,
             sentience, and moral status in artificial minds — across three
             connected aims.
           </p>
-        </div>
-      </section>
-
-      <section className={styles.mission}>
-        <div className={styles.inner}>
-          <p className={styles.eyebrow}>Our mission</p>
           <div className={styles.steps}>
             {STEPS.map((s, i) => (
               <div className={styles.step} key={s.lead}>
@@ -78,6 +73,6 @@ export function HomeContent() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

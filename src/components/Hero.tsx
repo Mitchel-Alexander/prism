@@ -31,13 +31,17 @@ export function Hero() {
       onMouseLeave={handleLeave}
     >
       <div className={styles.refraction} ref={auroraRef} aria-hidden="true">
-        <span className={`${styles.band} ${styles.c1}`} />
-        <span className={`${styles.band} ${styles.c2}`} />
-        <span className={`${styles.band} ${styles.c3}`} />
-        <span className={`${styles.band} ${styles.c4}`} />
-        <span className={`${styles.band} ${styles.c5}`} />
+        <span className={styles.beam} />
+        <span className={styles.beamCore} />
+        <span className={`${styles.ray} ${styles.r1}`} />
+        <span className={`${styles.ray} ${styles.r2}`} />
+        <span className={`${styles.ray} ${styles.r3}`} />
+        <span className={`${styles.ray} ${styles.r4}`} />
+        <span className={`${styles.ray} ${styles.r5}`} />
+        <span className={styles.prismGlow} />
       </div>
       <div className={styles.depth} aria-hidden="true" />
+      <div className={styles.grain} aria-hidden="true" />
 
       <header className={styles.nav}>
         <img

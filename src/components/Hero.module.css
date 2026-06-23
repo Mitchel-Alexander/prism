@@ -1,7 +1,10 @@
 .hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
+  /* Sticky so the sections below scroll up and cover it (no static seam) */
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  height: 100vh;
+  height: 100svh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -10,85 +13,150 @@
   padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 5vw, 4rem);
 }
 
-/* ---- Discrete spectrum bands, each phasing in and out on its own ---- */
+/* ---- Prism dispersion: a white beam refracts at one point into a spectral fan ---- */
 .refraction {
   position: absolute;
   inset: 0;
   z-index: 0;
+  /* R = the implied prism — the point the beam refracts at and the fan radiates from */
+  --rx: 27%;
+  --ry: 42%;
   transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.band {
+/* Incoming collimated beam — enters upper-left, brightens as it reaches R */
+.beam {
   position: absolute;
-  top: -30%;
-  height: 160%;
-  width: 36%;
+  left: -16%;
+  top: calc(var(--ry) - 3%);
+  width: calc(var(--rx) + 16%);
+  height: 6%;
+  transform-origin: 100% 50%;
+  rotate: 20deg;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(206, 220, 255, 0.04) 30%,
+    rgba(222, 230, 255, 0.42) 82%,
+    rgba(240, 244, 255, 0.88) 100%
+  );
+  filter: blur(8px);
   mix-blend-mode: screen;
-  filter: blur(21px);
+  animation: beamPulse 19s ease-in-out infinite;
+  will-change: opacity;
+}
+
+/* The crisp bright core inside the beam's soft halo */
+.beamCore {
+  position: absolute;
+  left: -16%;
+  top: calc(var(--ry) - 0.7%);
+  width: calc(var(--rx) + 16%);
+  height: 1.4%;
+  transform-origin: 100% 50%;
+  rotate: 20deg;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(226, 233, 255, 0.05) 46%,
+    rgba(244, 247, 255, 0.85) 88%,
+    rgba(255, 255, 255, 0.96) 100%
+  );
+  filter: blur(2.5px);
+  mix-blend-mode: screen;
+  animation: beamPulse 19s ease-in-out infinite;
+  will-change: opacity;
+}
+
+/* The caustic where white light splits into colour */
+.prismGlow {
+  position: absolute;
+  left: var(--rx);
+  top: var(--ry);
+  width: 17%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(232, 240, 255, 0.4) 13%,
+      transparent 30%
+    ),
+    radial-gradient(
+      circle,
+      rgba(150, 172, 244, 0.3) 0%,
+      rgba(120, 150, 230, 0.12) 40%,
+      transparent 70%
+    );
+  filter: blur(5px);
+  mix-blend-mode: screen;
+  animation: beamPulse 19s ease-in-out infinite;
+}
+
+/* Spectral rays — anchored at R, fanning down-right; colour blooms downstream */
+.ray {
+  position: absolute;
+  left: var(--rx);
+  top: calc(var(--ry) - 8%);
+  width: 168%;
+  height: 16%;
+  transform-origin: 0% 50%;
+  mix-blend-mode: screen;
+  filter: blur(22px);
   will-change: opacity, scale, translate;
 }
 
-@keyframes driftA {
+@keyframes drift1 {
   0%,
   100% {
     translate: 0 0;
   }
-  35% {
-    translate: 7% 4%;
-  }
-  70% {
-    translate: -5% 6%;
+  50% {
+    translate: 2.5% 3%;
   }
 }
-@keyframes driftB {
+@keyframes drift2 {
   0%,
   100% {
     translate: 0 0;
   }
-  35% {
-    translate: -7% 5%;
-  }
-  70% {
-    translate: 6% -4%;
+  50% {
+    translate: -2% -2.5%;
   }
 }
 
-/* Each band: a softly defined, gently angled plane of colour */
-.c1 {
-  left: -10%;
-  rotate: -16deg;
-  background: linear-gradient(90deg, transparent 7%, #2a3da0 36%, #2a3da0 64%, transparent 93%);
-  animation: bandPhase 63s ease-in-out -5s infinite,
-    driftA 26s ease-in-out -3s infinite;
+/* Cool spectrum: teal (the brand accent) leads, magenta trails */
+.r1 {
+  rotate: 7deg;
+  background: linear-gradient(90deg, transparent 8%, #3fc8cf 32%, #3fc8cf 54%, transparent 98%);
+  animation: bandPhase 60s ease-in-out -4s infinite,
+    drift1 24s ease-in-out -3s infinite;
 }
-.c2 {
-  left: 9%;
-  rotate: -9deg;
-  background: linear-gradient(90deg, transparent 7%, #3c55cc 36%, #3c55cc 64%, transparent 93%);
-  animation: bandPhase 63s ease-in-out -17s infinite,
-    driftB 31s ease-in-out -11s infinite;
+.r2 {
+  rotate: 13.5deg;
+  background: linear-gradient(90deg, transparent 9%, #4878e6 32%, #4878e6 56%, transparent 98%);
+  animation: bandPhase 60s ease-in-out -16s infinite,
+    drift2 29s ease-in-out -9s infinite;
 }
-.c3 {
-  left: 28%;
-  rotate: -14deg;
-  background: linear-gradient(90deg, transparent 7%, #6a4cd6 36%, #6a4cd6 64%, transparent 93%);
-  animation: bandPhase 63s ease-in-out -30s infinite,
-    driftA 22s ease-in-out -8s infinite;
+.r3 {
+  rotate: 20deg;
+  background: linear-gradient(90deg, transparent 9%, #6356dc 33%, #6356dc 58%, transparent 99%);
+  animation: bandPhase 60s ease-in-out -28s infinite,
+    drift1 22s ease-in-out -7s infinite;
 }
-.c4 {
-  left: 47%;
-  rotate: -1deg;
-  background: linear-gradient(90deg, transparent 7%, #9a52c8 36%, #9a52c8 64%, transparent 93%);
-  animation: bandPhase 63s ease-in-out -43s infinite,
-    driftB 34s ease-in-out -17s infinite;
+.r4 {
+  rotate: 26.5deg;
+  background: linear-gradient(90deg, transparent 10%, #9a54ce 33%, #9a54ce 58%, transparent 99%);
+  animation: bandPhase 60s ease-in-out -40s infinite,
+    drift2 32s ease-in-out -15s infinite;
 }
-.c5 {
-  left: 66%;
-  rotate: -12deg;
-  background: linear-gradient(90deg, transparent 7%, #c75a98 36%, #c75a98 64%, transparent 93%);
-  animation: bandPhase 63s ease-in-out -55s infinite,
-    driftA 28s ease-in-out -5s infinite;
+.r5 {
+  rotate: 33deg;
+  background: linear-gradient(90deg, transparent 11%, #c95ca2 35%, #c95ca2 60%, transparent 100%);
+  animation: bandPhase 60s ease-in-out -52s infinite,
+    drift1 27s ease-in-out -5s infinite;
 }
 
 /* Vignette + central veil — depth and headline legibility */
@@ -117,8 +185,20 @@
       rgba(7, 9, 22, 0.3) 0%,
       transparent 16%,
       transparent 82%,
-      rgba(7, 9, 22, 0.38) 100%
+      rgba(7, 9, 22, 0.1) 100%
     );
+}
+
+/* Subtle film grain — kills banding in the dark gradients, adds richness */
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
 }
 
 /* ---- Nav ---- */
@@ -177,10 +257,10 @@
 
 .headline {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   font-size: clamp(2.4rem, 6vw, 4.6rem);
   line-height: 1.05;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   margin: 0;
   max-width: 28ch;
   text-wrap: balance;
@@ -222,12 +302,21 @@
 @keyframes bandPhase {
   0%,
   100% {
-    opacity: 0.4;
-    scale: 0.97;
+    opacity: 0.38;
+    scale: 0.98;
   }
   50% {
-    opacity: 0.9;
-    scale: 1.06;
+    opacity: 0.92;
+    scale: 1.05;
+  }
+}
+@keyframes beamPulse {
+  0%,
+  100% {
+    opacity: 0.72;
+  }
+  50% {
+    opacity: 1;
   }
 }
 @keyframes bob {
@@ -241,13 +330,21 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .band,
+  .ray,
+  .beam,
+  .beamCore,
+  .prismGlow,
   .chevron {
     animation: none !important;
   }
-  .band {
-    opacity: 0.55;
+  .ray {
+    opacity: 0.6;
     scale: 1;
+  }
+  .beam,
+  .beamCore,
+  .prismGlow {
+    opacity: 0.85;
   }
   .refraction {
     transition: none;

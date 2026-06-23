@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Open_Sans } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -7,10 +7,12 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+// Headline / display face. Keep the CSS variable name stable (--font-head) so
+// swapping the typeface only touches this file, never globals.css.
+const headFont = Open_Sans({
+  variable: "--font-head",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const SITE_TITLE =
@@ -34,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} antialiased`}
+      className={`${inter.variable} ${headFont.variable} antialiased`}
     >
       <body>{children}</body>
     </html>

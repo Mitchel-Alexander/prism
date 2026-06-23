@@ -8,6 +8,12 @@
   --teal-bright: #4fcbb9;
   --slate: #9aa3b2;
   --foreground: #16233a;
+  /* Display + body font stacks (next/font sets --font-head / --font-inter on <html>).
+     Stable var names: swapping the headline face only touches layout.tsx. A custom
+     @theme key isn't emitted to :root unless a utility uses it, so these are defined
+     here in the unlayered :root to resolve inside CSS modules. */
+  --font-display: var(--font-head);
+  --font-sans: var(--font-inter);
 }
 
 @theme inline {
@@ -17,7 +23,7 @@
   --color-teal-bright: var(--teal-bright);
   --color-slate: var(--slate);
   --font-sans: var(--font-inter);
-  --font-display: var(--font-playfair);
+  --font-display: var(--font-head);
   --font-mono: ui-monospace, "SF Mono", Menlo, "Liberation Mono", monospace;
 }
 

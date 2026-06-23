@@ -1,45 +1,13 @@
-"use client";
-
-import { useRef } from "react";
 import styles from "./Hero.module.css";
 
 export function Hero() {
-  const auroraRef = useRef<HTMLDivElement>(null);
-
-  function handleMove(e: React.MouseEvent<HTMLElement>) {
-    const el = auroraRef.current;
-    if (!el) return;
-    const r = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    // Parallax: the light drifts gently opposite the cursor.
-    el.style.setProperty("--mx", `${(-x * 36).toFixed(1)}px`);
-    el.style.setProperty("--my", `${(-y * 36).toFixed(1)}px`);
-  }
-
-  function handleLeave() {
-    const el = auroraRef.current;
-    if (!el) return;
-    el.style.setProperty("--mx", "0px");
-    el.style.setProperty("--my", "0px");
-  }
-
   return (
-    <section
-      className={styles.hero}
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
-    >
-      <div className={styles.refraction} ref={auroraRef} aria-hidden="true">
-        <span className={styles.beam} />
-        <span className={styles.beamCore} />
-        <span className={`${styles.ray} ${styles.r1}`} />
-        <span className={`${styles.ray} ${styles.r2}`} />
-        <span className={`${styles.ray} ${styles.r3}`} />
-        <span className={`${styles.ray} ${styles.r4}`} />
-        <span className={`${styles.ray} ${styles.r5}`} />
-        <span className={styles.prismGlow} />
+    <section className={styles.hero}>
+      <div className={styles.atmosphere} aria-hidden="true">
+        <span className={styles.glow} />
+        <span className={styles.glow2} />
       </div>
+      <div className={styles.facets} aria-hidden="true" />
       <div className={styles.depth} aria-hidden="true" />
       <div className={styles.grain} aria-hidden="true" />
 
@@ -72,7 +40,13 @@ export function Hero() {
         <h1 className={styles.headline}>
           Partnership for Research Into Sentient Machines
         </h1>
-        <span className={styles.rule} />
+        <img
+          className={styles.crest}
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo-prism-mark-white.png`}
+          alt="PRISM"
+          width={74}
+          height={48}
+        />
         <p className={styles.subhead}>
           A non-profit fostering responsible research into AI consciousness
         </p>

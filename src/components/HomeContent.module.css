@@ -30,26 +30,94 @@
   max-width: 58ch;
 }
 
-/* ---- Mission / Work shells ---- */
+/* ---- Section shells ---- */
 .mission,
-.work {
+.work,
+.partners,
+.opportunities {
   color: #ffffff;
   padding: clamp(4rem, 9vw, 8rem) clamp(1.25rem, 5vw, 4rem);
 }
 
 .mission {
   background:
-    radial-gradient(120% 62% at 80% -12%, rgba(72, 112, 220, 0.26), transparent 60%),
-    radial-gradient(85% 48% at 104% -6%, rgba(90, 124, 224, 0.2), transparent 56%),
-    radial-gradient(72% 60% at 12% 40%, rgba(64, 102, 210, 0.16), transparent 64%),
+    radial-gradient(120% 62% at 80% -12%, rgba(68, 88, 138, 0.3), transparent 60%),
+    radial-gradient(85% 48% at 104% -6%, rgba(76, 94, 142, 0.22), transparent 56%),
+    radial-gradient(72% 60% at 12% 40%, rgba(56, 74, 124, 0.18), transparent 64%),
     #0b0e1c;
 }
 
 .work {
   background:
-    radial-gradient(85% 65% at 84% 6%, rgba(74, 112, 216, 0.28), transparent 62%),
-    radial-gradient(62% 55% at 0% 100%, rgba(62, 100, 204, 0.18), transparent 60%),
+    radial-gradient(85% 65% at 84% 6%, rgba(68, 88, 138, 0.3), transparent 62%),
+    radial-gradient(62% 55% at 0% 100%, rgba(52, 70, 118, 0.2), transparent 60%),
     #0b0e1c;
+}
+
+.partners {
+  background:
+    radial-gradient(80% 60% at 8% 2%, rgba(68, 88, 138, 0.26), transparent 60%),
+    radial-gradient(70% 55% at 100% 98%, rgba(52, 70, 118, 0.18), transparent 60%),
+    #0b0e1c;
+}
+
+.opportunities {
+  background:
+    radial-gradient(88% 62% at 94% 6%, rgba(70, 90, 140, 0.3), transparent 60%),
+    radial-gradient(64% 55% at 2% 100%, rgba(52, 70, 118, 0.18), transparent 60%),
+    #0b0e1c;
+}
+
+/* Section intro line (Partners / Opportunities) */
+.lead {
+  font-family: var(--font-sans);
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  line-height: 1.7;
+  color: #aab2c0;
+  margin: 0 0 2.5rem;
+  max-width: 56ch;
+}
+
+/* ---- Partners: an editorial name grid ---- */
+.partnerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin-top: 0.5rem;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.14);
+}
+
+.partner {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  color: #e6e9f1;
+  padding: 1.5rem 1rem 1.5rem 0;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
+}
+
+/* ---- Opportunities: cards + CTA link ---- */
+.oppsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-top: 1.1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #c3cbe0;
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+.cta:hover {
+  color: #ffffff;
+  gap: 0.7em;
 }
 
 .inner {
@@ -63,43 +131,38 @@
   letter-spacing: 0.2em;
   font-size: 0.72rem;
   font-weight: 600;
-  color: #a99fd6;
+  color: #99a3bf;
   margin: 0 0 1.5rem;
 }
 
-/* ---- Mission: numbered high-level steps (no glyphs) ---- */
+/* ---- Mission: single-line aims ---- */
 .steps {
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   border-top: 0.5px solid rgba(255, 255, 255, 0.14);
 }
 
 .step {
-  padding: 2rem 0;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.14);
-}
-
-.step:first-child {
-  border-top: none;
+  display: flex;
+  align-items: baseline;
+  gap: 1.1rem;
+  padding: 1.15rem 0;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
 }
 
 .num {
-  display: block;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   letter-spacing: 0.08em;
   color: #7d8497;
-  margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .stepText {
   font-family: var(--font-sans);
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  line-height: 1.5;
   color: #aab2c0;
   margin: 0;
-  max-width: 34ch;
 }
 
 .stepText strong {
@@ -107,12 +170,55 @@
   color: #ffffff;
 }
 
-/* ---- Our work: concrete projects ---- */
-.projects {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
+/* ---- Our work: single-line project list ---- */
+.workList {
   margin-top: 2.5rem;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.14);
+}
+
+.workItem {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 1.25rem 0;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
+  text-decoration: none;
+  color: inherit;
+}
+
+.workTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.25;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.workDesc {
+  font-family: var(--font-sans);
+  font-size: 0.96rem;
+  line-height: 1.5;
+  color: #aab2c0;
+  flex: 1;
+}
+
+.workArrow {
+  flex-shrink: 0;
+  color: #99a3bf;
+  font-size: 1.05rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+a.workItem:hover .workTitle {
+  color: #ffffff;
+}
+a.workItem:hover .workDesc {
+  color: #c7ccd6;
+}
+a.workItem:hover .workArrow {
+  color: #ffffff;
+  transform: translate(2px, -2px);
 }
 
 .kicker {
@@ -121,7 +227,7 @@
   text-transform: uppercase;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
-  color: #a99fd6;
+  color: #99a3bf;
   margin-bottom: 0.9rem;
 }
 
@@ -143,28 +249,5 @@
   max-width: 56ch;
 }
 
-@media (min-width: 720px) {
-  .steps {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .step {
-    border-top: none;
-    border-left: 0.5px solid rgba(255, 255, 255, 0.14);
-    padding: 0 2rem;
-  }
-
-  .step:first-child {
-    border-left: none;
-    padding-left: 0;
-  }
-
-  .step:last-child {
-    padding-right: 0;
-  }
-
-  .projects {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 3rem 3.5rem;
-  }
-}
+/* (Mission aims and Work list are single-column lists; Opportunities and
+   Partners use auto-fit grids — no fixed-column breakpoint needed.) */

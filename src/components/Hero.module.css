@@ -13,150 +13,59 @@
   padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 5vw, 4rem);
 }
 
-/* ---- Prism dispersion: a white beam refracts at one point into a spectral fan ---- */
-.refraction {
+/* ---- Soft abstract atmosphere: calm, desaturated light pooling in the dark ---- */
+.atmosphere {
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* R = the implied prism — the point the beam refracts at and the fan radiates from */
-  --rx: 27%;
-  --ry: 42%;
-  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
 }
 
-/* Incoming collimated beam — enters upper-left, brightens as it reaches R */
-.beam {
+/* Broad cool light pooling from above — ambient depth, no metaphor */
+.glow {
   position: absolute;
-  left: -16%;
-  top: calc(var(--ry) - 3%);
-  width: calc(var(--rx) + 16%);
-  height: 6%;
-  transform-origin: 100% 50%;
-  rotate: 20deg;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(206, 220, 255, 0.04) 30%,
-    rgba(222, 230, 255, 0.42) 82%,
-    rgba(240, 244, 255, 0.88) 100%
+  left: 50%;
+  top: -12%;
+  width: 125%;
+  aspect-ratio: 1.7 / 1;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse 50% 50% at 50% 50%,
+    rgba(62, 80, 126, 0.4) 0%,
+    rgba(44, 58, 98, 0.16) 42%,
+    transparent 72%
   );
-  filter: blur(8px);
-  mix-blend-mode: screen;
-  animation: beamPulse 19s ease-in-out infinite;
-  will-change: opacity;
+  filter: blur(54px);
+  animation: breathe 30s ease-in-out infinite;
+  will-change: opacity, scale;
 }
 
-/* The crisp bright core inside the beam's soft halo */
-.beamCore {
+/* Deeper counter-pool, lower — gives the field quiet asymmetry */
+.glow2 {
   position: absolute;
-  left: -16%;
-  top: calc(var(--ry) - 0.7%);
-  width: calc(var(--rx) + 16%);
-  height: 1.4%;
-  transform-origin: 100% 50%;
-  rotate: 20deg;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(226, 233, 255, 0.05) 46%,
-    rgba(244, 247, 255, 0.85) 88%,
-    rgba(255, 255, 255, 0.96) 100%
+  left: 22%;
+  bottom: -18%;
+  width: 85%;
+  aspect-ratio: 1.5 / 1;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse 50% 50% at 50% 50%,
+    rgba(40, 52, 92, 0.38) 0%,
+    transparent 68%
   );
-  filter: blur(2.5px);
-  mix-blend-mode: screen;
-  animation: beamPulse 19s ease-in-out infinite;
-  will-change: opacity;
+  filter: blur(66px);
+  animation: breathe 38s ease-in-out -10s infinite;
+  will-change: opacity, scale;
 }
 
-/* The caustic where white light splits into colour */
-.prismGlow {
+/* Subtle triangular mosaic — flat tessellated tiles + faint grout (not 3D pyramids) */
+.facets {
   position: absolute;
-  left: var(--rx);
-  top: var(--ry);
-  width: 17%;
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  background:
-    radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.88) 0%,
-      rgba(232, 240, 255, 0.4) 13%,
-      transparent 30%
-    ),
-    radial-gradient(
-      circle,
-      rgba(150, 172, 244, 0.3) 0%,
-      rgba(120, 150, 230, 0.12) 40%,
-      transparent 70%
-    );
-  filter: blur(5px);
-  mix-blend-mode: screen;
-  animation: beamPulse 19s ease-in-out infinite;
-}
-
-/* Spectral rays — anchored at R, fanning down-right; colour blooms downstream */
-.ray {
-  position: absolute;
-  left: var(--rx);
-  top: calc(var(--ry) - 8%);
-  width: 168%;
-  height: 16%;
-  transform-origin: 0% 50%;
-  mix-blend-mode: screen;
-  filter: blur(22px);
-  will-change: opacity, scale, translate;
-}
-
-@keyframes drift1 {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: 2.5% 3%;
-  }
-}
-@keyframes drift2 {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: -2% -2.5%;
-  }
-}
-
-/* Cool spectrum: teal (the brand accent) leads, magenta trails */
-.r1 {
-  rotate: 7deg;
-  background: linear-gradient(90deg, transparent 8%, #3fc8cf 32%, #3fc8cf 54%, transparent 98%);
-  animation: bandPhase 60s ease-in-out -4s infinite,
-    drift1 24s ease-in-out -3s infinite;
-}
-.r2 {
-  rotate: 13.5deg;
-  background: linear-gradient(90deg, transparent 9%, #4878e6 32%, #4878e6 56%, transparent 98%);
-  animation: bandPhase 60s ease-in-out -16s infinite,
-    drift2 29s ease-in-out -9s infinite;
-}
-.r3 {
-  rotate: 20deg;
-  background: linear-gradient(90deg, transparent 9%, #6356dc 33%, #6356dc 58%, transparent 99%);
-  animation: bandPhase 60s ease-in-out -28s infinite,
-    drift1 22s ease-in-out -7s infinite;
-}
-.r4 {
-  rotate: 26.5deg;
-  background: linear-gradient(90deg, transparent 10%, #9a54ce 33%, #9a54ce 58%, transparent 99%);
-  animation: bandPhase 60s ease-in-out -40s infinite,
-    drift2 32s ease-in-out -15s infinite;
-}
-.r5 {
-  rotate: 33deg;
-  background: linear-gradient(90deg, transparent 11%, #c95ca2 35%, #c95ca2 60%, transparent 100%);
-  animation: bandPhase 60s ease-in-out -52s infinite,
-    drift1 27s ease-in-out -5s infinite;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Cg stroke='%23ffffff' stroke-opacity='0.045' stroke-width='1'%3E%3Cpolygon points='0,0 100,0 50,50' fill='%23000000' fill-opacity='0.0176'/%3E%3Cpolygon points='100,0 100,100 50,50' fill='%23000000' fill-opacity='0.0349'/%3E%3Cpolygon points='100,100 0,100 50,50' fill='%23ffffff' fill-opacity='0.0091'/%3E%3Cpolygon points='0,100 0,0 50,50' fill='%23000000' fill-opacity='0.0428'/%3E%3Cpolygon points='100,0 200,0 150,50' fill='%23ffffff' fill-opacity='0.0022'/%3E%3Cpolygon points='200,0 200,100 150,50' fill='%23000000' fill-opacity='0.0134'/%3E%3Cpolygon points='200,100 100,100 150,50' fill='%23000000' fill-opacity='0.0442'/%3E%3Cpolygon points='100,100 100,0 150,50' fill='%23ffffff' fill-opacity='0.0004'/%3E%3Cpolygon points='200,0 300,0 250,50' fill='%23000000' fill-opacity='0.0463'/%3E%3Cpolygon points='300,0 300,100 250,50' fill='%23000000' fill-opacity='0.0066'/%3E%3Cpolygon points='300,100 200,100 250,50' fill='%23000000' fill-opacity='0.043'/%3E%3Cpolygon points='200,100 200,0 250,50' fill='%23000000' fill-opacity='0.0409'/%3E%3Cpolygon points='300,0 400,0 350,50' fill='%23000000' fill-opacity='0.0075'/%3E%3Cpolygon points='400,0 400,100 350,50' fill='%23ffffff' fill-opacity='0.0196'/%3E%3Cpolygon points='400,100 300,100 350,50' fill='%23000000' fill-opacity='0.0376'/%3E%3Cpolygon points='300,100 300,0 350,50' fill='%23000000' fill-opacity='0.0277'/%3E%3Cpolygon points='400,0 500,0 450,50' fill='%23ffffff' fill-opacity='0.0076'/%3E%3Cpolygon points='500,0 500,100 450,50' fill='%23ffffff' fill-opacity='0.0269'/%3E%3Cpolygon points='500,100 400,100 450,50' fill='%23ffffff' fill-opacity='0.0046'/%3E%3Cpolygon points='400,100 400,0 450,50' fill='%23000000' fill-opacity='0.0103'/%3E%3Cpolygon points='500,0 600,0 550,50' fill='%23ffffff' fill-opacity='0.0286'/%3E%3Cpolygon points='600,0 600,100 550,50' fill='%23000000' fill-opacity='0.0453'/%3E%3Cpolygon points='600,100 500,100 550,50' fill='%23ffffff' fill-opacity='0.0215'/%3E%3Cpolygon points='500,100 500,0 550,50' fill='%23000000' fill-opacity='0.021'/%3E%3Cpolygon points='600,0 700,0 650,50' fill='%23000000' fill-opacity='0.0356'/%3E%3Cpolygon points='700,0 700,100 650,50' fill='%23000000' fill-opacity='0.0382'/%3E%3Cpolygon points='700,100 600,100 650,50' fill='%23000000' fill-opacity='0.0192'/%3E%3Cpolygon points='600,100 600,0 650,50' fill='%23ffffff' fill-opacity='0.019'/%3E%3Cpolygon points='700,0 800,0 750,50' fill='%23000000' fill-opacity='0.0319'/%3E%3Cpolygon points='800,0 800,100 750,50' fill='%23ffffff' fill-opacity='0.0049'/%3E%3Cpolygon points='800,100 700,100 750,50' fill='%23ffffff' fill-opacity='0.0083'/%3E%3Cpolygon points='700,100 700,0 750,50' fill='%23000000' fill-opacity='0.0128'/%3E%3Cpolygon points='0,100 100,100 50,150' fill='%23ffffff' fill-opacity='0.0029'/%3E%3Cpolygon points='100,100 100,200 50,150' fill='%23000000' fill-opacity='0.0437'/%3E%3Cpolygon points='100,200 0,200 50,150' fill='%23000000' fill-opacity='0.044'/%3E%3Cpolygon points='0,200 0,100 50,150' fill='%23000000' fill-opacity='0.0294'/%3E%3Cpolygon points='100,100 200,100 150,150' fill='%23ffffff' fill-opacity='0.0108'/%3E%3Cpolygon points='200,100 200,200 150,150' fill='%23000000' fill-opacity='0.0072'/%3E%3Cpolygon points='200,200 100,200 150,150' fill='%23000000' fill-opacity='0.0186'/%3E%3Cpolygon points='100,200 100,100 150,150' fill='%23ffffff' fill-opacity='0.0051'/%3E%3Cpolygon points='200,100 300,100 250,150' fill='%23000000' fill-opacity='0.0047'/%3E%3Cpolygon points='300,100 300,200 250,150' fill='%23000000' fill-opacity='0.02'/%3E%3Cpolygon points='300,200 200,200 250,150' fill='%23ffffff' fill-opacity='0.0177'/%3E%3Cpolygon points='200,200 200,100 250,150' fill='%23ffffff' fill-opacity='0.0119'/%3E%3Cpolygon points='300,100 400,100 350,150' fill='%23000000' fill-opacity='0.0256'/%3E%3Cpolygon points='400,100 400,200 350,150' fill='%23ffffff' fill-opacity='0.0045'/%3E%3Cpolygon points='400,200 300,200 350,150' fill='%23ffffff' fill-opacity='0.0015'/%3E%3Cpolygon points='300,200 300,100 350,150' fill='%23ffffff' fill-opacity='0.0225'/%3E%3Cpolygon points='400,100 500,100 450,150' fill='%23ffffff' fill-opacity='0.0138'/%3E%3Cpolygon points='500,100 500,200 450,150' fill='%23000000' fill-opacity='0.0212'/%3E%3Cpolygon points='500,200 400,200 450,150' fill='%23ffffff' fill-opacity='0.0288'/%3E%3Cpolygon points='400,200 400,100 450,150' fill='%23000000' fill-opacity='0.0382'/%3E%3Cpolygon points='500,100 600,100 550,150' fill='%23000000' fill-opacity='0.0082'/%3E%3Cpolygon points='600,100 600,200 550,150' fill='%23ffffff' fill-opacity='0.0154'/%3E%3Cpolygon points='600,200 500,200 550,150' fill='%23000000' fill-opacity='0.0348'/%3E%3Cpolygon points='500,200 500,100 550,150' fill='%23000000' fill-opacity='0.0011'/%3E%3Cpolygon points='600,100 700,100 650,150' fill='%23000000' fill-opacity='0.0461'/%3E%3Cpolygon points='700,100 700,200 650,150' fill='%23ffffff' fill-opacity='0.0101'/%3E%3Cpolygon points='700,200 600,200 650,150' fill='%23ffffff' fill-opacity='0.0159'/%3E%3Cpolygon points='600,200 600,100 650,150' fill='%23ffffff' fill-opacity='0.0044'/%3E%3Cpolygon points='700,100 800,100 750,150' fill='%23ffffff' fill-opacity='0.0225'/%3E%3Cpolygon points='800,100 800,200 750,150' fill='%23000000' fill-opacity='0.0186'/%3E%3Cpolygon points='800,200 700,200 750,150' fill='%23ffffff' fill-opacity='0.0117'/%3E%3Cpolygon points='700,200 700,100 750,150' fill='%23ffffff' fill-opacity='0.0057'/%3E%3Cpolygon points='0,200 100,200 50,250' fill='%23ffffff' fill-opacity='0.0048'/%3E%3Cpolygon points='100,200 100,300 50,250' fill='%23000000' fill-opacity='0.0044'/%3E%3Cpolygon points='100,300 0,300 50,250' fill='%23ffffff' fill-opacity='0.0204'/%3E%3Cpolygon points='0,300 0,200 50,250' fill='%23ffffff' fill-opacity='0.0267'/%3E%3Cpolygon points='100,200 200,200 150,250' fill='%23000000' fill-opacity='0.0026'/%3E%3Cpolygon points='200,200 200,300 150,250' fill='%23ffffff' fill-opacity='0.0098'/%3E%3Cpolygon points='200,300 100,300 150,250' fill='%23000000' fill-opacity='0.0439'/%3E%3Cpolygon points='100,300 100,200 150,250' fill='%23ffffff' fill-opacity='0.0121'/%3E%3Cpolygon points='200,200 300,200 250,250' fill='%23ffffff' fill-opacity='0.0088'/%3E%3Cpolygon points='300,200 300,300 250,250' fill='%23ffffff' fill-opacity='0.0296'/%3E%3Cpolygon points='300,300 200,300 250,250' fill='%23ffffff' fill-opacity='0.0193'/%3E%3Cpolygon points='200,300 200,200 250,250' fill='%23000000' fill-opacity='0.0215'/%3E%3Cpolygon points='300,200 400,200 350,250' fill='%23000000' fill-opacity='0.0114'/%3E%3Cpolygon points='400,200 400,300 350,250' fill='%23ffffff' fill-opacity='0.0101'/%3E%3Cpolygon points='400,300 300,300 350,250' fill='%23000000' fill-opacity='0.0477'/%3E%3Cpolygon points='300,300 300,200 350,250' fill='%23000000' fill-opacity='0.0038'/%3E%3Cpolygon points='400,200 500,200 450,250' fill='%23000000' fill-opacity='0.0332'/%3E%3Cpolygon points='500,200 500,300 450,250' fill='%23000000' fill-opacity='0.0383'/%3E%3Cpolygon points='500,300 400,300 450,250' fill='%23000000' fill-opacity='0.0441'/%3E%3Cpolygon points='400,300 400,200 450,250' fill='%23ffffff' fill-opacity='0.0161'/%3E%3Cpolygon points='500,200 600,200 550,250' fill='%23000000' fill-opacity='0.0371'/%3E%3Cpolygon points='600,200 600,300 550,250' fill='%23000000' fill-opacity='0.0252'/%3E%3Cpolygon points='600,300 500,300 550,250' fill='%23000000' fill-opacity='0.0109'/%3E%3Cpolygon points='500,300 500,200 550,250' fill='%23ffffff' fill-opacity='0.0223'/%3E%3Cpolygon points='600,200 700,200 650,250' fill='%23000000' fill-opacity='0.0419'/%3E%3Cpolygon points='700,200 700,300 650,250' fill='%23000000' fill-opacity='0.0051'/%3E%3Cpolygon points='700,300 600,300 650,250' fill='%23ffffff' fill-opacity='0.003'/%3E%3Cpolygon points='600,300 600,200 650,250' fill='%23ffffff' fill-opacity='0.023'/%3E%3Cpolygon points='700,200 800,200 750,250' fill='%23ffffff' fill-opacity='0.0192'/%3E%3Cpolygon points='800,200 800,300 750,250' fill='%23ffffff' fill-opacity='0.0218'/%3E%3Cpolygon points='800,300 700,300 750,250' fill='%23000000' fill-opacity='0.0222'/%3E%3Cpolygon points='700,300 700,200 750,250' fill='%23000000' fill-opacity='0.0085'/%3E%3Cpolygon points='0,300 100,300 50,350' fill='%23000000' fill-opacity='0.0141'/%3E%3Cpolygon points='100,300 100,400 50,350' fill='%23ffffff' fill-opacity='0.0231'/%3E%3Cpolygon points='100,400 0,400 50,350' fill='%23ffffff' fill-opacity='0.0275'/%3E%3Cpolygon points='0,400 0,300 50,350' fill='%23000000' fill-opacity='0.0349'/%3E%3Cpolygon points='100,300 200,300 150,350' fill='%23000000' fill-opacity='0.0324'/%3E%3Cpolygon points='200,300 200,400 150,350' fill='%23000000' fill-opacity='0.0268'/%3E%3Cpolygon points='200,400 100,400 150,350' fill='%23000000' fill-opacity='0.0267'/%3E%3Cpolygon points='100,400 100,300 150,350' fill='%23000000' fill-opacity='0.0015'/%3E%3Cpolygon points='200,300 300,300 250,350' fill='%23ffffff' fill-opacity='0.0053'/%3E%3Cpolygon points='300,300 300,400 250,350' fill='%23000000' fill-opacity='0.0237'/%3E%3Cpolygon points='300,400 200,400 250,350' fill='%23000000' fill-opacity='0.0496'/%3E%3Cpolygon points='200,400 200,300 250,350' fill='%23000000' fill-opacity='0.0081'/%3E%3Cpolygon points='300,300 400,300 350,350' fill='%23000000' fill-opacity='0.0131'/%3E%3Cpolygon points='400,300 400,400 350,350' fill='%23ffffff' fill-opacity='0.004'/%3E%3Cpolygon points='400,400 300,400 350,350' fill='%23ffffff' fill-opacity='0.0272'/%3E%3Cpolygon points='300,400 300,300 350,350' fill='%23ffffff' fill-opacity='0.0114'/%3E%3Cpolygon points='400,300 500,300 450,350' fill='%23ffffff' fill-opacity='0.0009'/%3E%3Cpolygon points='500,300 500,400 450,350' fill='%23ffffff' fill-opacity='0.0071'/%3E%3Cpolygon points='500,400 400,400 450,350' fill='%23ffffff' fill-opacity='0.0106'/%3E%3Cpolygon points='400,400 400,300 450,350' fill='%23000000' fill-opacity='0.0446'/%3E%3Cpolygon points='500,300 600,300 550,350' fill='%23ffffff' fill-opacity='0.024'/%3E%3Cpolygon points='600,300 600,400 550,350' fill='%23ffffff' fill-opacity='0.0168'/%3E%3Cpolygon points='600,400 500,400 550,350' fill='%23ffffff' fill-opacity='0.0225'/%3E%3Cpolygon points='500,400 500,300 550,350' fill='%23ffffff' fill-opacity='0.0179'/%3E%3Cpolygon points='600,300 700,300 650,350' fill='%23000000' fill-opacity='0.0108'/%3E%3Cpolygon points='700,300 700,400 650,350' fill='%23000000' fill-opacity='0.0101'/%3E%3Cpolygon points='700,400 600,400 650,350' fill='%23000000' fill-opacity='0.0396'/%3E%3Cpolygon points='600,400 600,300 650,350' fill='%23ffffff' fill-opacity='0.0081'/%3E%3Cpolygon points='700,300 800,300 750,350' fill='%23000000' fill-opacity='0.0438'/%3E%3Cpolygon points='800,300 800,400 750,350' fill='%23000000' fill-opacity='0.0433'/%3E%3Cpolygon points='800,400 700,400 750,350' fill='%23000000' fill-opacity='0.0291'/%3E%3Cpolygon points='700,400 700,300 750,350' fill='%23000000' fill-opacity='0.0338'/%3E%3Cpolygon points='0,400 100,400 50,450' fill='%23000000' fill-opacity='0.016'/%3E%3Cpolygon points='100,400 100,500 50,450' fill='%23000000' fill-opacity='0.0447'/%3E%3Cpolygon points='100,500 0,500 50,450' fill='%23000000' fill-opacity='0.05'/%3E%3Cpolygon points='0,500 0,400 50,450' fill='%23000000' fill-opacity='0.0349'/%3E%3Cpolygon points='100,400 200,400 150,450' fill='%23000000' fill-opacity='0.0399'/%3E%3Cpolygon points='200,400 200,500 150,450' fill='%23000000' fill-opacity='0.0136'/%3E%3Cpolygon points='200,500 100,500 150,450' fill='%23000000' fill-opacity='0.0474'/%3E%3Cpolygon points='100,500 100,400 150,450' fill='%23ffffff' fill-opacity='0.0225'/%3E%3Cpolygon points='200,400 300,400 250,450' fill='%23ffffff' fill-opacity='0.0068'/%3E%3Cpolygon points='300,400 300,500 250,450' fill='%23000000' fill-opacity='0.0351'/%3E%3Cpolygon points='300,500 200,500 250,450' fill='%23000000' fill-opacity='0.0248'/%3E%3Cpolygon points='200,500 200,400 250,450' fill='%23000000' fill-opacity='0.0153'/%3E%3Cpolygon points='300,400 400,400 350,450' fill='%23000000' fill-opacity='0.0136'/%3E%3Cpolygon points='400,400 400,500 350,450' fill='%23000000' fill-opacity='0.0377'/%3E%3Cpolygon points='400,500 300,500 350,450' fill='%23ffffff' fill-opacity='0.0209'/%3E%3Cpolygon points='300,500 300,400 350,450' fill='%23ffffff' fill-opacity='0.0296'/%3E%3Cpolygon points='400,400 500,400 450,450' fill='%23000000' fill-opacity='0.0034'/%3E%3Cpolygon points='500,400 500,500 450,450' fill='%23000000' fill-opacity='0.0016'/%3E%3Cpolygon points='500,500 400,500 450,450' fill='%23000000' fill-opacity='0.0414'/%3E%3Cpolygon points='400,500 400,400 450,450' fill='%23000000' fill-opacity='0.0398'/%3E%3Cpolygon points='500,400 600,400 550,450' fill='%23000000' fill-opacity='0.0157'/%3E%3Cpolygon points='600,400 600,500 550,450' fill='%23000000' fill-opacity='0.0235'/%3E%3Cpolygon points='600,500 500,500 550,450' fill='%23ffffff' fill-opacity='0.0197'/%3E%3Cpolygon points='500,500 500,400 550,450' fill='%23000000' fill-opacity='0.0339'/%3E%3Cpolygon points='600,400 700,400 650,450' fill='%23000000' fill-opacity='0.0477'/%3E%3Cpolygon points='700,400 700,500 650,450' fill='%23ffffff' fill-opacity='0.0271'/%3E%3Cpolygon points='700,500 600,500 650,450' fill='%23ffffff' fill-opacity='0.0017'/%3E%3Cpolygon points='600,500 600,400 650,450' fill='%23000000' fill-opacity='0.0353'/%3E%3Cpolygon points='700,400 800,400 750,450' fill='%23ffffff' fill-opacity='0.0026'/%3E%3Cpolygon points='800,400 800,500 750,450' fill='%23000000' fill-opacity='0.0473'/%3E%3Cpolygon points='800,500 700,500 750,450' fill='%23ffffff' fill-opacity='0.0017'/%3E%3Cpolygon points='700,500 700,400 750,450' fill='%23ffffff' fill-opacity='0.0287'/%3E%3Cpolygon points='0,500 100,500 50,550' fill='%23ffffff' fill-opacity='0.0218'/%3E%3Cpolygon points='100,500 100,600 50,550' fill='%23ffffff' fill-opacity='0.0118'/%3E%3Cpolygon points='100,600 0,600 50,550' fill='%23000000' fill-opacity='0.0239'/%3E%3Cpolygon points='0,600 0,500 50,550' fill='%23000000' fill-opacity='0.0133'/%3E%3Cpolygon points='100,500 200,500 150,550' fill='%23000000' fill-opacity='0.0333'/%3E%3Cpolygon points='200,500 200,600 150,550' fill='%23ffffff' fill-opacity='0.0163'/%3E%3Cpolygon points='200,600 100,600 150,550' fill='%23ffffff' fill-opacity='0.002'/%3E%3Cpolygon points='100,600 100,500 150,550' fill='%23ffffff' fill-opacity='0.0167'/%3E%3Cpolygon points='200,500 300,500 250,550' fill='%23000000' fill-opacity='0.017'/%3E%3Cpolygon points='300,500 300,600 250,550' fill='%23000000' fill-opacity='0.0277'/%3E%3Cpolygon points='300,600 200,600 250,550' fill='%23ffffff' fill-opacity='0.0187'/%3E%3Cpolygon points='200,600 200,500 250,550' fill='%23ffffff' fill-opacity='0.0291'/%3E%3Cpolygon points='300,500 400,500 350,550' fill='%23ffffff' fill-opacity='0.0212'/%3E%3Cpolygon points='400,500 400,600 350,550' fill='%23ffffff' fill-opacity='0.0184'/%3E%3Cpolygon points='400,600 300,600 350,550' fill='%23ffffff' fill-opacity='0.0191'/%3E%3Cpolygon points='300,600 300,500 350,550' fill='%23ffffff' fill-opacity='0.0144'/%3E%3Cpolygon points='400,500 500,500 450,550' fill='%23000000' fill-opacity='0.0273'/%3E%3Cpolygon points='500,500 500,600 450,550' fill='%23ffffff' fill-opacity='0.0011'/%3E%3Cpolygon points='500,600 400,600 450,550' fill='%23000000' fill-opacity='0.0144'/%3E%3Cpolygon points='400,600 400,500 450,550' fill='%23000000' fill-opacity='0.0471'/%3E%3Cpolygon points='500,500 600,500 550,550' fill='%23000000' fill-opacity='0.0472'/%3E%3Cpolygon points='600,500 600,600 550,550' fill='%23000000' fill-opacity='0.0221'/%3E%3Cpolygon points='600,600 500,600 550,550' fill='%23000000' fill-opacity='0.0241'/%3E%3Cpolygon points='500,600 500,500 550,550' fill='%23ffffff' fill-opacity='0.0116'/%3E%3Cpolygon points='600,500 700,500 650,550' fill='%23ffffff' fill-opacity='0.0274'/%3E%3Cpolygon points='700,500 700,600 650,550' fill='%23000000' fill-opacity='0.0053'/%3E%3Cpolygon points='700,600 600,600 650,550' fill='%23ffffff' fill-opacity='0.0262'/%3E%3Cpolygon points='600,600 600,500 650,550' fill='%23ffffff' fill-opacity='0.0293'/%3E%3Cpolygon points='700,500 800,500 750,550' fill='%23ffffff' fill-opacity='0.0273'/%3E%3Cpolygon points='800,500 800,600 750,550' fill='%23000000' fill-opacity='0.0135'/%3E%3Cpolygon points='800,600 700,600 750,550' fill='%23000000' fill-opacity='0.028'/%3E%3Cpolygon points='700,600 700,500 750,550' fill='%23000000' fill-opacity='0.0273'/%3E%3Cpolygon points='0,600 100,600 50,650' fill='%23000000' fill-opacity='0.0303'/%3E%3Cpolygon points='100,600 100,700 50,650' fill='%23000000' fill-opacity='0.0296'/%3E%3Cpolygon points='100,700 0,700 50,650' fill='%23ffffff' fill-opacity='0.0074'/%3E%3Cpolygon points='0,700 0,600 50,650' fill='%23ffffff' fill-opacity='0.024'/%3E%3Cpolygon points='100,600 200,600 150,650' fill='%23ffffff' fill-opacity='0.0204'/%3E%3Cpolygon points='200,600 200,700 150,650' fill='%23000000' fill-opacity='0.0021'/%3E%3Cpolygon points='200,700 100,700 150,650' fill='%23ffffff' fill-opacity='0.0092'/%3E%3Cpolygon points='100,700 100,600 150,650' fill='%23ffffff' fill-opacity='0.018'/%3E%3Cpolygon points='200,600 300,600 250,650' fill='%23000000' fill-opacity='0.0415'/%3E%3Cpolygon points='300,600 300,700 250,650' fill='%23ffffff' fill-opacity='0.0096'/%3E%3Cpolygon points='300,700 200,700 250,650' fill='%23ffffff' fill-opacity='0.0246'/%3E%3Cpolygon points='200,700 200,600 250,650' fill='%23ffffff' fill-opacity='0.0169'/%3E%3Cpolygon points='300,600 400,600 350,650' fill='%23ffffff' fill-opacity='0.015'/%3E%3Cpolygon points='400,600 400,700 350,650' fill='%23000000' fill-opacity='0.0022'/%3E%3Cpolygon points='400,700 300,700 350,650' fill='%23000000' fill-opacity='0.0321'/%3E%3Cpolygon points='300,700 300,600 350,650' fill='%23ffffff' fill-opacity='0.0173'/%3E%3Cpolygon points='400,600 500,600 450,650' fill='%23000000' fill-opacity='0.0167'/%3E%3Cpolygon points='500,600 500,700 450,650' fill='%23ffffff' fill-opacity='0.018'/%3E%3Cpolygon points='500,700 400,700 450,650' fill='%23ffffff' fill-opacity='0.0283'/%3E%3Cpolygon points='400,700 400,600 450,650' fill='%23000000' fill-opacity='0.0104'/%3E%3Cpolygon points='500,600 600,600 550,650' fill='%23000000' fill-opacity='0.0099'/%3E%3Cpolygon points='600,600 600,700 550,650' fill='%23ffffff' fill-opacity='0.0268'/%3E%3Cpolygon points='600,700 500,700 550,650' fill='%23ffffff' fill-opacity='0.0135'/%3E%3Cpolygon points='500,700 500,600 550,650' fill='%23000000' fill-opacity='0.033'/%3E%3Cpolygon points='600,600 700,600 650,650' fill='%23000000' fill-opacity='0.0373'/%3E%3Cpolygon points='700,600 700,700 650,650' fill='%23000000' fill-opacity='0.0349'/%3E%3Cpolygon points='700,700 600,700 650,650' fill='%23ffffff' fill-opacity='0.0243'/%3E%3Cpolygon points='600,700 600,600 650,650' fill='%23ffffff' fill-opacity='0.0184'/%3E%3Cpolygon points='700,600 800,600 750,650' fill='%23000000' fill-opacity='0.0354'/%3E%3Cpolygon points='800,600 800,700 750,650' fill='%23ffffff' fill-opacity='0.0196'/%3E%3Cpolygon points='800,700 700,700 750,650' fill='%23ffffff' fill-opacity='0.0288'/%3E%3Cpolygon points='700,700 700,600 750,650' fill='%23ffffff' fill-opacity='0.0094'/%3E%3Cpolygon points='0,700 100,700 50,750' fill='%23000000' fill-opacity='0.015'/%3E%3Cpolygon points='100,700 100,800 50,750' fill='%23ffffff' fill-opacity='0.0029'/%3E%3Cpolygon points='100,800 0,800 50,750' fill='%23000000' fill-opacity='0.0369'/%3E%3Cpolygon points='0,800 0,700 50,750' fill='%23000000' fill-opacity='0.0486'/%3E%3Cpolygon points='100,700 200,700 150,750' fill='%23ffffff' fill-opacity='0.0283'/%3E%3Cpolygon points='200,700 200,800 150,750' fill='%23ffffff' fill-opacity='0.009'/%3E%3Cpolygon points='200,800 100,800 150,750' fill='%23ffffff' fill-opacity='0.0016'/%3E%3Cpolygon points='100,800 100,700 150,750' fill='%23ffffff' fill-opacity='0.026'/%3E%3Cpolygon points='200,700 300,700 250,750' fill='%23000000' fill-opacity='0.0066'/%3E%3Cpolygon points='300,700 300,800 250,750' fill='%23ffffff' fill-opacity='0.0223'/%3E%3Cpolygon points='300,800 200,800 250,750' fill='%23ffffff' fill-opacity='0.0196'/%3E%3Cpolygon points='200,800 200,700 250,750' fill='%23000000' fill-opacity='0.0289'/%3E%3Cpolygon points='300,700 400,700 350,750' fill='%23000000' fill-opacity='0.0248'/%3E%3Cpolygon points='400,700 400,800 350,750' fill='%23000000' fill-opacity='0.0207'/%3E%3Cpolygon points='400,800 300,800 350,750' fill='%23000000' fill-opacity='0.0259'/%3E%3Cpolygon points='300,800 300,700 350,750' fill='%23ffffff' fill-opacity='0.0052'/%3E%3Cpolygon points='400,700 500,700 450,750' fill='%23000000' fill-opacity='0.0241'/%3E%3Cpolygon points='500,700 500,800 450,750' fill='%23000000' fill-opacity='0.0081'/%3E%3Cpolygon points='500,800 400,800 450,750' fill='%23000000' fill-opacity='0.0369'/%3E%3Cpolygon points='400,800 400,700 450,750' fill='%23ffffff' fill-opacity='0.0246'/%3E%3Cpolygon points='500,700 600,700 550,750' fill='%23000000' fill-opacity='0.0146'/%3E%3Cpolygon points='600,700 600,800 550,750' fill='%23000000' fill-opacity='0.0042'/%3E%3Cpolygon points='600,800 500,800 550,750' fill='%23ffffff' fill-opacity='0.005'/%3E%3Cpolygon points='500,800 500,700 550,750' fill='%23ffffff' fill-opacity='0.0243'/%3E%3Cpolygon points='600,700 700,700 650,750' fill='%23000000' fill-opacity='0.0079'/%3E%3Cpolygon points='700,700 700,800 650,750' fill='%23ffffff' fill-opacity='0.0251'/%3E%3Cpolygon points='700,800 600,800 650,750' fill='%23ffffff' fill-opacity='0.0001'/%3E%3Cpolygon points='600,800 600,700 650,750' fill='%23ffffff' fill-opacity='0.0019'/%3E%3Cpolygon points='700,700 800,700 750,750' fill='%23ffffff' fill-opacity='0.0014'/%3E%3Cpolygon points='800,700 800,800 750,750' fill='%23000000' fill-opacity='0.0481'/%3E%3Cpolygon points='800,800 700,800 750,750' fill='%23000000' fill-opacity='0.006'/%3E%3Cpolygon points='700,800 700,700 750,750' fill='%23000000' fill-opacity='0.0317'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 512px 512px;
 }
 
 /* Vignette + central veil — depth and headline legibility */
@@ -166,36 +75,29 @@
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(72% 52% at 50% 46%, rgba(9, 12, 26, 0.24) 0%, rgba(9, 12, 26, 0) 72%),
-    linear-gradient(
-      90deg,
-      rgba(7, 9, 22, 0.68) 0%,
-      rgba(7, 9, 22, 0) 16%,
-      rgba(7, 9, 22, 0) 84%,
-      rgba(7, 9, 22, 0.68) 100%
-    ),
+    radial-gradient(58% 48% at 50% 50%, rgba(8, 11, 24, 0.26) 0%, transparent 70%),
     radial-gradient(
-      140% 105% at 50% 42%,
+      132% 100% at 50% 44%,
       transparent 56%,
-      rgba(7, 9, 22, 0.28) 86%,
-      rgba(7, 9, 22, 0.5) 100%
+      rgba(7, 9, 20, 0.32) 88%,
+      rgba(7, 9, 20, 0.5) 100%
     ),
     linear-gradient(
       180deg,
-      rgba(7, 9, 22, 0.3) 0%,
-      transparent 16%,
-      transparent 82%,
-      rgba(7, 9, 22, 0.1) 100%
+      rgba(7, 9, 20, 0.3) 0%,
+      transparent 18%,
+      transparent 80%,
+      rgba(7, 9, 20, 0.12) 100%
     );
 }
 
-/* Subtle film grain — kills banding in the dark gradients, adds richness */
+/* Subtle film grain — texture + kills banding in the dark gradients */
 .grain {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.05;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 160px 160px;
@@ -245,16 +147,6 @@
   padding: 2rem 0;
 }
 
-.eyebrow {
-  font-family: var(--font-sans);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--teal-bright);
-  margin: 0 0 1.6rem;
-}
-
 .headline {
   font-family: var(--font-display);
   font-weight: 500;
@@ -267,13 +159,11 @@
   color: #ffffff;
 }
 
-.rule {
+.crest {
   display: block;
-  width: 90px;
-  height: 1px;
-  margin: 1.8rem auto;
-  background: rgba(255, 255, 255, 0.5);
-  opacity: 1;
+  height: 48px;
+  width: auto;
+  margin: 1.7rem auto;
 }
 
 .subhead {
@@ -299,24 +189,15 @@
 }
 
 /* ---- Keyframes ---- */
-@keyframes bandPhase {
+@keyframes breathe {
   0%,
   100% {
-    opacity: 0.38;
-    scale: 0.98;
-  }
-  50% {
-    opacity: 0.92;
-    scale: 1.05;
-  }
-}
-@keyframes beamPulse {
-  0%,
-  100% {
-    opacity: 0.72;
+    opacity: 0.68;
+    scale: 1;
   }
   50% {
     opacity: 1;
+    scale: 1.05;
   }
 }
 @keyframes bob {
@@ -330,23 +211,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ray,
-  .beam,
-  .beamCore,
-  .prismGlow,
+  .glow,
+  .glow2,
   .chevron {
     animation: none !important;
   }
-  .ray {
-    opacity: 0.6;
-    scale: 1;
-  }
-  .beam,
-  .beamCore,
-  .prismGlow {
+  .glow,
+  .glow2 {
     opacity: 0.85;
-  }
-  .refraction {
-    transition: none;
+    scale: 1;
   }
 }

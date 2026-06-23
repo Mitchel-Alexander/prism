@@ -1,32 +1,76 @@
 import styles from "./HomeContent.module.css";
 
-// High-level mission themes — deliberately not tied to specific projects.
+// High-level mission aims — one line each.
 const STEPS = [
   {
     lead: "Understand",
-    body: "Advance rigorous, responsible research into whether and how AI systems could be conscious, sentient, or hold moral status.",
+    rest: "whether and how AI systems could be conscious, sentient, or hold moral status.",
   },
   {
     lead: "Connect",
-    body: "Build the emerging field — bringing together philosophy, cognitive science, AI research, and policy.",
+    rest: "the emerging field — philosophy, cognitive science, AI research, and policy.",
   },
   {
     lead: "Prepare",
-    body: "Help society get ready, intellectually and institutionally, for the minds we may create.",
+    rest: "society, intellectually and institutionally, for the minds we may create.",
   },
 ];
 
-// The concrete work. Template copy drafted from PRISM's materials — for review.
-const PROJECTS = [
+// Our work + projects we run or support. Links are live.
+const PROJECTS: { title: string; desc: string; href?: string }[] = [
   {
-    kicker: "Podcast",
     title: "Exploring Machine Consciousness",
-    body: "Our podcast brings leading thinkers — among them Henry Shevlin, Susan Schneider, Mark Solms, Jeff Sebo, and Keith Frankish — to a curious general audience, on the science and philosophy of conscious AI.",
+    desc: "Our podcast on the science and philosophy of conscious AI.",
   },
   {
-    kicker: "Convening",
     title: "Field-building & convening",
-    body: "We grow the community through expert workshops and partnerships, connecting researchers, philosophers, and policymakers working on digital minds.",
+    desc: "Expert workshops and partnerships across the field.",
+  },
+  {
+    title: "Digital Minds Guide",
+    desc: "An accessible guide to the science and ethics of digital minds.",
+    href: "https://digitalminds.guide/",
+  },
+  {
+    title: "Digital Minds News",
+    desc: "Tracking developments in digital minds research and policy.",
+    href: "https://www.digitalminds.news/",
+  },
+  {
+    title: "Cambridge Digital Minds",
+    desc: "We support several of CDM's projects.",
+    href: "https://digitalminds.cam/",
+  },
+];
+
+// PLACEHOLDER partners — illustrative ecosystem orgs, NOT confirmed partnerships.
+// Replace with PRISM's actual partner organisations before publishing.
+const PARTNERS = [
+  "Cambridge Digital Minds",
+  "Eleos AI Research",
+  "NYU Center for Mind, Ethics & Policy",
+  "Sentience Institute",
+];
+
+// Template opportunities — confirm/replace with PRISM's live calls and roles.
+const OPPORTUNITIES = [
+  {
+    kicker: "Research",
+    title: "Research sprints",
+    body: "Time-bound, collaborative sprints on open problems in machine consciousness and moral status, supported by prize funds.",
+    cta: "Get involved",
+  },
+  {
+    kicker: "Careers",
+    title: "Join the team",
+    body: "We're a small, growing non-profit. Explore open roles across research, operations, and communications.",
+    cta: "See open roles",
+  },
+  {
+    kicker: "Governance",
+    title: "Trustee vacancy",
+    body: "We're seeking trustees to help steer PRISM's mission and growth — bringing governance, research, or non-profit experience.",
+    cta: "Learn more",
   },
 ];
 
@@ -51,7 +95,7 @@ export function HomeContent() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <p className={styles.stepText}>
-                  <strong>{s.lead}.</strong> {s.body}
+                  <strong>{s.lead}</strong> {s.rest}
                 </p>
               </div>
             ))}
@@ -62,12 +106,73 @@ export function HomeContent() {
       <section className={styles.work}>
         <div className={styles.inner}>
           <p className={styles.eyebrow}>Our work</p>
-          <div className={styles.projects}>
-            {PROJECTS.map((p) => (
-              <article className={styles.project} key={p.title}>
-                <span className={styles.kicker}>{p.kicker}</span>
-                <h3 className={styles.projectTitle}>{p.title}</h3>
-                <p className={styles.projectBody}>{p.body}</p>
+          <div className={styles.workList}>
+            {PROJECTS.map((p) => {
+              const content = (
+                <>
+                  <span className={styles.workTitle}>{p.title}</span>
+                  <span className={styles.workDesc}>{p.desc}</span>
+                  {p.href && (
+                    <span className={styles.workArrow} aria-hidden="true">
+                      ↗
+                    </span>
+                  )}
+                </>
+              );
+              return p.href ? (
+                <a
+                  className={styles.workItem}
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={p.title}
+                >
+                  {content}
+                </a>
+              ) : (
+                <div className={styles.workItem} key={p.title}>
+                  {content}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.partners}>
+        <div className={styles.inner}>
+          <p className={styles.eyebrow}>Partners</p>
+          <p className={styles.lead}>
+            We build the field together — collaborating with researchers,
+            institutes, and organisations advancing the science and ethics of
+            digital minds.
+          </p>
+          <div className={styles.partnerGrid}>
+            {PARTNERS.map((p) => (
+              <div className={styles.partner} key={p}>
+                {p}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.opportunities}>
+        <div className={styles.inner}>
+          <p className={styles.eyebrow}>Opportunities</p>
+          <p className={styles.lead}>
+            Ways to take part in our work — from collaborative research to
+            joining the team.
+          </p>
+          <div className={styles.oppsGrid}>
+            {OPPORTUNITIES.map((o) => (
+              <article className={styles.project} key={o.title}>
+                <span className={styles.kicker}>{o.kicker}</span>
+                <h3 className={styles.projectTitle}>{o.title}</h3>
+                <p className={styles.projectBody}>{o.body}</p>
+                <a className={styles.cta} href="#">
+                  {o.cta} <span aria-hidden="true">→</span>
+                </a>
               </article>
             ))}
           </div>

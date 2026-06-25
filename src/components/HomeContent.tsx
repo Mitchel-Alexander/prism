@@ -6,19 +6,21 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 /* ---------------------------------- data ---------------------------------- */
 
-// Mission "Our aims" — numbered, one line each.
+// Mission "Our aims" — numbered; the bold lead verb starts each sentence.
 const STEPS = [
-  { n: "1", lead: "Understand", rest: "if AI systems could be conscious or hold moral status." },
-  { n: "2", lead: "Connect", rest: "the field across philosophy, cognitive science, and AI." },
-  { n: "3", lead: "Prepare", rest: "society and institutions for the minds we may create." },
+  { n: "1", lead: "Understand", rest: "what these systems are, and whether any could have minds that matter morally." },
+  { n: "2", lead: "Help", rest: "society and its institutions respond well to what the research finds." },
+  { n: "3", lead: "Bridge", rest: "the gap between the researchers working on these questions and the wider public." },
 ];
 
-// DRAFT — replace with PRISM's actual stated values.
+// PRISM's stated values — rendered "<lead>. <rest>".
 const VALUES = [
-  { lead: "Rigour", rest: "we follow the evidence and reason carefully, even on hard questions." },
-  { lead: "Humility", rest: "we hold uncertainty honestly and avoid overclaiming about machine minds." },
-  { lead: "Moral seriousness", rest: "we take the possibility of digital suffering and moral status seriously." },
-  { lead: "Collaboration", rest: "we build across disciplines and institutions, not in isolation." },
+  { lead: "Rigour", rest: "We promote the highest standards of inquiry and discussion." },
+  { lead: "Humility", rest: "We hold our uncertainty honestly and keep working on what we cannot yet answer." },
+  { lead: "Compassion", rest: "We care about the wellbeing of every entity our work might affect." },
+  { lead: "Open-mindedness", rest: "We take unfamiliar ideas seriously and stay willing to change our minds." },
+  { lead: "Pluralism", rest: "We welcome difference and make space for competing perspectives." },
+  { lead: "Moral seriousness", rest: "We treat the stakes of our situation with the gravity it requires." },
 ];
 
 // Project cards below the featured podcast bar. An external `href` (http…) opens in a
@@ -158,12 +160,14 @@ export function HomeContent() {
           <div className={styles.twoTone}>
             <div className={styles.missionLead}>
               <h3 className={styles.missionHeading}>
-                Preparing society for conscious machines
+                Preparing society for digital minds
               </h3>
               <p className={styles.missionBody}>
-                PRISM is a non-profit building the field of digital minds research —
-                readying the world for the possibility of consciousness, sentience,
-                and moral status in artificial minds.
+                PRISM is a non-profit helping to build the field of digital minds
+                research. We work to advance inquiry into the moral status of AI
+                systems, and to support the exceptional people who can prepare
+                society for the challenges ahead. We pursue this through three
+                connected aims.
               </p>
             </div>
             <div className={styles.aims}>
@@ -182,11 +186,14 @@ export function HomeContent() {
           </div>
 
           <div className={styles.valuesStrip}>
-            <span className={styles.kicker}>Values — what guides our work</span>
+            <span className={styles.kicker}>Values</span>
+            <p className={styles.valuesLede}>
+              The commitments that guide how we work.
+            </p>
             <div className={styles.valuesGrid}>
               {VALUES.map((v) => (
                 <p className={styles.value} key={v.lead}>
-                  <strong>{v.lead}</strong> {v.rest}
+                  <strong>{v.lead}.</strong> {v.rest}
                 </p>
               ))}
             </div>

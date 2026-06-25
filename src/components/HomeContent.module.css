@@ -188,6 +188,14 @@
   background: var(--c-panel);
   border: 1px solid var(--c-line);
 }
+.valuesLede {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  line-height: 1.5;
+  color: var(--c-body);
+  margin: 0.7rem 0 0;
+  max-width: 60ch;
+}
 .valuesGrid {
   margin-top: 1.3rem;
   display: grid;

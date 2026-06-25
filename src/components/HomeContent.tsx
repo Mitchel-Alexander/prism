@@ -1,6 +1,9 @@
 import type { ReactElement } from "react";
 import styles from "./HomeContent.module.css";
 
+// Static export: prefix public asset URLs with the project base path (empty in dev).
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 /* ---------------------------------- data ---------------------------------- */
 
 // Mission "Our aims" — numbered, one line each.
@@ -20,23 +23,33 @@ const VALUES = [
 
 // Project cards below the featured podcast bar. An external `href` (http…) opens in a
 // new tab and the dark bar shows the hostname; otherwise the bar reads "More information".
-const PROJECTS: { type: string; title: string; desc: string; href?: string }[] = [
+// Card tile art is our own generated monochrome textures (public/card-*.jpg).
+const PROJECTS: {
+  type: string;
+  title: string;
+  desc: string;
+  href?: string;
+  img?: string;
+}[] = [
   {
     type: "Events",
     title: "Workshops & convenings",
     desc: "We bring researchers, philosophers, and practitioners together through expert workshops and gatherings — building connections and shared agendas across a young, scattered field.",
+    img: "/card-events.jpg",
   },
   {
     type: "Guide",
     title: "Digital Minds Guide",
     desc: "An accessible, in-depth guide to the science and ethics of digital minds. It gathers the key questions, evidence, and arguments into one clear resource for newcomers and experts alike.",
     href: "https://digitalminds.guide/",
+    img: "/card-guide.jpg",
   },
   {
     type: "Newsletter",
     title: "Digital Minds Newsletter",
     desc: "A regular newsletter tracking developments in digital minds research, policy, and public debate — keeping the community current on a fast-moving field.",
     href: "https://www.digitalminds.news/",
+    img: "/card-newsletter.jpg",
   },
 ];
 
@@ -226,7 +239,11 @@ export function HomeContent() {
                 : null;
               return (
                 <div className={styles.card} key={p.title}>
-                  <div className={styles.cardImg} aria-hidden="true" />
+                  {p.img ? (
+                    <img className={styles.cardImg} src={`${BASE}${p.img}`} alt="" />
+                  ) : (
+                    <div className={styles.cardImg} aria-hidden="true" />
+                  )}
                   <div className={styles.cardBody}>
                     <span className={styles.cardType}>{p.type}</span>
                     <h3 className={styles.cardTitle}>{p.title}</h3>

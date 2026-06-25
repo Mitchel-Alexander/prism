@@ -346,8 +346,10 @@
 .cardImg {
   width: 100%;
   height: clamp(132px, 16vw, 162px);
+  display: block;
+  object-fit: cover;
   background-color: #dbe7fa;
-  /* Powder facet placeholder until the supplied illustration is committed. */
+  /* Powder facet placeholder; shows if no image is set / while one loads. */
   background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='56'%20height='56'%3E%3Cg%20fill='none'%20stroke='%230b1830'%20stroke-opacity='0.1'%3E%3Cpath%20d='M0,0L56,0L28,28Z'/%3E%3Cpath%20d='M56,0L56,56L28,28Z'/%3E%3Cpath%20d='M56,56L0,56L28,28Z'/%3E%3Cpath%20d='M0,56L0,0L28,28Z'/%3E%3C/g%3E%3C/svg%3E");
 }
 .cardBody {

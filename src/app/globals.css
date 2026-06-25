@@ -14,6 +14,10 @@
      here in the unlayered :root to resolve inside CSS modules. */
   --font-display: var(--font-head);
   --font-sans: var(--font-inter);
+  /* Mono is used heavily for kickers/metadata in the content sections. Define it in
+     the plain :root (not only @theme inline) so var(--font-mono) resolves inside CSS
+     modules — an @theme inline key isn't emitted to :root unless a utility uses it. */
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Liberation Mono", monospace;
 }
 
 @theme inline {

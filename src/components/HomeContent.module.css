@@ -1,20 +1,33 @@
-/* ---- Rollover wrapper: LIGHT content that scrolls up over the dark hero ----
-   Editorial palette (HAI-Lab-inspired): powder-blue header/intro panels, white
-   tiles, hairline navy borders, dark mono bars + square outlined buttons. The
-   whole content area is driven by the variables below — adjust them to retune
-   the palette without touching individual rules. */
+/* ============================================================================
+   Home content — editorial powder-blue / teal redesign (HAI-Lab / CMEP-inspired).
+   The whole content area rolls up over the sticky dark hero and is driven by the
+   CSS variables on `.below` — retune the palette there without touching rules.
+   Sections intentionally vary width + colour (powder → teal → navy mosaic →
+   pale/narrow → full-bleed navy) so no two panels read the same.
+   ========================================================================== */
 .below {
-  --c-page: #e9f1fb; /* the sheet behind the panels */
-  --c-panel: #d6e6fb; /* header bands + intro panels (powder blue) */
-  --c-panel-alt: #ffffff; /* tiles that lift off the panels */
+  /* palette */
+  --c-page: #e9f1fb; /* page sheet behind the panels */
+  --c-panel: #d6e6fb; /* powder-blue header / intro panels */
+  --c-panel-alt: #ffffff; /* white project / opportunity cards */
   --c-ink: #14171c; /* headings / strong */
   --c-body: #434a55; /* body copy */
-  --c-muted: #69727f; /* mono labels, kickers, numerals */
+  --c-muted: #69727f; /* mono kickers, numerals */
   --c-line: rgba(20, 28, 46, 0.13); /* hairline borders */
-  --c-bar: #1b2333; /* dark project bar */
+  --c-bar: #1b2333; /* dark project-card bar */
   --c-bar-ink: #9aa4b4; /* mono text on the dark bar */
   --c-btn-border: #14171c; /* square outlined button */
   --c-btn-ink: #14171c;
+  /* second accent — bluish teal */
+  --c-mint: #d2e9ee; /* "Our work" header + "Our aims" panel */
+  --c-mint-line: rgba(14, 54, 64, 0.15);
+  /* dark blocks */
+  --c-dark: #0b0e1c; /* navy CTA + featured base */
+  --c-dark-ink: rgba(255, 255, 255, 0.74);
+  --c-dark-kicker: #5ec7d6; /* teal kicker on navy */
+  /* numbered accent square */
+  --c-accent: #3e507e; /* slate-blue (from the hero) */
+  --c-accent-ink: #ffffff;
 
   position: relative;
   z-index: 1;
@@ -24,24 +37,64 @@
   border-top-right-radius: 20px;
   overflow: hidden;
   box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.45);
+  /* Promote the scrolling sheet to its own layer so the blurred shadow + rounded
+     corners are rasterised once and GPU-translated as it rolls over the hero. */
+  transform: translateZ(0);
 }
 
-/* ---- Section shells ---- */
-.section {
+/* ---- Section shells (each section keeps its own vertical rhythm) ---- */
+.mission {
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3.5rem)
+    clamp(1.5rem, 3vw, 2.5rem);
+}
+.work {
   padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 4vw, 3.5rem);
 }
-.section:first-child {
-  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+.collab {
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3.5rem);
 }
-.section:last-child {
-  padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
-}
-.wrap {
-  max-width: 1180px;
-  margin: 0 auto;
+.ctaSection {
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0 0;
 }
 
-/* ---- Header band: big left-aligned title + mono kicker / outlined button ---- */
+/* Vertical flow used by Mission + Our work (stacked blocks with a small gap). */
+.flow {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.9rem, 1.6vw, 1.25rem);
+}
+
+/* ---- Shared mono kickers ---- */
+.kicker {
+  display: block;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.66rem;
+  color: var(--c-muted);
+}
+.kickerTeal {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.66rem;
+  color: var(--c-dark-kicker);
+}
+
+/* ---- Big section title (Mission / Our work) ---- */
+.title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.015em;
+  line-height: 1;
+  margin: 0;
+  color: var(--c-ink);
+}
+
+/* ============================== MISSION ============================== */
 .band {
   display: flex;
   align-items: center;
@@ -51,15 +104,6 @@
   background: var(--c-panel);
   border: 1px solid var(--c-line);
 }
-.bandTitle {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: -0.015em;
-  line-height: 1;
-  margin: 0;
-  color: var(--c-ink);
-}
 .bandMeta {
   font-family: var(--font-mono);
   text-transform: uppercase;
@@ -68,7 +112,126 @@
   color: var(--c-muted);
   white-space: nowrap;
 }
-.bandBtn {
+
+.twoTone {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.9rem, 1.6vw, 1.25rem);
+}
+.missionLead {
+  flex: 3 1 420px;
+  padding: clamp(1.9rem, 3.5vw, 3rem) clamp(1.4rem, 3vw, 2.4rem);
+  background: var(--c-panel);
+  border: 1px solid var(--c-line);
+}
+.missionHeading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.6vw, 2.9rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.2rem;
+  max-width: 18ch;
+  color: var(--c-ink);
+}
+.missionBody {
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--c-body);
+  margin: 0;
+  max-width: 50ch;
+}
+.aims {
+  flex: 2 1 290px;
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+  background: var(--c-mint);
+  border: 1px solid var(--c-mint-line);
+}
+.aimsList {
+  margin-top: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+.aim {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+.aimNum {
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--c-accent);
+  color: var(--c-accent-ink);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+}
+.aimText {
+  font-family: var(--font-sans);
+  font-size: clamp(0.96rem, 1.3vw, 1.04rem);
+  line-height: 1.45;
+  color: var(--c-body);
+  margin: 0.1rem 0 0;
+}
+.aimText strong {
+  font-weight: 600;
+  color: var(--c-ink);
+}
+
+.valuesStrip {
+  padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1.4rem, 3vw, 2.4rem);
+  background: var(--c-panel);
+  border: 1px solid var(--c-line);
+}
+.valuesGrid {
+  margin-top: 1.3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  gap: 0 clamp(2rem, 4vw, 3.5rem);
+}
+.value {
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--c-line);
+  font-family: var(--font-sans);
+  font-size: clamp(0.96rem, 1.3vw, 1.04rem);
+  line-height: 1.5;
+  color: var(--c-body);
+  margin: 0;
+}
+.value strong {
+  font-weight: 600;
+  color: var(--c-ink);
+}
+
+/* ============================== OUR WORK ============================== */
+.workHeader {
+  padding: clamp(1.5rem, 2.6vw, 2.1rem) clamp(1.4rem, 3vw, 2.4rem);
+  background: var(--c-mint);
+  border: 1px solid var(--c-mint-line);
+}
+.workHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+.workIntro {
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--c-body);
+  margin: 1.2rem 0 0;
+  max-width: 54ch;
+}
+
+/* Square outlined dark button */
+.btnDark {
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -81,122 +244,119 @@
   white-space: nowrap;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-.bandBtn:hover {
+.btnDark:hover {
   background: var(--c-btn-border);
   color: #fff;
 }
 
-/* ---- Intro panel that sits under the band ---- */
-.panel {
-  padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1.25rem, 3vw, 2.4rem);
-  background: var(--c-panel);
-  border: 1px solid var(--c-line);
-  border-top: none;
+/* Featured podcast bar (navy + generative mosaic) */
+.featured {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  background: #070912;
 }
-.panelLede {
+.featureMosaic {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  z-index: 0;
+}
+.featuredImg {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 300px;
+  align-self: stretch;
+  min-height: clamp(190px, 24vw, 260px);
+  /* No image supplied yet — the mosaic shows through. Drop a landscape podcast
+     image here (object-fit: cover) to fill it. */
+}
+.featuredText {
+  position: relative;
+  z-index: 1;
+  flex: 1.3 1 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: clamp(1.9rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2.6rem);
+}
+.featuredTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: #fff;
+  margin: 0.4rem 0 0.2rem;
+}
+.featuredBody {
   font-family: var(--font-sans);
-  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
-  line-height: 1.5;
-  color: var(--c-body);
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  line-height: 1.6;
+  color: var(--c-dark-ink);
   margin: 0;
   max-width: 52ch;
 }
 
-/* ---- Mission: framing heading + intro, then two side-by-side tiles ---- */
-.missionHeading {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  line-height: 1.08;
-  letter-spacing: -0.015em;
-  margin: 0 0 1.2rem;
-  max-width: 20ch;
-  color: var(--c-ink);
-}
-.missionIntro {
-  font-family: var(--font-sans);
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  line-height: 1.65;
-  color: var(--c-body);
-  margin: 0;
-  max-width: 58ch;
-}
-
-.dualBoxes {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-@media (min-width: 720px) {
-  .dualBoxes {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-.missionBox {
-  display: flex;
-  flex-direction: column;
-  background: var(--c-panel-alt);
-  border: 1px solid var(--c-line);
-  border-top: none;
-  padding: clamp(1.6rem, 3vw, 2.4rem);
-}
-@media (min-width: 720px) {
-  .missionBoxRight {
-    border-left: none;
-  }
-}
-.boxLabel {
+/* White outlined button (on navy) — featured + CTA variants */
+.btnWhite {
+  align-self: flex-start;
   font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.66rem;
-  color: var(--c-muted);
+  font-size: 0.72rem;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
-.boxLead {
-  font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.4vw, 1.08rem);
-  line-height: 1.55;
-  color: var(--c-body);
-  margin: 0.85rem 0 0;
+.btnWhite:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.85);
 }
-.boxList {
-  margin-top: 1.5rem;
-  border-top: 0.5px solid var(--c-line);
+.btnFeatured {
+  margin-top: 0.9rem;
+  padding: 0.85rem 1.4rem;
+  letter-spacing: 0.12em;
 }
-.boxItem {
-  padding: 0.95rem 0;
-  border-bottom: 0.5px solid var(--c-line);
-  font-family: var(--font-sans);
-  font-size: clamp(0.96rem, 1.3vw, 1.04rem);
-  line-height: 1.5;
-  color: var(--c-body);
-  margin: 0;
-}
-.boxItem strong {
-  font-weight: 600;
-  color: var(--c-ink);
+.btnCta {
+  margin-top: auto;
+  padding: 0.8rem 1.2rem;
+  letter-spacing: 0.1em;
 }
 
-/* ---- Our work: white project tiles with a dark mono bar pinned to the foot
-   (borrowed from the Oxford HAI Lab events grid) ---- */
-.workGrid {
+/* Project cards (white: image + body + dark bar) */
+.cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+  gap: clamp(0.9rem, 1.6vw, 1.25rem);
 }
-.workItem {
+.card {
   display: flex;
   flex-direction: column;
   background: var(--c-panel-alt);
   border: 1px solid var(--c-line);
-  border-top: none;
-  border-left: none;
 }
-.workBody {
+.cardImg {
+  width: 100%;
+  height: clamp(132px, 16vw, 162px);
+  background-color: #dbe7fa;
+  /* Powder facet placeholder until the supplied illustration is committed. */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='56'%20height='56'%3E%3Cg%20fill='none'%20stroke='%230b1830'%20stroke-opacity='0.1'%3E%3Cpath%20d='M0,0L56,0L28,28Z'/%3E%3Cpath%20d='M56,0L56,56L28,28Z'/%3E%3Cpath%20d='M56,56L0,56L28,28Z'/%3E%3Cpath%20d='M0,56L0,0L28,28Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.cardBody {
   display: flex;
   flex-direction: column;
   flex: 1;
   padding: clamp(1.5rem, 2.6vw, 2.1rem);
 }
-.workType {
+.cardType {
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -204,7 +364,7 @@
   color: var(--c-muted);
   margin-bottom: 1.1rem;
 }
-.workTitle {
+.cardTitle {
   font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(1.3rem, 2vw, 1.55rem);
@@ -213,14 +373,14 @@
   color: var(--c-ink);
   margin: 0 0 0.75rem;
 }
-.workDesc {
+.cardDesc {
   font-family: var(--font-sans);
   font-size: clamp(0.95rem, 1.3vw, 1.02rem);
   line-height: 1.55;
   color: var(--c-body);
   margin: 0;
 }
-.workBar {
+.cardBar {
   display: block;
   text-align: center;
   background: var(--c-bar);
@@ -233,33 +393,50 @@
   text-decoration: none;
   transition: color 0.2s ease;
 }
-a.workBar:hover {
+a.cardBar:hover {
   color: #fff;
 }
 
-/* ---- Collaborators: numbered, editorial stacked name list ---- */
+/* ============================== COLLABORATORS ============================== */
+.collabWrap {
+  max-width: 840px;
+  margin: 0 auto;
+}
+.kickerCollab {
+  display: block;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  color: var(--c-muted);
+}
+.collabIntro {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+  margin: 1rem 0 0;
+  max-width: 26ch;
+}
 .collabList {
-  background: var(--c-panel-alt);
-  border: 1px solid var(--c-line);
-  border-top: none;
-  padding: 0 clamp(1.25rem, 3vw, 2.4rem);
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--c-line);
 }
 .collabRow {
   display: flex;
   align-items: baseline;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  padding: clamp(1.1rem, 2vw, 1.6rem) 0;
-  border-bottom: 0.5px solid var(--c-line);
-}
-.collabRow:last-child {
-  border-bottom: none;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: clamp(1.1rem, 2vw, 1.5rem) 0;
+  border-bottom: 1px solid var(--c-line);
 }
 .collabNum {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--c-muted);
   flex: none;
-  width: 2.5rem;
+  width: 2.2rem;
 }
 .collabName {
   font-family: var(--font-display);
@@ -270,52 +447,65 @@ a.workBar:hover {
   color: var(--c-ink);
 }
 
-/* ---- Opportunities: white outlined cards + square outlined CTA ---- */
-.oppGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+/* ====================== GET INVOLVED (full-bleed navy) ====================== */
+.cta {
+  background: var(--c-dark);
+  padding: clamp(2.75rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem);
 }
-.oppCard {
+.ctaWrap {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.ctaHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.ctaTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.015em;
+  line-height: 1;
+  margin: 0;
+  color: #fff;
+}
+.ctaLede {
+  font-family: var(--font-sans);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1.5;
+  color: #fff;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  max-width: 46ch;
+}
+.ctaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+.ctaCard {
   display: flex;
   flex-direction: column;
-  background: var(--c-panel-alt);
-  border: 1px solid var(--c-line);
-  border-top: none;
-  border-left: none;
-  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  padding-top: 1.5rem;
 }
-.oppTitle {
+.ctaCardTitle {
   font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(1.4rem, 2.4vw, 1.8rem);
   line-height: 1.15;
   letter-spacing: -0.01em;
-  color: var(--c-ink);
+  color: #fff;
   margin: 0 0 1rem;
 }
-.oppBody {
+.ctaCardBody {
   font-family: var(--font-sans);
   font-size: clamp(1rem, 1.4vw, 1.06rem);
   line-height: 1.65;
-  color: var(--c-body);
+  color: var(--c-dark-ink);
   margin: 0 0 1.9rem;
-  max-width: 48ch;
-}
-.oppCta {
-  margin-top: auto;
-  align-self: flex-start;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.72rem;
-  color: var(--c-btn-ink);
-  border: 1px solid var(--c-btn-border);
-  border-radius: 2px;
-  padding: 0.8rem 1.2rem;
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-.oppCta:hover {
-  background: var(--c-btn-border);
-  color: #fff;
+  max-width: 46ch;
 }

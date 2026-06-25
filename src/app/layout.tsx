@@ -29,7 +29,8 @@ export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   icons: {
-    icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon.png`,
+    // ?v=2 busts browsers' sticky favicon cache after the icon was changed.
+    icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon.png?v=2`,
   },
   openGraph: {
     type: "website",

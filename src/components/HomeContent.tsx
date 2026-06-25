@@ -93,20 +93,26 @@ const OPPORTUNITIES: { title: string; body: string; cta: string; href: string }[
 export function HomeContent() {
   return (
     <div className={styles.below}>
-      <section className={styles.mission} id="mission">
-        <p className={styles.sectionLabel}>Our mission</p>
-        <div className={styles.inner}>
-          <h2 className={styles.missionHeading}>
-            Preparing society for conscious machines
-          </h2>
-          <p className={styles.missionIntro}>
-            PRISM is a non-profit building the field of digital minds research —
-            readying the world for the possibility of consciousness, sentience,
-            and moral status in artificial minds.
-          </p>
+      {/* ---- Mission ---- */}
+      <section className={styles.section} id="mission">
+        <div className={styles.wrap}>
+          <div className={styles.band}>
+            <h2 className={styles.bandTitle}>Mission</h2>
+            <span className={styles.bandMeta}>01 / Our mission</span>
+          </div>
+          <div className={styles.panel}>
+            <h3 className={styles.missionHeading}>
+              Preparing society for conscious machines
+            </h3>
+            <p className={styles.missionIntro}>
+              PRISM is a non-profit building the field of digital minds research
+              — readying the world for the possibility of consciousness,
+              sentience, and moral status in artificial minds.
+            </p>
+          </div>
           <div className={styles.dualBoxes}>
             <div className={styles.missionBox}>
-              <h3 className={styles.boxTitle}>Mission</h3>
+              <span className={styles.boxLabel}>Mission</span>
               <p className={styles.boxLead}>
                 We pursue this through three connected aims.
               </p>
@@ -118,8 +124,8 @@ export function HomeContent() {
                 ))}
               </div>
             </div>
-            <div className={styles.missionBox}>
-              <h3 className={styles.boxTitle}>Values</h3>
+            <div className={`${styles.missionBox} ${styles.missionBoxRight}`}>
+              <span className={styles.boxLabel}>Values</span>
               <p className={styles.boxLead}>
                 The commitments that guide how we work.
               </p>
@@ -135,43 +141,47 @@ export function HomeContent() {
         </div>
       </section>
 
-      <section className={styles.work} id="work">
-        <p className={styles.sectionLabel}>Our work</p>
-        <div className={styles.inner}>
-          <p className={styles.splitLead}>
-            We build the field through public-facing projects — a podcast,
-            events, an introductory guide, and a newsletter — several run in
-            collaboration with researchers and organisations across digital
-            minds.
-          </p>
+      {/* ---- Our work ---- */}
+      <section className={styles.section} id="work">
+        <div className={styles.wrap}>
+          <div className={styles.band}>
+            <h2 className={styles.bandTitle}>Our work</h2>
+            <a className={styles.bandBtn} href="#opportunities">
+              View all projects →
+            </a>
+          </div>
+          <div className={styles.panel}>
+            <p className={styles.panelLede}>
+              We build the field through public-facing projects — a podcast,
+              events, an introductory guide, and a newsletter — several run in
+              collaboration with researchers and organisations across digital
+              minds.
+            </p>
+          </div>
           <div className={styles.workGrid}>
             {PROJECTS.map((p) => {
-              const inner = (
-                <>
-                  <span className={styles.workType}>{p.type}</span>
-                  <h3 className={styles.workTitle}>{p.title}</h3>
-                  <p className={styles.workDesc}>{p.desc}</p>
-                  {p.href && (
-                    <span className={styles.workLink}>
-                      {new URL(p.href).hostname.replace(/^www\./, "")}
-                      <span aria-hidden="true">&nbsp;↗</span>
-                    </span>
-                  )}
-                </>
-              );
-              return p.href ? (
-                <a
-                  className={styles.workItem}
-                  href={p.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  key={p.title}
-                >
-                  {inner}
-                </a>
-              ) : (
+              const barLabel = p.href
+                ? `${new URL(p.href).hostname.replace(/^www\./, "")} ↗`
+                : "More information";
+              return (
                 <div className={styles.workItem} key={p.title}>
-                  {inner}
+                  <div className={styles.workBody}>
+                    <span className={styles.workType}>{p.type}</span>
+                    <h3 className={styles.workTitle}>{p.title}</h3>
+                    <p className={styles.workDesc}>{p.desc}</p>
+                  </div>
+                  {p.href ? (
+                    <a
+                      className={styles.workBar}
+                      href={p.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {barLabel}
+                    </a>
+                  ) : (
+                    <span className={styles.workBar}>{barLabel}</span>
+                  )}
                 </div>
               );
             })}
@@ -179,40 +189,52 @@ export function HomeContent() {
         </div>
       </section>
 
-      <section className={styles.partners} id="collaborators">
-        <p className={styles.sectionLabel}>Collaborators</p>
-        <div className={styles.inner}>
-          <p className={styles.splitLead}>
-            Much of our work is carried out in collaboration with researchers
-            and organisations across the field of digital minds.
-          </p>
-          <div className={styles.partnerGrid}>
-            {COLLABORATORS.map((c) => (
-              <div className={styles.partner} key={c}>
-                {c}
+      {/* ---- Collaborators ---- */}
+      <section className={styles.section} id="collaborators">
+        <div className={styles.wrap}>
+          <div className={styles.band}>
+            <h2 className={styles.bandTitle}>Collaborators</h2>
+            <span className={styles.bandMeta}>Across the field</span>
+          </div>
+          <div className={styles.panel}>
+            <p className={styles.panelLede}>
+              Much of our work is carried out in collaboration with researchers
+              and organisations across the field of digital minds.
+            </p>
+          </div>
+          <div className={styles.collabList}>
+            {COLLABORATORS.map((c, i) => (
+              <div className={styles.collabRow} key={c}>
+                <span className={styles.collabNum}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className={styles.collabName}>{c}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.opportunities} id="opportunities">
-        <p className={styles.sectionLabel}>Opportunities</p>
-        <div className={styles.inner}>
-          <p className={styles.splitLead}>
-            If this resonates with you, there are several ways to take part in
-            our work and join the community.
-          </p>
-          <div className={styles.oppCards}>
+      {/* ---- Get involved ---- */}
+      <section className={styles.section} id="opportunities">
+        <div className={styles.wrap}>
+          <div className={styles.band}>
+            <h2 className={styles.bandTitle}>Get involved</h2>
+            <span className={styles.bandMeta}>Opportunities</span>
+          </div>
+          <div className={styles.panel}>
+            <p className={styles.panelLede}>
+              If this resonates with you, there are several ways to take part in
+              our work and join the community.
+            </p>
+          </div>
+          <div className={styles.oppGrid}>
             {OPPORTUNITIES.map((o) => (
               <div className={styles.oppCard} key={o.title}>
                 <h3 className={styles.oppTitle}>{o.title}</h3>
                 <p className={styles.oppBody}>{o.body}</p>
                 <a className={styles.oppCta} href={o.href}>
-                  {o.cta}
-                  <span aria-hidden="true" className={styles.oppArrow}>
-                    →
-                  </span>
+                  {o.cta} →
                 </a>
               </div>
             ))}

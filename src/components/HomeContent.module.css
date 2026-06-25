@@ -1,297 +1,321 @@
 /* ---- Rollover wrapper: LIGHT content that scrolls up over the dark hero ----
-   The content theme is driven by these variables — adjust them to lighten or
-   darken the whole content area without touching individual rules. */
+   Editorial palette (HAI-Lab-inspired): powder-blue header/intro panels, white
+   tiles, hairline navy borders, dark mono bars + square outlined buttons. The
+   whole content area is driven by the variables below — adjust them to retune
+   the palette without touching individual rules. */
 .below {
-  --c-bg: #f5f6f9;
-  --c-ink: #18212f; /* headings / strong */
-  --c-lead: #39424f; /* section intro lead */
-  --c-body: #525b69; /* body copy */
-  --c-muted: #6c7585; /* labels, links, kickers */
-  --c-faint: #8b93a1; /* numerals */
-  --c-border: rgba(24, 33, 47, 0.14);
-  --c-border-strong: rgba(24, 33, 47, 0.32);
-  --c-frame: rgba(62, 80, 126, 0.3); /* section-panel border — slate-blue, from the hero */
-  --c-panel: var(--c-bg); /* panel fill (matches the sheet on light sections) */
+  --c-page: #e9f1fb; /* the sheet behind the panels */
+  --c-panel: #d6e6fb; /* header bands + intro panels (powder blue) */
+  --c-panel-alt: #ffffff; /* tiles that lift off the panels */
+  --c-ink: #14171c; /* headings / strong */
+  --c-body: #434a55; /* body copy */
+  --c-muted: #69727f; /* mono labels, kickers, numerals */
+  --c-line: rgba(20, 28, 46, 0.13); /* hairline borders */
+  --c-bar: #1b2333; /* dark project bar */
+  --c-bar-ink: #9aa4b4; /* mono text on the dark bar */
+  --c-btn-border: #14171c; /* square outlined button */
+  --c-btn-ink: #14171c;
 
   position: relative;
   z-index: 1;
-  background: var(--c-bg);
+  background: var(--c-page);
   color: var(--c-body);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   overflow: hidden;
   box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.45);
-  padding: clamp(1.5rem, 3vw, 2.5rem) 0;
 }
 
 /* ---- Section shells ---- */
-.mission,
-.work,
-.partners,
-.opportunities {
-  padding: clamp(0.75rem, 1.6vw, 1.25rem) clamp(1.25rem, 5vw, 4rem);
+.section {
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 4vw, 3.5rem);
 }
-
-/* Each section's content sits in a rounded panel (the "general section" frame);
-   items inside keep their own borders → nested-border look. The frame is an
-   open loop: a gradient border, solid at the top and fading out toward the
-   bottom, so the panels feel less boxy. */
-.inner {
-  max-width: 1080px;
+.section:first-child {
+  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+}
+.section:last-child {
+  padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+.wrap {
+  max-width: 1180px;
   margin: 0 auto;
-  border: 1px solid transparent;
-  border-radius: 18px;
-  padding: clamp(1.75rem, 3.5vw, 3rem);
-  background:
-    linear-gradient(var(--c-panel), var(--c-panel)) padding-box,
-    linear-gradient(to bottom, var(--c-frame), var(--c-frame) 42%, transparent 92%)
-      border-box;
 }
 
-/* ---- Section label — centred above each panel (the section heading) ---- */
-.sectionLabel {
-  font-family: var(--font-sans);
+/* ---- Header band: big left-aligned title + mono kicker / outlined button ---- */
+.band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1.25rem, 3vw, 2.4rem);
+  background: var(--c-panel);
+  border: 1px solid var(--c-line);
+}
+.bandTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.015em;
+  line-height: 1;
+  margin: 0;
+  color: var(--c-ink);
+}
+.bandMeta {
+  font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
-  font-weight: 600;
-  color: #6c7585; /* always sits on the light sheet, above the panel */
-  text-align: center;
-  margin: 0 0 1.25rem;
+  letter-spacing: 0.16em;
+  font-size: 0.66rem;
+  color: var(--c-muted);
+  white-space: nowrap;
+}
+.bandBtn {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: var(--c-btn-ink);
+  border: 1px solid var(--c-btn-border);
+  border-radius: 2px;
+  padding: 0.7rem 1.1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.bandBtn:hover {
+  background: var(--c-btn-border);
+  color: #fff;
 }
 
-.splitLead {
+/* ---- Intro panel that sits under the band ---- */
+.panel {
+  padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1.25rem, 3vw, 2.4rem);
+  background: var(--c-panel);
+  border: 1px solid var(--c-line);
+  border-top: none;
+}
+.panelLede {
   font-family: var(--font-sans);
-  font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
   line-height: 1.5;
-  color: var(--c-lead);
-  margin: 0 0 2.5rem;
-  max-width: 42ch;
+  color: var(--c-body);
+  margin: 0;
+  max-width: 52ch;
 }
 
-/* ---- Mission & values: framing heading + intro, then two side-by-side cards ---- */
+/* ---- Mission: framing heading + intro, then two side-by-side tiles ---- */
 .missionHeading {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(2rem, 4.6vw, 3.3rem);
-  line-height: 1.12;
-  letter-spacing: -0.01em;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
   margin: 0 0 1.2rem;
   max-width: 20ch;
   color: var(--c-ink);
 }
-
 .missionIntro {
   font-family: var(--font-sans);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  line-height: 1.7;
+  line-height: 1.65;
   color: var(--c-body);
   margin: 0;
   max-width: 58ch;
 }
 
-/* Two cards (Mission | Values), white-filled to lift off the off-white section
-   background. Neutral — no accent colour, per the dropped-colour direction. */
 .dualBoxes {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
-  margin-top: 2.75rem;
 }
-
 @media (min-width: 720px) {
   .dualBoxes {
     grid-template-columns: 1fr 1fr;
   }
 }
-
 .missionBox {
   display: flex;
   flex-direction: column;
-  /* Flat tile: slate-blue accent border (from the hero palette), no fill or
-     shadow so it matches the other tiles. Radius matches the section frame. */
-  border: 1px solid rgba(62, 80, 126, 0.22);
-  border-radius: 18px;
+  background: var(--c-panel-alt);
+  border: 1px solid var(--c-line);
+  border-top: none;
   padding: clamp(1.6rem, 3vw, 2.4rem);
 }
-
-.boxTitle {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
-  line-height: 1.15;
-  color: var(--c-ink);
-  margin: 0 0 0.85rem;
+@media (min-width: 720px) {
+  .missionBoxRight {
+    border-left: none;
+  }
 }
-
+.boxLabel {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.66rem;
+  color: var(--c-muted);
+}
 .boxLead {
   font-family: var(--font-sans);
   font-size: clamp(1rem, 1.4vw, 1.08rem);
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--c-body);
-  margin: 0;
+  margin: 0.85rem 0 0;
 }
-
 .boxList {
   margin-top: 1.5rem;
-  border-top: 0.5px solid var(--c-border);
+  border-top: 0.5px solid var(--c-line);
 }
-
 .boxItem {
   padding: 0.95rem 0;
-  border-bottom: 0.5px solid var(--c-border);
+  border-bottom: 0.5px solid var(--c-line);
   font-family: var(--font-sans);
   font-size: clamp(0.96rem, 1.3vw, 1.04rem);
   line-height: 1.5;
   color: var(--c-body);
   margin: 0;
 }
-
 .boxItem strong {
   font-weight: 600;
   color: var(--c-ink);
 }
 
-/* ---- Our work: an edge-to-edge grid of project tiles framed by hairline
-   dividers, with mono metadata top + bottom (borrowed from the Oxford HAI Lab
-   events grid, kept in PRISM's neutral palette). ---- */
+/* ---- Our work: white project tiles with a dark mono bar pinned to the foot
+   (borrowed from the Oxford HAI Lab events grid) ---- */
 .workGrid {
   display: grid;
-  grid-template-columns: 1fr;
-  margin-top: 2.75rem;
-  border-top: 0.5px solid var(--c-border);
-  border-left: 0.5px solid var(--c-border);
-  border-radius: 18px;
-  overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
 }
-
-@media (min-width: 640px) {
-  .workGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 .workItem {
   display: flex;
   flex-direction: column;
-  padding: clamp(1.6rem, 2.6vw, 2.35rem);
-  border-right: 0.5px solid var(--c-border);
-  border-bottom: 0.5px solid var(--c-border);
-  text-decoration: none;
-  color: inherit;
-  transition: background-color 0.2s ease;
+  background: var(--c-panel-alt);
+  border: 1px solid var(--c-line);
+  border-top: none;
+  border-left: none;
 }
-
-a.workItem:hover {
-  background-color: rgba(24, 33, 47, 0.035);
+.workBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.5rem, 2.6vw, 2.1rem);
 }
-
 .workType {
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   color: var(--c-muted);
   margin-bottom: 1.1rem;
 }
-
 .workTitle {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
-  line-height: 1.2;
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2vw, 1.55rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   color: var(--c-ink);
   margin: 0 0 0.75rem;
 }
-
 .workDesc {
   font-family: var(--font-sans);
-  font-size: clamp(0.98rem, 1.3vw, 1.05rem);
-  line-height: 1.6;
+  font-size: clamp(0.95rem, 1.3vw, 1.02rem);
+  line-height: 1.55;
   color: var(--c-body);
   margin: 0;
 }
-
-/* Mono link pinned to the tile's bottom edge so footers align across a row */
-.workLink {
-  display: inline-flex;
-  align-items: center;
-  margin-top: auto;
-  padding-top: 1.75rem;
+.workBar {
+  display: block;
+  text-align: center;
+  background: var(--c-bar);
+  color: var(--c-bar-ink);
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  color: var(--c-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.68rem;
+  padding: 0.85rem 1rem;
+  text-decoration: none;
   transition: color 0.2s ease;
 }
-a.workItem:hover .workLink {
-  color: var(--c-ink);
+a.workBar:hover {
+  color: #fff;
 }
 
-/* ---- Collaborators: an editorial stacked name list — one organisation per row
-   with a rule between each (inherits the default light theme + framed panel) ---- */
-.partnerGrid {
-  margin-top: 0.5rem;
-  border-top: 0.5px solid var(--c-border);
+/* ---- Collaborators: numbered, editorial stacked name list ---- */
+.collabList {
+  background: var(--c-panel-alt);
+  border: 1px solid var(--c-line);
+  border-top: none;
+  padding: 0 clamp(1.25rem, 3vw, 2.4rem);
 }
-
-.partner {
+.collabRow {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(1.1rem, 2vw, 1.6rem) 0;
+  border-bottom: 0.5px solid var(--c-line);
+}
+.collabRow:last-child {
+  border-bottom: none;
+}
+.collabNum {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--c-muted);
+  flex: none;
+  width: 2.5rem;
+}
+.collabName {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
   color: var(--c-ink);
-  padding: clamp(1.25rem, 2.2vw, 1.7rem) 0;
-  border-bottom: 0.5px solid var(--c-border);
 }
 
-/* ---- Opportunities: outlined cards + uppercase CTA ---- */
-.oppCards {
+/* ---- Opportunities: white outlined cards + square outlined CTA ---- */
+.oppGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+.oppCard {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-.oppCard {
-  border: 0.5px solid var(--c-border);
-  border-radius: 18px;
+  background: var(--c-panel-alt);
+  border: 1px solid var(--c-line);
+  border-top: none;
+  border-left: none;
   padding: clamp(1.75rem, 3vw, 2.5rem);
 }
-
 .oppTitle {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
-  line-height: 1.2;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   color: var(--c-ink);
   margin: 0 0 1rem;
 }
-
 .oppBody {
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.4vw, 1.08rem);
-  line-height: 1.7;
+  font-size: clamp(1rem, 1.4vw, 1.06rem);
+  line-height: 1.65;
   color: var(--c-body);
-  margin: 0 0 1.75rem;
-  max-width: 64ch;
+  margin: 0 0 1.9rem;
+  max-width: 48ch;
 }
-
 .oppCta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.85rem;
-  font-family: var(--font-sans);
+  margin-top: auto;
+  align-self: flex-start;
+  font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--c-muted);
+  color: var(--c-btn-ink);
+  border: 1px solid var(--c-btn-border);
+  border-radius: 2px;
+  padding: 0.8rem 1.2rem;
   text-decoration: none;
-  transition: color 0.2s ease, gap 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 .oppCta:hover {
-  color: var(--c-ink);
-  gap: 1.2rem;
-}
-.oppArrow {
-  font-size: 1.05rem;
+  background: var(--c-btn-border);
+  color: #fff;
 }

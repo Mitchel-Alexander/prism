@@ -8,9 +8,9 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 // Mission "Our aims" — numbered; the bold lead verb starts each sentence.
 const STEPS = [
-  { n: "1", lead: "Understand", rest: "what these systems are, and whether any could have minds that matter morally." },
-  { n: "2", lead: "Help", rest: "society and its institutions respond well to what the research finds." },
-  { n: "3", lead: "Bridge", rest: "the gap between the researchers working on these questions and the wider public." },
+  { n: "01", lead: "Understand", rest: "what these systems are, and whether any could have minds that matter morally." },
+  { n: "02", lead: "Help", rest: "society and its institutions respond well to what the research finds." },
+  { n: "03", lead: "Bridge", rest: "the gap between the researchers working on these questions and the wider public." },
 ];
 
 // PRISM's stated values — rendered "<lead>. <rest>".
@@ -171,7 +171,7 @@ export function HomeContent() {
               </p>
             </div>
             <div className={styles.aims}>
-              <span className={styles.kicker}>Our aims</span>
+              <span className={styles.kickerDark}>Our aims</span>
               <div className={styles.aimsList}>
                 {STEPS.map((s) => (
                   <div className={styles.aim} key={s.n}>
@@ -207,7 +207,10 @@ export function HomeContent() {
           <div className={styles.workHeader}>
             <div className={styles.workHeaderRow}>
               <h2 className={styles.title}>Our work</h2>
-              <a className={styles.btnDark} href="#opportunities">
+              <a
+                className={`${styles.btnWhite} ${styles.btnWork}`}
+                href="#opportunities"
+              >
                 View all projects →
               </a>
             </div>
@@ -224,7 +227,7 @@ export function HomeContent() {
             {/* Podcast image goes here; the mosaic shows through until one is added. */}
             <div className={styles.featuredImg} aria-hidden="true" />
             <div className={styles.featuredText}>
-              <span className={styles.kickerTeal}>Podcast — featured</span>
+              <span className={styles.kickerDark}>Podcast — featured</span>
               <h3 className={styles.featuredTitle}>Exploring Machine Consciousness</h3>
               <p className={styles.featuredBody}>
                 Our podcast brings leading thinkers in philosophy, cognitive science,
@@ -303,7 +306,7 @@ export function HomeContent() {
           <div className={styles.ctaWrap}>
             <div className={styles.ctaHead}>
               <h2 className={styles.ctaTitle}>Get involved</h2>
-              <span className={styles.kickerTeal}>Opportunities</span>
+              <span className={styles.kickerDark}>Opportunities</span>
             </div>
             <p className={styles.ctaLede}>
               If this resonates with you, there are several ways to take part in our

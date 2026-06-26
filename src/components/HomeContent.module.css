@@ -1,33 +1,29 @@
 /* ============================================================================
-   Home content — editorial powder-blue / teal redesign (HAI-Lab / CMEP-inspired).
+   Home content — warm-neutral editorial redesign (alternating dark / light).
    The whole content area rolls up over the sticky dark hero and is driven by the
    CSS variables on `.below` — retune the palette there without touching rules.
-   Sections intentionally vary width + colour (powder → teal → navy mosaic →
-   pale/narrow → full-bleed navy) so no two panels read the same.
+   The rhythm intentionally varies width + colour and alternates dark/light:
+   warm sheet → light Mission with a dark-navy "Our aims" inset → dark "Our work"
+   header + navy mosaic feature → light cards → narrow Collaborators → full-bleed
+   navy CTA, so no two panels read the same.
    ========================================================================== */
 .below {
-  /* palette */
-  --c-page: #e9f1fb; /* page sheet behind the panels */
-  --c-panel: #d6e6fb; /* powder-blue header / intro panels */
-  --c-panel-alt: #ffffff; /* white project / opportunity cards */
-  --c-ink: #14171c; /* headings / strong */
-  --c-body: #434a55; /* body copy */
-  --c-muted: #69727f; /* mono kickers, numerals */
-  --c-line: rgba(20, 28, 46, 0.13); /* hairline borders */
+  /* palette — warm-neutral editorial */
+  --c-page: #e6e4e2; /* warm-neutral light sheet behind the panels */
+  --c-panel: #efeeec; /* light header / intro panels (raised vs the sheet) */
+  --c-panel-alt: #f7f6f5; /* near-white project / opportunity cards */
+  --c-ink: #24222a; /* warm-charcoal headings / strong */
+  --c-body: #565158; /* warm body copy */
+  --c-muted: #8d877a; /* warm-taupe mono kickers, numerals */
+  --c-line: rgba(38, 32, 26, 0.14); /* warm hairline borders */
   --c-bar: #1b2333; /* dark project-card bar */
   --c-bar-ink: #9aa4b4; /* mono text on the dark bar */
-  --c-btn-border: #14171c; /* square outlined button */
-  --c-btn-ink: #14171c;
-  /* second accent — bluish teal */
-  --c-mint: #d2e9ee; /* "Our work" header + "Our aims" panel */
-  --c-mint-line: rgba(14, 54, 64, 0.15);
-  /* dark blocks */
-  --c-dark: #0b0e1c; /* navy CTA + featured base */
+  --c-btn-border: #24222a; /* square outlined button */
+  --c-btn-ink: #24222a;
+  /* dark blocks (the alternation) */
+  --c-dark: #0b0e1c; /* navy CTA, featured base, "Our aims" + "Our work" header */
   --c-dark-ink: rgba(255, 255, 255, 0.74);
-  --c-dark-kicker: #5ec7d6; /* teal kicker on navy */
-  /* numbered accent square */
-  --c-accent: #3e507e; /* slate-blue (from the hero) */
-  --c-accent-ink: #ffffff;
+  --c-dark-kicker: #9bb0d6; /* cool slate-blue kicker on navy (NOT teal) */
 
   position: relative;
   z-index: 1;
@@ -44,11 +40,13 @@
 
 /* ---- Section shells (each section keeps its own vertical rhythm) ---- */
 .mission {
+  /* Bottom pad = the block gap; Our work's top pad is 0 so the seam between the
+     two sections reads as one consistent dark/light rhythm. */
   padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3.5rem)
-    clamp(1.5rem, 3vw, 2.5rem);
+    clamp(0.9rem, 1.6vw, 1.25rem);
 }
 .work {
-  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 4vw, 3.5rem);
+  padding: 0 clamp(1rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem);
 }
 .collab {
   padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3.5rem);
@@ -75,7 +73,8 @@
   font-size: 0.66rem;
   color: var(--c-muted);
 }
-.kickerTeal {
+/* Slate-blue kicker used on the dark navy blocks (aims, featured, CTA). */
+.kickerDark {
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.16em;
@@ -142,45 +141,43 @@
   margin: 0;
   max-width: 50ch;
 }
+
+/* "Our aims" — dark-navy inset; a clean editorial numbered list. The earlier
+   light-teal panel + slate-blue numbered square were removed. */
 .aims {
   flex: 2 1 290px;
-  padding: clamp(1.6rem, 3vw, 2.4rem);
-  background: var(--c-mint);
-  border: 1px solid var(--c-mint-line);
+  padding: clamp(1.9rem, 3vw, 2.6rem);
+  background: var(--c-dark);
 }
 .aimsList {
-  margin-top: 1.3rem;
+  margin-top: 1.4rem;
   display: flex;
   flex-direction: column;
-  gap: 1.05rem;
 }
 .aim {
   display: flex;
-  gap: 0.85rem;
-  align-items: flex-start;
+  gap: 1.1rem;
+  align-items: baseline;
+  padding: 1.05rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 .aimNum {
   flex: none;
-  width: 1.6rem;
-  height: 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--c-accent);
-  color: var(--c-accent-ink);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--c-dark-kicker);
 }
 .aimText {
   font-family: var(--font-sans);
   font-size: clamp(0.96rem, 1.3vw, 1.04rem);
-  line-height: 1.45;
-  color: var(--c-body);
-  margin: 0.1rem 0 0;
+  line-height: 1.5;
+  color: var(--c-dark-ink);
+  margin: 0;
 }
 .aimText strong {
   font-weight: 600;
-  color: var(--c-ink);
+  color: #fff;
 }
 
 .valuesStrip {
@@ -217,10 +214,14 @@
 }
 
 /* ============================== OUR WORK ============================== */
+/* Dark-navy header — sits directly above the dark featured bar so they read as
+   one cohesive dark module (separated by the standard block gap). */
 .workHeader {
-  padding: clamp(1.5rem, 2.6vw, 2.1rem) clamp(1.4rem, 3vw, 2.4rem);
-  background: var(--c-mint);
-  border: 1px solid var(--c-mint-line);
+  padding: clamp(1.9rem, 2.6vw, 2.4rem) clamp(1.4rem, 3vw, 2.4rem);
+  background: var(--c-dark);
+}
+.workHeader .title {
+  color: #fff;
 }
 .workHeaderRow {
   display: flex;
@@ -233,28 +234,9 @@
   font-family: var(--font-sans);
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
   line-height: 1.5;
-  color: var(--c-body);
+  color: var(--c-dark-ink);
   margin: 1.2rem 0 0;
   max-width: 54ch;
-}
-
-/* Square outlined dark button */
-.btnDark {
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.72rem;
-  color: var(--c-btn-ink);
-  border: 1px solid var(--c-btn-border);
-  border-radius: 2px;
-  padding: 0.7rem 1.1rem;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-.btnDark:hover {
-  background: var(--c-btn-border);
-  color: #fff;
 }
 
 /* Featured podcast bar (navy + generative mosaic) */
@@ -311,9 +293,8 @@
   max-width: 52ch;
 }
 
-/* White outlined button (on navy) — featured + CTA variants */
+/* White outlined button (on navy) — work-header + featured + CTA variants */
 .btnWhite {
-  align-self: flex-start;
   font-family: var(--font-mono);
   text-transform: uppercase;
   font-size: 0.72rem;
@@ -328,12 +309,18 @@
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.85);
 }
+.btnWork {
+  padding: 0.7rem 1.1rem;
+  letter-spacing: 0.1em;
+}
 .btnFeatured {
+  align-self: flex-start;
   margin-top: 0.9rem;
   padding: 0.85rem 1.4rem;
   letter-spacing: 0.12em;
 }
 .btnCta {
+  align-self: flex-start;
   margin-top: auto;
   padding: 0.8rem 1.2rem;
   letter-spacing: 0.1em;
@@ -356,9 +343,9 @@
   height: clamp(132px, 16vw, 162px);
   display: block;
   object-fit: cover;
-  background-color: #dbe7fa;
-  /* Powder facet placeholder; shows if no image is set / while one loads. */
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='56'%20height='56'%3E%3Cg%20fill='none'%20stroke='%230b1830'%20stroke-opacity='0.1'%3E%3Cpath%20d='M0,0L56,0L28,28Z'/%3E%3Cpath%20d='M56,0L56,56L28,28Z'/%3E%3Cpath%20d='M56,56L0,56L28,28Z'/%3E%3Cpath%20d='M0,56L0,0L28,28Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-color: #ece9df;
+  /* Warm facet placeholder; shows if no image is set / while one loads. */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='56'%20height='56'%3E%3Cg%20fill='none'%20stroke='%23241f14'%20stroke-opacity='0.1'%3E%3Cpath%20d='M0,0L56,0L28,28Z'/%3E%3Cpath%20d='M56,0L56,56L28,28Z'/%3E%3Cpath%20d='M56,56L0,56L28,28Z'/%3E%3Cpath%20d='M0,56L0,0L28,28Z'/%3E%3C/g%3E%3C/svg%3E");
 }
 .cardBody {
   display: flex;

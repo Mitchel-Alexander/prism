@@ -11,7 +11,9 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const LINKS = [
   { label: "Mission", href: "#mission" },
   { label: "Our work", href: "#work" },
-  { label: "Collaborators", href: "#collaborators" },
+  { label: "Partnerships", href: "#partnerships" },
+  { label: "Values", href: "#values" },
+  { label: "Who we are", href: "#people" },
   { label: "Get involved", href: "#opportunities" },
 ];
 

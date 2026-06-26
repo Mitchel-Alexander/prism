@@ -45,14 +45,16 @@
   padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3.5rem)
     clamp(0.9rem, 1.6vw, 1.25rem);
 }
+/* All sections share one tight gap (= the .flow block gap) so the spacing
+   between every tile/section is equal: top 0, bottom = gap. */
 .work {
-  padding: 0 clamp(1rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem);
+  padding: 0 clamp(1rem, 4vw, 3.5rem) clamp(0.9rem, 1.6vw, 1.25rem);
 }
 .collab {
-  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3.5rem);
+  padding: 0 clamp(1rem, 4vw, 3.5rem) clamp(0.9rem, 1.6vw, 1.25rem);
 }
 .ctaSection {
-  padding: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+  padding: 0;
 }
 
 /* Vertical flow used by Mission + Our work (stacked blocks with a small gap). */
@@ -94,28 +96,16 @@
 }
 
 /* ============================== MISSION ============================== */
-.band {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1.25rem, 3vw, 2.4rem);
-  background: var(--c-panel);
-  border: 1px solid var(--c-line);
-}
-.bandMeta {
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.66rem;
-  color: var(--c-muted);
-  white-space: nowrap;
-}
-
 .twoTone {
   display: flex;
   flex-wrap: wrap;
   gap: clamp(0.9rem, 1.6vw, 1.25rem);
+}
+/* Partnerships variant: the two panels join into one block — no gap, with a
+   single shared outline (panel borders are dropped so the seam is clean). */
+.twoToneJoined {
+  gap: 0;
+  border: 1px solid var(--c-line);
 }
 .missionLead {
   flex: 3 1 420px;
@@ -142,40 +132,30 @@
   max-width: 50ch;
 }
 
-/* "Our aims" — dark-navy inset; a clean editorial numbered list. The earlier
-   light-teal panel + slate-blue numbered square were removed. */
-.aims {
+/* "How we do this" — dark-navy inset; a clean editorial numbered list (formerly
+   "Our aims"). The earlier light-teal panel + slate-blue numbered square are gone. */
+.how {
   flex: 2 1 290px;
   padding: clamp(1.9rem, 3vw, 2.6rem);
   background: var(--c-dark);
 }
-.aimsList {
+.howList {
   margin-top: 1.4rem;
   display: flex;
   flex-direction: column;
 }
-.aim {
-  display: flex;
-  gap: 1.1rem;
-  align-items: baseline;
+.howItem {
   padding: 1.05rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
-.aimNum {
-  flex: none;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  color: var(--c-dark-kicker);
-}
-.aimText {
+.howText {
   font-family: var(--font-sans);
   font-size: clamp(0.96rem, 1.3vw, 1.04rem);
   line-height: 1.5;
   color: var(--c-dark-ink);
   margin: 0;
 }
-.aimText strong {
+.howText strong {
   font-weight: 600;
   color: #fff;
 }
@@ -214,22 +194,6 @@
 }
 
 /* ============================== OUR WORK ============================== */
-/* Dark-navy header — sits directly above the dark featured bar so they read as
-   one cohesive dark module (separated by the standard block gap). */
-.workHeader {
-  padding: clamp(1.9rem, 2.6vw, 2.4rem) clamp(1.4rem, 3vw, 2.4rem);
-  background: var(--c-dark);
-}
-.workHeader .title {
-  color: #fff;
-}
-.workHeaderRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-}
 .workIntro {
   font-family: var(--font-sans);
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
@@ -243,8 +207,6 @@
 .featured {
   position: relative;
   overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
   background: #070912;
 }
 .featureMosaic {
@@ -256,22 +218,26 @@
   pointer-events: none;
   z-index: 0;
 }
-.featuredImg {
+/* Two-column module: "Our work" header (left) + featured podcast (right), both on
+   the shared mosaic. Tops aligned so the section title and the podcast line up. */
+.featuredRow {
   position: relative;
   z-index: 1;
-  flex: 1 1 300px;
-  align-self: stretch;
-  min-height: clamp(190px, 24vw, 260px);
-  /* No image supplied yet — the mosaic shows through. Drop a landscape podcast
-     image here (object-fit: cover) to fill it. */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.featuredIntro {
+  flex: 1 1 320px;
+  padding: clamp(1.9rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2.6rem);
+}
+.featuredIntro .title {
+  color: #fff;
 }
 .featuredText {
-  position: relative;
-  z-index: 1;
   flex: 1.3 1 340px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 0.6rem;
   padding: clamp(1.9rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2.6rem);
 }
@@ -308,10 +274,6 @@
 .btnWhite:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.85);
-}
-.btnWork {
-  padding: 0.7rem 1.1rem;
-  letter-spacing: 0.1em;
 }
 .btnFeatured {
   align-self: flex-start;
@@ -394,54 +356,181 @@ a.cardBar:hover {
   color: #fff;
 }
 
-/* ============================== COLLABORATORS ============================== */
-.collabWrap {
-  max-width: 840px;
+/* Education — programs PRISM convenes / supports (light panel, linked rows) */
+.eduPanel {
+  background: var(--c-panel);
+  border: 1px solid var(--c-line);
+  padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1.4rem, 3vw, 2.4rem);
+}
+.eduIntro {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  line-height: 1.55;
+  color: var(--c-body);
+  margin: 0.7rem 0 0;
+  max-width: 60ch;
+}
+.eduList {
+  margin-top: 1.3rem;
+  border-top: 1px solid var(--c-line);
+}
+.eduRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--c-line);
+  text-decoration: none;
+}
+.eduName {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--c-ink);
+}
+.eduLink {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+  color: var(--c-muted);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.eduRow:hover .eduName {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.eduRow:hover .eduLink {
+  color: var(--c-ink);
+}
+
+/* ============================== PARTNERSHIPS ============================== */
+/* Two-tone with colours swapped vs Mission: dark statement (left) | light
+   org-name list (right). Reuses .twoTone + .missionHeading / .missionBody. */
+.pStatement {
+  flex: 3 1 420px;
+  padding: clamp(1.9rem, 3.5vw, 3rem) clamp(1.4rem, 3vw, 2.4rem);
+  background: var(--c-dark);
+}
+.pStatement .missionHeading {
+  color: #fff;
+}
+.pStatement .missionBody {
+  color: var(--c-dark-ink);
+}
+.pOrgs {
+  flex: 2 1 290px;
+  padding: clamp(1.9rem, 3vw, 2.6rem);
+  background: var(--c-panel);
+}
+.pOrgsList {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+.pOrgItem {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.05rem 0;
+  border-top: 1px solid var(--c-line);
+}
+.pOrgLogo {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+.pOrgName {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--c-ink);
+  margin: 0;
+}
+
+/* ============================== VALUES ============================== */
+/* Standalone section now (moved out of Mission). Reuses the .valuesStrip panel
+   inside a centred .flow wrapper. */
+.values {
+  padding: 0 clamp(1rem, 4vw, 3.5rem) clamp(0.9rem, 1.6vw, 1.25rem);
+}
+
+/* ============================== WHO WE ARE ============================== */
+.people {
+  padding: 0 clamp(1rem, 4vw, 3.5rem) clamp(0.9rem, 1.6vw, 1.25rem);
+}
+.peopleWrap {
+  max-width: 1180px;
   margin: 0 auto;
 }
-.kickerCollab {
+/* One joined block: a dark "Who we are" header band over the light team grid,
+   so the section header isn't a stand-alone kicker floating over cards. */
+.peopleBlock {
+  border: 1px solid var(--c-line);
+  background: var(--c-panel);
+}
+.peopleHead {
+  background: var(--c-dark);
+  padding: clamp(1.5rem, 2.8vw, 2.2rem) clamp(1.4rem, 3vw, 2.4rem);
+}
+.peopleHead .missionHeading {
+  color: #fff;
+  margin: 0;
+}
+.peopleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.75rem) clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+  padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1.4rem, 3vw, 2.4rem);
+}
+.peopleGroup {
+  min-width: 0;
+}
+.peopleKicker {
   display: block;
   font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  font-size: 0.66rem;
   color: var(--c-muted);
 }
-.collabIntro {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.5rem, 3vw, 2.1rem);
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--c-ink);
-  margin: 1rem 0 0;
-  max-width: 26ch;
-}
-.collabList {
-  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+.peopleList {
+  margin-top: 0.9rem;
   border-top: 1px solid var(--c-line);
 }
-.collabRow {
-  display: flex;
-  align-items: baseline;
-  gap: clamp(1rem, 3vw, 2rem);
-  padding: clamp(1.1rem, 2vw, 1.5rem) 0;
+.person {
+  padding: 0.7rem 0;
   border-bottom: 1px solid var(--c-line);
 }
-.collabNum {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--c-muted);
-  flex: none;
-  width: 2.2rem;
+.person:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
 }
-.collabName {
+.personName {
+  display: block;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
   letter-spacing: -0.01em;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--c-ink);
+}
+.personRole {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--c-muted);
 }
 
 /* ====================== GET INVOLVED (full-bleed navy) ====================== */

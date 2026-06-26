@@ -5,7 +5,9 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const EXPLORE = [
   { label: "Mission", href: "#mission" },
   { label: "Our work", href: "#work" },
-  { label: "Collaborators", href: "#collaborators" },
+  { label: "Partnerships", href: "#partnerships" },
+  { label: "Values", href: "#values" },
+  { label: "Who we are", href: "#people" },
   { label: "Get involved", href: "#opportunities" },
 ];
 
@@ -28,8 +30,8 @@ export function Footer() {
             height={33}
           />
           <p className={styles.brandLine}>
-            A non-profit fostering responsible research into AI consciousness,
-            moral status, and digital minds.
+            A registered CIO (Charitable Incorporated Organisation) supporting
+            research into AI consciousness, digital minds, and AI moral status.
           </p>
         </div>
 

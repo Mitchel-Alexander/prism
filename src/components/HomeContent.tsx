@@ -6,26 +6,15 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 /* ---------------------------------- data ---------------------------------- */
 
-// Mission "Our aims" — numbered; the bold lead verb starts each sentence.
-const STEPS = [
-  { n: "01", lead: "Understand", rest: "what these systems are, and whether any could have minds that matter morally." },
-  { n: "02", lead: "Help", rest: "society and its institutions respond well to what the research finds." },
-  { n: "03", lead: "Bridge", rest: "the gap between the researchers working on these questions and the wider public." },
-];
-
-// PRISM's stated values — rendered "<lead>. <rest>".
-const VALUES = [
-  { lead: "Rigour", rest: "We promote the highest standards of inquiry and discussion." },
-  { lead: "Humility", rest: "We hold our uncertainty honestly and keep working on what we cannot yet answer." },
-  { lead: "Compassion", rest: "We care about the wellbeing of every entity our work might affect." },
-  { lead: "Open-mindedness", rest: "We take unfamiliar ideas seriously and stay willing to change our minds." },
-  { lead: "Pluralism", rest: "We welcome difference and make space for competing perspectives." },
-  { lead: "Moral seriousness", rest: "We treat the stakes of our situation with the gravity it requires." },
+// Mission "How we do this" — the dark-navy inset; bold lead + a full sentence.
+const HOW = [
+  { lead: "Awareness building", rest: "We bring digital minds to a wider audience, encouraging thoughtful public engagement with the questions the field raises." },
+  { lead: "Developing talent", rest: "We help newcomers find their way in and grow the field's capacity by identifying and developing exceptional people." },
+  { lead: "Convening the field", rest: "We create the spaces — events, workshops, and shared resources — where researchers and practitioners can connect and do their best work." },
 ];
 
 // Project cards below the featured podcast bar. An external `href` (http…) opens in a
 // new tab and the dark bar shows the hostname; otherwise the bar reads "More information".
-// Card tile art is our own generated monochrome textures (public/card-*.jpg).
 const PROJECTS: {
   type: string;
   title: string;
@@ -34,14 +23,8 @@ const PROJECTS: {
   img?: string;
 }[] = [
   {
-    type: "Events",
-    title: "Workshops & convenings",
-    desc: "We bring researchers, philosophers, and practitioners together through expert workshops and gatherings — building connections and shared agendas across a young, scattered field.",
-    img: "/card-events.jpg",
-  },
-  {
     type: "Guide",
-    title: "Digital Minds Guide",
+    title: "Beginner's Guide to Digital Minds",
     desc: "An accessible, in-depth guide to the science and ethics of digital minds. It gathers the key questions, evidence, and arguments into one clear resource for newcomers and experts alike.",
     href: "https://digitalminds.guide/",
     img: "/card-guide.jpg",
@@ -53,14 +36,68 @@ const PROJECTS: {
     href: "https://www.digitalminds.news/",
     img: "/card-newsletter.jpg",
   },
+  {
+    type: "Events",
+    title: "Expert Workshops",
+    desc: "We run regular workshops that bring the field's researchers together to sharpen thinking and seed new collaborations.",
+    img: "/card-events.jpg",
+  },
 ];
 
-// DRAFT — confirm names/phrasing before launch.
-const COLLABORATORS = [
-  "Cambridge Digital Minds",
-  "University of Oxford",
-  "NYU Center for Mind, Ethics & Policy",
-  "Eleos AI Research",
+// "Education" block in Our work — programs PRISM convenes / supports operationally.
+const EDUCATION = [
+  { name: "Digital Minds Fellowship", href: "https://digitalminds.cam/fellowship" },
+  { name: "Neuromatch AI Sentience Scholarship", href: "https://neuromatch.io/ai-sentience-scholars" },
+];
+
+// Confirmed partners only (per Mitchel 2026-06-26); add the rest as confirmed.
+const PARTNERS = [
+  { name: "Cambridge Digital Minds", logo: "/partner-cdm.png" },
+  { name: "Neuromatch", logo: "/partner-neuromatch.png" },
+];
+
+// PRISM's stated values — rendered "<lead>. <rest>".
+const VALUES = [
+  { lead: "Rigour", rest: "We promote the highest standards of inquiry and discussion." },
+  { lead: "Humility", rest: "We hold our uncertainty honestly and keep working on what we cannot yet answer." },
+  { lead: "Compassion", rest: "We care about the wellbeing of every entity our work might affect." },
+  { lead: "Pluralism", rest: "We welcome difference and make space for competing perspectives." },
+  { lead: "Moral seriousness", rest: "We treat the stakes of our situation with the gravity it requires." },
+  { lead: "Collaboration", rest: "We work across disciplines and share our thinking openly." },
+];
+
+// "Who we are" — three groups of people (name + role / affiliation).
+const PEOPLE: { group: string; members: { name: string; role: string }[] }[] = [
+  {
+    group: "Team",
+    members: [
+      { name: "Will Millership", role: "CEO" },
+      { name: "Mitch Alexander", role: "Projects Manager" },
+      { name: "Güney Ulaş Türker", role: "Field Building Manager" },
+      { name: "Ria Viswanathan", role: "Research Assistant" },
+    ],
+  },
+  {
+    group: "Trustees",
+    members: [
+      { name: "Arvo Muñoz Morán", role: "Rethink Priorities" },
+      { name: "Calum Chace", role: "Conscium" },
+      { name: "Cameron Berg", role: "Reciprocal Research" },
+      { name: "Radhika Chadwick", role: "Nisai" },
+    ],
+  },
+  {
+    group: "Advisors",
+    members: [
+      { name: "Henry Shevlin", role: "University of Cambridge" },
+      { name: "Karl Friston", role: "UCL" },
+      { name: "Lucius Caviola", role: "University of Cambridge" },
+      { name: "Mark Solms", role: "University of Cape Town" },
+      { name: "Megan Peters", role: "UCI / UCL" },
+      { name: "Nicholas Humphrey", role: "London School of Economics" },
+      { name: "Susan Schneider", role: "Florida Atlantic University" },
+    ],
+  },
 ];
 
 // CTA hrefs are placeholders ("#") until the real destinations exist.
@@ -152,50 +189,30 @@ export function HomeContent() {
       {/* ===================== MISSION ===================== */}
       <section id="mission" className={styles.mission}>
         <div className={styles.flow}>
-          <div className={styles.band}>
-            <h2 className={styles.title}>Mission</h2>
-            <span className={styles.bandMeta}>01 — Our mission</span>
-          </div>
-
           <div className={styles.twoTone}>
             <div className={styles.missionLead}>
-              <h3 className={styles.missionHeading}>
+              <h2 className={styles.missionHeading}>
                 Preparing society for digital minds
-              </h3>
+              </h2>
               <p className={styles.missionBody}>
-                PRISM is a non-profit helping to build the field of digital minds
-                research. We work to advance inquiry into the moral status of AI
-                systems, and to support the exceptional people who can prepare
-                society for the challenges ahead. We pursue this through three
-                connected aims.
+                PRISM is a non-profit helping to build the field of digital
+                minds. We support research and educational initiatives preparing
+                society for the challenges posed by AI consciousness, digital
+                minds, and AI moral status.
               </p>
             </div>
-            <div className={styles.aims}>
-              <span className={styles.kickerDark}>Our aims</span>
-              <div className={styles.aimsList}>
-                {STEPS.map((s) => (
-                  <div className={styles.aim} key={s.n}>
-                    <span className={styles.aimNum}>{s.n}</span>
-                    <p className={styles.aimText}>
-                      <strong>{s.lead}</strong> {s.rest}
+            {/* Dark-navy inset — "How we do this" (replaces the old "Our aims"). */}
+            <div className={styles.how}>
+              <span className={styles.kickerDark}>How we do this</span>
+              <div className={styles.howList}>
+                {HOW.map((h) => (
+                  <div className={styles.howItem} key={h.lead}>
+                    <p className={styles.howText}>
+                      <strong>{h.lead}.</strong> {h.rest}
                     </p>
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-
-          <div className={styles.valuesStrip}>
-            <span className={styles.kicker}>Values</span>
-            <p className={styles.valuesLede}>
-              The commitments that guide how we work.
-            </p>
-            <div className={styles.valuesGrid}>
-              {VALUES.map((v) => (
-                <p className={styles.value} key={v.lead}>
-                  <strong>{v.lead}.</strong> {v.rest}
-                </p>
-              ))}
             </div>
           </div>
         </div>
@@ -204,39 +221,29 @@ export function HomeContent() {
       {/* ===================== OUR WORK ===================== */}
       <section id="work" className={styles.work}>
         <div className={styles.flow}>
-          <div className={styles.workHeader}>
-            <div className={styles.workHeaderRow}>
-              <h2 className={styles.title}>Our work</h2>
-              <a
-                className={`${styles.btnWhite} ${styles.btnWork}`}
-                href="#opportunities"
-              >
-                View all projects →
-              </a>
-            </div>
-            <p className={styles.workIntro}>
-              We build the field through public-facing projects — a podcast, events,
-              an introductory guide, and a newsletter — several run in collaboration
-              with researchers and organisations across digital minds.
-            </p>
-          </div>
-
-          {/* Featured podcast bar — generative mosaic behind an (optional) image + text */}
+          {/* "Our work" header merged into the featured podcast tile — one dark
+              module, two columns (header | podcast) on the shared mosaic. */}
           <div className={styles.featured}>
             <FeatureMosaic />
-            {/* Podcast image goes here; the mosaic shows through until one is added. */}
-            <div className={styles.featuredImg} aria-hidden="true" />
-            <div className={styles.featuredText}>
-              <span className={styles.kickerDark}>Podcast — featured</span>
-              <h3 className={styles.featuredTitle}>Exploring Machine Consciousness</h3>
-              <p className={styles.featuredBody}>
-                Our podcast brings leading thinkers in philosophy, cognitive science,
-                and AI to a curious general audience — each episode exploring whether,
-                and how, machines might be conscious.
-              </p>
-              <a className={`${styles.btnWhite} ${styles.btnFeatured}`} href="#">
-                More information →
-              </a>
+            <div className={styles.featuredRow}>
+              <div className={styles.featuredIntro}>
+                <h2 className={styles.title}>Our work</h2>
+                <p className={styles.workIntro}>
+                  We build the infrastructure a developing field needs to grow.
+                </p>
+              </div>
+              <div className={styles.featuredText}>
+                <span className={styles.kickerDark}>Podcast</span>
+                <h3 className={styles.featuredTitle}>Exploring Machine Consciousness</h3>
+                <p className={styles.featuredBody}>
+                  Our podcast brings leading thinkers in philosophy, cognitive
+                  science, and AI to a curious general audience. Each episode
+                  explores pressing issues in digital minds and AI consciousness.
+                </p>
+                <a className={`${styles.btnWhite} ${styles.btnFeatured}`} href="#">
+                  Listen to every episode →
+                </a>
+              </div>
             </div>
           </div>
 
@@ -276,26 +283,108 @@ export function HomeContent() {
               );
             })}
           </div>
+
+          {/* Education — programs PRISM convenes / supports */}
+          <div className={styles.eduPanel}>
+            <span className={styles.kicker}>Education</span>
+            <p className={styles.eduIntro}>
+              We partner to convene and provide operational support to programs
+              that develop the field's next generation of talent, including:
+            </p>
+            <div className={styles.eduList}>
+              {EDUCATION.map((e) => (
+                <a
+                  className={styles.eduRow}
+                  key={e.name}
+                  href={e.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className={styles.eduName}>{e.name}</span>
+                  <span className={styles.eduLink} aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ===================== COLLABORATORS ===================== */}
-      <section id="collaborators" className={styles.collab}>
-        <div className={styles.collabWrap}>
-          <span className={styles.kickerCollab}>Collaborators — across the field</span>
-          <p className={styles.collabIntro}>
-            Much of our work is carried out with researchers and organisations across
-            the field of digital minds.
-          </p>
-          <div className={styles.collabList}>
-            {COLLABORATORS.map((c, i) => (
-              <div className={styles.collabRow} key={c}>
-                <span className={styles.collabNum}>
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className={styles.collabName}>{c}</span>
+      {/* ===================== PARTNERSHIPS ===================== */}
+      {/* Two-tone, colours swapped vs Mission: dark statement | light org list. */}
+      <section id="partnerships" className={styles.collab}>
+        <div className={styles.flow}>
+          <div className={`${styles.twoTone} ${styles.twoToneJoined}`}>
+            <div className={styles.pStatement}>
+              <h2 className={styles.missionHeading}>Partnerships</h2>
+              <p className={styles.missionBody}>
+                We build the field together, collaborating with researchers,
+                institutes, and organisations advancing the science and ethics
+                of digital minds.
+              </p>
+            </div>
+            <div className={styles.pOrgs}>
+              <span className={styles.kicker}>Our collaborators</span>
+              <div className={styles.pOrgsList}>
+                {PARTNERS.map((p) => (
+                  <div className={styles.pOrgItem} key={p.name}>
+                    <img
+                      className={styles.pOrgLogo}
+                      src={`${BASE}${p.logo}`}
+                      alt=""
+                    />
+                    <p className={styles.pOrgName}>{p.name}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== VALUES ===================== */}
+      <section id="values" className={styles.values}>
+        <div className={styles.flow}>
+          <div className={styles.valuesStrip}>
+            <span className={styles.kicker}>Values</span>
+            <p className={styles.valuesLede}>
+              The commitments that guide how we work.
+            </p>
+            <div className={styles.valuesGrid}>
+              {VALUES.map((v) => (
+                <p className={styles.value} key={v.lead}>
+                  <strong>{v.lead}.</strong> {v.rest}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== WHO WE ARE ===================== */}
+      {/* Dark "Who we are" header joined to the light team grid in one block. */}
+      <section id="people" className={styles.people}>
+        <div className={styles.peopleWrap}>
+          <div className={styles.peopleBlock}>
+            <div className={styles.peopleHead}>
+              <h2 className={styles.missionHeading}>Who we are</h2>
+            </div>
+            <div className={styles.peopleGrid}>
+              {PEOPLE.map((g) => (
+                <div className={styles.peopleGroup} key={g.group}>
+                  <span className={styles.peopleKicker}>{g.group}</span>
+                  <div className={styles.peopleList}>
+                    {g.members.map((m) => (
+                      <div className={styles.person} key={m.name}>
+                        <span className={styles.personName}>{m.name}</span>
+                        <span className={styles.personRole}>{m.role}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -306,11 +395,10 @@ export function HomeContent() {
           <div className={styles.ctaWrap}>
             <div className={styles.ctaHead}>
               <h2 className={styles.ctaTitle}>Get involved</h2>
-              <span className={styles.kickerDark}>Opportunities</span>
             </div>
             <p className={styles.ctaLede}>
-              If this resonates with you, there are several ways to take part in our
-              work and join the community.
+              If this resonates with you, there are several ways to take part in
+              our work and join the community.
             </p>
             <div className={styles.ctaGrid}>
               {OPPORTUNITIES.map((o) => (

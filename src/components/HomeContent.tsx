@@ -59,45 +59,37 @@ const PARTNERS = [
 // PRISM's stated values — rendered "<lead>. <rest>".
 const VALUES = [
   { lead: "Rigour", rest: "We promote the highest standards of inquiry and discussion." },
-  { lead: "Humility", rest: "We hold our uncertainty honestly and keep working on what we cannot yet answer." },
+  { lead: "Humility", rest: "We admit our uncertainty, treat unfamiliar ideas seriously and stay willing to change our minds." },
   { lead: "Compassion", rest: "We care about the wellbeing of every entity our work might affect." },
-  { lead: "Pluralism", rest: "We welcome difference and make space for competing perspectives." },
   { lead: "Moral seriousness", rest: "We treat the stakes of our situation with the gravity it requires." },
   { lead: "Collaboration", rest: "We work across disciplines and share our thinking openly." },
 ];
 
 // "Who we are" — three groups of people (name + role / affiliation).
-const PEOPLE: { group: string; members: { name: string; role: string }[] }[] = [
-  {
-    group: "Team",
-    members: [
-      { name: "Will Millership", role: "CEO" },
-      { name: "Mitch Alexander", role: "Projects Manager" },
-      { name: "Güney Ulaş Türker", role: "Field Building Manager" },
-      { name: "Ria Viswanathan", role: "Research Assistant" },
-    ],
-  },
-  {
-    group: "Trustees",
-    members: [
-      { name: "Arvo Muñoz Morán", role: "Rethink Priorities" },
-      { name: "Calum Chace", role: "Conscium" },
-      { name: "Cameron Berg", role: "Reciprocal Research" },
-      { name: "Radhika Chadwick", role: "Nisai" },
-    ],
-  },
-  {
-    group: "Advisors",
-    members: [
-      { name: "Henry Shevlin", role: "University of Cambridge" },
-      { name: "Karl Friston", role: "UCL" },
-      { name: "Lucius Caviola", role: "University of Cambridge" },
-      { name: "Mark Solms", role: "University of Cape Town" },
-      { name: "Megan Peters", role: "UCI / UCL" },
-      { name: "Nicholas Humphrey", role: "London School of Economics" },
-      { name: "Susan Schneider", role: "Florida Atlantic University" },
-    ],
-  },
+const TEAM = [
+  { name: "Will Millership", role: "CEO" },
+  { name: "Mitch Alexander", role: "Special Projects" },
+  { name: "Güney Ulaş Türker", role: "Field Building" },
+  { name: "Ria Viswanathan", role: "Field Building and Research" },
+];
+
+// One combined advisors + trustees list (per Will, confirmed by Lucius), placed
+// below Team as a grid; trustees carry a "(trustee)" tag. Ordered by surname.
+// NB Lucius Caviola stays listed while the site is circulated privately — REMOVE
+// before the public launch. New advisors (Jeff / Patrick / Andreas / Rosie /
+// Winnie) to be added once full names + affiliations are confirmed.
+const ADVISORS: { name: string; role: string; trustee?: boolean }[] = [
+  { name: "Cameron Berg", role: "Reciprocal Research", trustee: true },
+  { name: "Lucius Caviola", role: "University of Cambridge" },
+  { name: "Calum Chace", role: "Conscium", trustee: true },
+  { name: "Radhika Chadwick", role: "Nisai", trustee: true },
+  { name: "Karl Friston", role: "UCL" },
+  { name: "Nicholas Humphrey", role: "London School of Economics" },
+  { name: "Arvo Muñoz Morán", role: "Rethink Priorities", trustee: true },
+  { name: "Megan Peters", role: "UCI / UCL" },
+  { name: "Susan Schneider", role: "Florida Atlantic University" },
+  { name: "Henry Shevlin", role: "University of Cambridge" },
+  { name: "Mark Solms", role: "University of Cape Town" },
 ];
 
 // CTA hrefs are placeholders ("#") until the real destinations exist.
@@ -229,7 +221,9 @@ export function HomeContent() {
               <div className={styles.featuredIntro}>
                 <h2 className={styles.title}>Our work</h2>
                 <p className={styles.workIntro}>
-                  We build the infrastructure a developing field needs to grow.
+                  We build the infrastructure a young field needs: helping
+                  newcomers orient themselves, and keeping researchers and
+                  practitioners connected and collaborating.
                 </p>
               </div>
               <div className={styles.featuredText}>
@@ -370,20 +364,34 @@ export function HomeContent() {
             <div className={styles.peopleHead}>
               <h2 className={styles.missionHeading}>Who we are</h2>
             </div>
-            <div className={styles.peopleGrid}>
-              {PEOPLE.map((g) => (
-                <div className={styles.peopleGroup} key={g.group}>
-                  <span className={styles.peopleKicker}>{g.group}</span>
-                  <div className={styles.peopleList}>
-                    {g.members.map((m) => (
-                      <div className={styles.person} key={m.name}>
-                        <span className={styles.personName}>{m.name}</span>
-                        <span className={styles.personRole}>{m.role}</span>
-                      </div>
-                    ))}
-                  </div>
+            <div className={styles.peopleBody}>
+              <div className={styles.peopleSection}>
+                <span className={styles.peopleKicker}>Team</span>
+                <div className={styles.peopleGridRow}>
+                  {TEAM.map((m) => (
+                    <div className={styles.person} key={m.name}>
+                      <span className={styles.personName}>{m.name}</span>
+                      <span className={styles.personRole}>{m.role}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+              <div className={styles.peopleSection}>
+                <span className={styles.peopleKicker}>Advisors &amp; Trustees</span>
+                <div className={styles.peopleGridRow}>
+                  {ADVISORS.map((m) => (
+                    <div className={styles.person} key={m.name}>
+                      <span className={styles.personName}>
+                        {m.name}
+                        {m.trustee && (
+                          <span className={styles.trusteeTag}> (trustee)</span>
+                        )}
+                      </span>
+                      <span className={styles.personRole}>{m.role}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -394,7 +402,7 @@ export function HomeContent() {
         <div className={styles.cta}>
           <div className={styles.ctaWrap}>
             <div className={styles.ctaHead}>
-              <h2 className={styles.ctaTitle}>Get involved</h2>
+              <h2 className={styles.ctaTitle}>Opportunities</h2>
             </div>
             <p className={styles.ctaLede}>
               If this resonates with you, there are several ways to take part in

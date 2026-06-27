@@ -14,14 +14,13 @@ const LINKS = [
   { label: "Partnerships", href: "#partnerships" },
   { label: "Values", href: "#values" },
   { label: "Who we are", href: "#people" },
-  { label: "Get involved", href: "#opportunities" },
+  { label: "Opportunities", href: "#opportunities" },
 ];
 
 // Live external projects PRISM runs or supports.
 const PROJECTS = [
   { label: "Digital Minds Guide", href: "https://digitalminds.guide/" },
   { label: "Digital Minds Newsletter", href: "https://www.digitalminds.news/" },
-  { label: "Cambridge Digital Minds", href: "https://digitalminds.cam/" },
 ];
 
 export function NavMenu() {

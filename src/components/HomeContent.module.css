@@ -485,14 +485,14 @@ a.cardBar:hover {
   color: #fff;
   margin: 0;
 }
-.peopleGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: clamp(1.5rem, 3vw, 2.75rem) clamp(2rem, 4vw, 3.5rem);
-  align-items: start;
+/* Two stacked sections (Team, then Advisors & Trustees) inside the light block. */
+.peopleBody {
   padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1.4rem, 3vw, 2.4rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.7rem, 3vw, 2.6rem);
 }
-.peopleGroup {
+.peopleSection {
   min-width: 0;
 }
 .peopleKicker {
@@ -503,17 +503,18 @@ a.cardBar:hover {
   font-size: 0.66rem;
   color: var(--c-muted);
 }
-.peopleList {
+/* Each section flows its people into an auto-fit grid; every cell is top-ruled so
+   the multi-column list reads as a clean index (rules align across each row). */
+.peopleGridRow {
   margin-top: 0.9rem;
-  border-top: 1px solid var(--c-line);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  align-items: start;
+  gap: 0 clamp(2rem, 4vw, 3.5rem);
 }
 .person {
   padding: 0.7rem 0;
-  border-bottom: 1px solid var(--c-line);
-}
-.person:last-child {
-  padding-bottom: 0;
-  border-bottom: none;
+  border-top: 1px solid var(--c-line);
 }
 .personName {
   display: block;
@@ -523,6 +524,15 @@ a.cardBar:hover {
   letter-spacing: -0.01em;
   line-height: 1.2;
   color: var(--c-ink);
+}
+/* Small, quiet "(trustee)" marker after a name in the combined list. */
+.trusteeTag {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  color: var(--c-muted);
+  white-space: nowrap;
 }
 .personRole {
   display: block;

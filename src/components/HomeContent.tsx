@@ -1,4 +1,3 @@
-import type { ReactElement } from "react";
 import styles from "./HomeContent.module.css";
 
 // Static export: prefix public asset URLs with the project base path (empty in dev).
@@ -44,13 +43,28 @@ const PROJECTS: {
   },
 ];
 
-// Featured podcast episodes, shown inside the dark "Our work" bar. TEMPLATE
-// placeholders — the real episode titles / guests / links get filled in once
-// chosen; images are web-sized long-exposure photos in /public (episode-1..3).
+// Featured podcast episodes, shown inside the dark "Our work" bar. Each links to
+// the episode on YouTube (opens in a new tab); images are web-sized long-exposure
+// abstracts in /public.
 const EPISODES = [
-  { no: "01", title: "Episode title", guest: "Guest name", img: "/episode-1.jpg", href: "#" },
-  { no: "02", title: "Episode title", guest: "Guest name", img: "/episode-2.jpg", href: "#" },
-  { no: "03", title: "Episode title", guest: "Guest name", img: "/episode-3.jpg", href: "#" },
+  {
+    title: "Exotic Minds and the Design Policies for Conscious AI",
+    guest: "Eric Schwitzgebel",
+    img: "/episode-1.jpg",
+    href: "https://www.youtube.com/watch?v=bddHP58lTHA",
+  },
+  {
+    title: "Metacognition, Neuroscience, and Tests for AI Consciousness",
+    guest: "Megan Peters",
+    img: "/ep-blue.jpg",
+    href: "https://www.youtube.com/watch?v=aHeVicEFozY",
+  },
+  {
+    title: "A Future with Digital Minds? Expert Estimates and Societal Response",
+    guest: "Lucius Caviola",
+    img: "/ep-dark.jpg",
+    href: "https://www.youtube.com/watch?v=r03bVSP44h8",
+  },
 ];
 
 // "Education" block in Our work — programs PRISM convenes / supports operationally.
@@ -117,73 +131,6 @@ const OPPORTUNITIES = [
   },
 ];
 
-/* -------- generative low-poly "prism facets" mosaic (static, SSR-safe) --------
-   Same motif as the hero, darker and non-animated. Deterministic (seeded PRNG) so the
-   server render is identical every time — no client JS, no hydration mismatch. */
-function mulberry32(seed: number) {
-  let a = seed;
-  return () => {
-    a |= 0;
-    a = (a + 0x6d2b79f5) | 0;
-    let t = Math.imul(a ^ (a >>> 15), 1 | a);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function FeatureMosaic() {
-  const rnd = mulberry32(99173);
-  const COLS = 24;
-  const ROWS = 8;
-  const T = 56;
-  const W = COLS * T;
-  const H = ROWS * T;
-  const tris: ReactElement[] = [];
-  let k = 0;
-  for (let gy = 0; gy < ROWS; gy++) {
-    for (let gx = 0; gx < COLS; gx++) {
-      const x0 = gx * T;
-      const y0 = gy * T;
-      const x1 = x0 + T;
-      const y1 = y0 + T;
-      const cx = x0 + T / 2;
-      const cy = y0 + T / 2;
-      const corners = [
-        [x0, y0, x1, y0],
-        [x1, y0, x1, y1],
-        [x1, y1, x0, y1],
-        [x0, y1, x0, y0],
-      ];
-      for (const [ax, ay, bx, by] of corners) {
-        const r = rnd();
-        const hue = Math.round(218 + rnd() * 10);
-        const sat = Math.round(32 + rnd() * 16);
-        let light = 5.5 + rnd() * 3;
-        if (r > 0.9) light = 9.5 + rnd() * 3;
-        tris.push(
-          <polygon
-            key={k++}
-            points={`${ax},${ay} ${bx},${by} ${cx},${cy}`}
-            fill={`hsl(${hue} ${sat}% ${light.toFixed(1)}%)`}
-          />,
-        );
-      }
-    }
-  }
-  return (
-    <svg
-      className={styles.featureMosaic}
-      viewBox={`0 0 ${W} ${H}`}
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-    >
-      <g stroke="#ffffff" strokeOpacity="0.03" strokeWidth="1">
-        {tris}
-      </g>
-    </svg>
-  );
-}
-
 export function HomeContent() {
   return (
     <div className={styles.below}>
@@ -222,10 +169,9 @@ export function HomeContent() {
       {/* ===================== OUR WORK ===================== */}
       <section id="work" className={styles.work}>
         <div className={styles.flow}>
-          {/* "Our work" header merged into the featured podcast tile — one dark
-              module, two columns (header | podcast) on the shared mosaic. */}
+          {/* "Our work" header merged into the featured podcast tile — one flat
+              dark-navy module, two columns (header | podcast). */}
           <div className={styles.featured}>
-            <FeatureMosaic />
             <div className={styles.featuredRow}>
               <div className={styles.featuredIntro}>
                 <h2 className={styles.title}>Our work</h2>
@@ -249,21 +195,27 @@ export function HomeContent() {
               </div>
             </div>
 
-            {/* Featured episodes — three image tiles inside the dark bar.
-                TEMPLATE: swap in the chosen episodes (title / guest / link), and
-                reorder the images if needed, once episodes are selected. */}
+            {/* Featured episodes — landscape letterbox strips inside the dark
+                bar; each opens the episode on YouTube in a new tab. */}
             <div className={styles.episodes}>
               <span className={styles.kickerDark}>Featured episodes</span>
               <div className={styles.episodeGrid}>
                 {EPISODES.map((ep) => (
-                  <a className={styles.episodeCard} href={ep.href} key={ep.no}>
-                    <img
-                      className={styles.episodeImg}
-                      src={`${BASE}${ep.img}`}
-                      alt=""
-                    />
+                  <a
+                    className={styles.episodeCard}
+                    href={ep.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={ep.href}
+                  >
+                    <div className={styles.episodeImgWrap}>
+                      <img
+                        className={styles.episodeImg}
+                        src={`${BASE}${ep.img}`}
+                        alt=""
+                      />
+                    </div>
                     <div className={styles.episodeMeta}>
-                      <span className={styles.episodeNo}>Episode {ep.no}</span>
                       <h4 className={styles.episodeTitle}>{ep.title}</h4>
                       <span className={styles.episodeGuest}>{ep.guest}</span>
                     </div>

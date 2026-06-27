@@ -259,6 +259,76 @@
   max-width: 52ch;
 }
 
+/* Featured episodes — three image tiles beneath the podcast intro, inside the
+   dark featured bar. A full-width hairline sets them off; the tiles are a row
+   that stacks to one column on narrow screens. */
+.episodes {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: clamp(1.4rem, 2.5vw, 2rem) clamp(1.5rem, 3vw, 2.6rem)
+    clamp(1.9rem, 3.5vw, 3rem);
+}
+.episodeGrid {
+  margin-top: clamp(1rem, 1.8vw, 1.4rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.9rem, 1.6vw, 1.3rem);
+}
+/* Each episode is a horizontal tile — portrait image thumbnail + meta — and the
+   three tiles STACK vertically inside the dark bar. */
+.episodeCard {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: clamp(1.1rem, 2.4vw, 1.8rem);
+  text-decoration: none;
+}
+.episodeImg {
+  flex: none;
+  width: clamp(118px, 22vw, 184px);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  background-color: #0c1020;
+  transition: opacity 0.2s ease;
+}
+.episodeCard:hover .episodeImg {
+  opacity: 0.88;
+}
+.episodeMeta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.episodeNo {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.62rem;
+  color: var(--c-dark-kicker);
+}
+.episodeTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin: 0.4rem 0 0.3rem;
+}
+.episodeCard:hover .episodeTitle {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.episodeGuest {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--c-dark-ink);
+}
+
 /* White outlined button (on navy) — work-header + featured + CTA variants */
 .btnWhite {
   font-family: var(--font-mono);

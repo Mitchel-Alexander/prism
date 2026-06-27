@@ -44,6 +44,15 @@ const PROJECTS: {
   },
 ];
 
+// Featured podcast episodes, shown inside the dark "Our work" bar. TEMPLATE
+// placeholders — the real episode titles / guests / links get filled in once
+// chosen; images are web-sized long-exposure photos in /public (episode-1..3).
+const EPISODES = [
+  { no: "01", title: "Episode title", guest: "Guest name", img: "/episode-1.jpg", href: "#" },
+  { no: "02", title: "Episode title", guest: "Guest name", img: "/episode-2.jpg", href: "#" },
+  { no: "03", title: "Episode title", guest: "Guest name", img: "/episode-3.jpg", href: "#" },
+];
+
 // "Education" block in Our work — programs PRISM convenes / supports operationally.
 const EDUCATION = [
   { name: "Digital Minds Fellowship", href: "https://digitalminds.cam/fellowship" },
@@ -237,6 +246,29 @@ export function HomeContent() {
                 <a className={`${styles.btnWhite} ${styles.btnFeatured}`} href="#">
                   Listen to every episode →
                 </a>
+              </div>
+            </div>
+
+            {/* Featured episodes — three image tiles inside the dark bar.
+                TEMPLATE: swap in the chosen episodes (title / guest / link), and
+                reorder the images if needed, once episodes are selected. */}
+            <div className={styles.episodes}>
+              <span className={styles.kickerDark}>Featured episodes</span>
+              <div className={styles.episodeGrid}>
+                {EPISODES.map((ep) => (
+                  <a className={styles.episodeCard} href={ep.href} key={ep.no}>
+                    <img
+                      className={styles.episodeImg}
+                      src={`${BASE}${ep.img}`}
+                      alt=""
+                    />
+                    <div className={styles.episodeMeta}>
+                      <span className={styles.episodeNo}>Episode {ep.no}</span>
+                      <h4 className={styles.episodeTitle}>{ep.title}</h4>
+                      <span className={styles.episodeGuest}>{ep.guest}</span>
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
           </div>

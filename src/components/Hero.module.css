@@ -178,18 +178,6 @@
   margin: 1.7rem auto;
 }
 
-.subhead {
-  font-family: var(--font-sans);
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.72rem;
-  font-weight: 600;
-  line-height: 1.8;
-  color: var(--slate);
-  margin: 0;
-  max-width: 34ch;
-}
-
 /* ---- Chevron ---- */
 .chevron {
   position: relative;

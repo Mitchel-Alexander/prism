@@ -142,9 +142,6 @@ export function Hero() {
           width={74}
           height={48}
         />
-        <p className={styles.subhead}>
-          A non-profit fostering responsible research into AI consciousness
-        </p>
       </div>
 
       <div className={styles.chevron} aria-hidden="true">

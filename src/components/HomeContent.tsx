@@ -7,7 +7,7 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 // Mission "How we do this" — the dark-navy inset; bold lead + a full sentence.
 const HOW = [
-  { lead: "Awareness building", rest: "We communicate digital minds topics to non-expert audiences, encouraging thoughtful public engagement with the questions the field raises." },
+  { lead: "Raising awareness", rest: "We communicate digital minds topics to non-expert audiences, encouraging thoughtful public engagement with the questions the field raises." },
   { lead: "Developing talent", rest: "We help the field grow by identifying and developing exceptional people." },
   { lead: "Convening the field", rest: "We create the spaces (events, workshops, and shared resources) where researchers and practitioners can connect and do their best work." },
 ];
@@ -223,7 +223,7 @@ export function HomeContent() {
               <div className={styles.featuredIntro}>
                 <h2 className={styles.title}>Our work</h2>
                 <p className={styles.workIntro}>
-                  We build the infrastructure a young field needs: helping
+                  We create the infrastructure a young field needs: helping
                   newcomers orient themselves, and keeping researchers and
                   practitioners connected and collaborating.
                 </p>

@@ -69,6 +69,12 @@
   display: block;
   pointer-events: none;
   opacity: 0.75;
+  /* The shimmer is a continuous opacity repaint across ~700 tiles. Promote the
+     whole SVG to ONE compositor layer and contain its paint, so that repaint is
+     isolated to this layer — scrolling the content sheet over the sticky hero
+     stays a cheap GPU composite instead of re-rasterising the mosaic. */
+  transform: translateZ(0);
+  contain: paint;
 }
 
 /* Shimmer tiles fade up/down on a shared cycle; their per-tile delay is keyed to
@@ -78,7 +84,10 @@
   animation-duration: 6.4s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  will-change: opacity;
+  /* NB: deliberately NO `will-change` here. There are ~700 shimmer tiles; a
+     will-change hint per tile asks the compositor to set up ~700 layers, which
+     thrashes memory and janks scrolling. Opacity animates fine without it, and
+     the parent .mosaic is promoted to a single layer instead (see .mosaic). */
 }
 @keyframes ripple {
   0%,

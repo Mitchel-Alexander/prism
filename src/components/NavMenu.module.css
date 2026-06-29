@@ -13,36 +13,37 @@
   opacity: 0.65;
 }
 
-/* ---- Full-screen overlay menu (dark, to echo the hero) ---- */
+/* ---- Menu = a horizontal bar that drops in along the top (dark, echoes the
+   hero); the section links lay out in a row across it. ---- */
 .overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
-  display: flex;
-  flex-direction: column;
-  padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 5vw, 4rem);
   background: rgba(8, 11, 24, 0.97);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   color: #ffffff;
-  overflow-y: auto;
+  transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.35s ease, visibility 0s 0.35s;
+  transition: transform 0.35s ease, opacity 0.35s ease, visibility 0s 0.35s;
 }
 .overlay.open {
+  transform: translateY(0);
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.35s ease;
+  transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
-/* Top bar mirrors the hero nav (logo left, close right) */
+/* The bar = logo (left) · links (centre) · close (right), one row. */
 .bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.16);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  padding: clamp(0.9rem, 1.8vw, 1.3rem) clamp(1.25rem, 5vw, 4rem);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
 }
 .logo {
   height: 30px;
@@ -63,38 +64,33 @@
   opacity: 0.65;
 }
 
-/* Large editorial nav links, vertically centred */
+/* Section links in a horizontal row, centred between logo and close. */
 .links {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: clamp(0.4rem, 1.6vw, 0.9rem);
-  padding: 2.5rem 0;
+  gap: clamp(1rem, 2.5vw, 2.25rem);
 }
 .link {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(2rem, 6.5vw, 3.6rem);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  font-size: clamp(0.95rem, 1.2vw, 1.12rem);
+  letter-spacing: -0.01em;
   color: #ffffff;
   text-decoration: none;
-  width: fit-content;
-  opacity: 0.9;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  opacity: 0.82;
+  transition: opacity 0.2s ease;
 }
 .link:hover {
   opacity: 1;
-  transform: translateX(6px);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .overlay,
   .overlay.open {
     transition: opacity 0.001s;
-  }
-  .link:hover {
-    transform: none;
   }
 }

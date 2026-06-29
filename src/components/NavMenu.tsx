@@ -32,7 +32,7 @@ export function NavMenu() {
     triggerRef.current?.focus({ preventScroll: true });
   }, []);
 
-  // While open: move focus into the menu, lock body scroll, close on Escape.
+  // While open: move focus into the menu, close on Escape.
   useEffect(() => {
     if (!open) return;
     closeRef.current?.focus();
@@ -40,17 +40,14 @@ export function NavMenu() {
       if (e.key === "Escape") closeMenu();
     };
     document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
     };
   }, [open, closeMenu]);
 
-  // Anchor links: unlock scroll first, then smooth-scroll to the section.
+  // Anchor links: close the menu, then smooth-scroll to the section.
   const handleNav = (href: string) => (e: React.MouseEvent) => {
     e.preventDefault();
-    document.body.style.overflow = "";
     setOpen(false);
     const target = document.querySelector(href);
     if (target) {
@@ -102,6 +99,18 @@ export function NavMenu() {
                 width={138}
                 height={30}
               />
+              <nav className={styles.links} aria-label="Primary">
+                {LINKS.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    className={styles.link}
+                    onClick={handleNav(l.href)}
+                  >
+                    {l.label}
+                  </a>
+                ))}
+              </nav>
               <button
                 ref={closeRef}
                 className={styles.close}
@@ -124,19 +133,6 @@ export function NavMenu() {
                 </svg>
               </button>
             </div>
-
-            <nav className={styles.links} aria-label="Primary">
-              {LINKS.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  className={styles.link}
-                  onClick={handleNav(l.href)}
-                >
-                  {l.label}
-                </a>
-              ))}
-            </nav>
           </div>,
           document.body,
         )}

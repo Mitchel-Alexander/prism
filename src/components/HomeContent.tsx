@@ -7,9 +7,9 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 // Mission "How we do this" — the dark-navy inset; bold lead + a full sentence.
 const HOW = [
-  { lead: "Awareness building", rest: "We bring digital minds to a wider audience, encouraging thoughtful public engagement with the questions the field raises." },
-  { lead: "Developing talent", rest: "We help newcomers find their way in and grow the field's capacity by identifying and developing exceptional people." },
-  { lead: "Convening the field", rest: "We create the spaces — events, workshops, and shared resources — where researchers and practitioners can connect and do their best work." },
+  { lead: "Awareness building", rest: "We communicate digital minds topics to non-expert audiences, encouraging thoughtful public engagement with the questions the field raises." },
+  { lead: "Developing talent", rest: "We help the field grow by identifying and developing exceptional people." },
+  { lead: "Convening the field", rest: "We create the spaces (events, workshops, and shared resources) where researchers and practitioners can connect and do their best work." },
 ];
 
 // Project cards below the featured podcast bar. An external `href` (http…) opens in a
@@ -81,11 +81,11 @@ const PARTNERS = [
 
 // PRISM's stated values — rendered "<lead>. <rest>".
 const VALUES = [
-  { lead: "Rigour", rest: "We promote the highest standards of inquiry and discussion." },
-  { lead: "Humility", rest: "We admit our uncertainty, treat unfamiliar ideas seriously and stay willing to change our minds." },
-  { lead: "Compassion", rest: "We care about the wellbeing of every entity our work might affect." },
-  { lead: "Moral seriousness", rest: "We treat the stakes of our situation with the gravity it requires." },
-  { lead: "Collaboration", rest: "We work across disciplines and share our thinking openly." },
+  { lead: "Rigour", rest: "We promote the highest standards of inquiry and debate." },
+  { lead: "Humility", rest: "We hold our own views loosely, and take seriously the people who think we are wrong." },
+  { lead: "Compassion", rest: "We consider the wellbeing of every entity our work touches." },
+  { lead: "Moral seriousness", rest: "We treat the potential importance of our work with the gravity it requires." },
+  { lead: "Collaboration", rest: "We work to encourage conversation between diverse communities and perspectives." },
 ];
 
 // "Who we are" — three groups of people (name + role / affiliation).

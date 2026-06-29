@@ -187,6 +187,59 @@
   margin: 1.7rem auto;
 }
 
+/* "We're hiring" pill — sits under the crest; smooth-scrolls to #opportunities
+   (an in-page anchor; the global scroll-behavior handles the animation). */
+.hiring {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1.05rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.hiring:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.hiringDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #9bb0d6; /* slate-blue accent, matching the site kickers */
+  animation: hiringPulse 2.4s ease-in-out infinite;
+}
+.hiringArrow {
+  transition: transform 0.2s ease;
+}
+.hiring:hover .hiringArrow {
+  transform: translateX(3px);
+}
+@keyframes hiringPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(155, 176, 214, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(155, 176, 214, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hiringDot {
+    animation: none;
+  }
+}
+
 /* ---- Chevron ---- */
 .chevron {
   position: relative;

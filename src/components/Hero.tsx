@@ -142,6 +142,13 @@ export function Hero() {
           width={74}
           height={48}
         />
+        <a className={styles.hiring} href="#opportunities">
+          <span className={styles.hiringDot} aria-hidden="true" />
+          We&rsquo;re hiring
+          <span className={styles.hiringArrow} aria-hidden="true">
+            →
+          </span>
+        </a>
       </div>
 
       <div className={styles.chevron} aria-hidden="true">

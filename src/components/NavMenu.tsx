@@ -9,18 +9,11 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 // In-page sections — only the Home page exists today, so these anchor to it.
 // (When the multi-page plan lands, swap these for real routes.)
 const LINKS = [
-  { label: "Mission", href: "#mission" },
   { label: "Our work", href: "#work" },
   { label: "Partnerships", href: "#partnerships" },
   { label: "Values", href: "#values" },
   { label: "Who we are", href: "#people" },
   { label: "Opportunities", href: "#opportunities" },
-];
-
-// Live external projects PRISM runs or supports.
-const PROJECTS = [
-  { label: "Digital Minds Guide", href: "https://digitalminds.guide/" },
-  { label: "Digital Minds Newsletter", href: "https://www.digitalminds.news/" },
 ];
 
 export function NavMenu() {
@@ -144,25 +137,6 @@ export function NavMenu() {
                 </a>
               ))}
             </nav>
-
-            <div className={styles.projects}>
-              <span className={styles.projectsLabel}>Projects</span>
-              <div className={styles.projectLinks}>
-                {PROJECTS.map((p) => (
-                  <a
-                    key={p.href}
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.projectLink}
-                    onClick={() => setOpen(false)}
-                  >
-                    {p.label}
-                    <span aria-hidden="true">&nbsp;↗</span>
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>,
           document.body,
         )}

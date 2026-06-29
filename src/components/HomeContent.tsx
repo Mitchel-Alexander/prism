@@ -12,33 +12,55 @@ const HOW = [
   { lead: "Convening the field", rest: "We create the spaces (events, workshops, and shared resources) where researchers and practitioners can connect and do their best work." },
 ];
 
-// Project cards below the featured podcast bar. An external `href` (http…) opens in a
-// new tab and the dark bar shows the hostname; otherwise the bar reads "More information".
-const PROJECTS: {
+// All six "Our work" tiles, in display order across two rows of three. An external
+// `href` (http…) opens in a new tab and the dark bar shows the hostname; otherwise the
+// bar reads "More information". The Online Course href is a placeholder until confirmed.
+const CARDS: {
   type: string;
   title: string;
   desc: string;
   href?: string;
-  img?: string;
+  img: string;
 }[] = [
   {
     type: "Guide",
     title: "Beginner's Guide to Digital Minds",
-    desc: "An accessible, in-depth guide to the science and ethics of digital minds. It gathers the key questions, evidence, and arguments into one clear resource for newcomers and experts alike.",
+    desc: "An accessible, in-depth guide for newcomers to the field of digital minds. It sets out structured reading across many of the key questions, alongside regularly updated lists of events and opportunities.",
     href: "https://digitalminds.guide/",
     img: "/card-guide.jpg",
   },
   {
     type: "Newsletter",
     title: "Digital Minds Newsletter",
-    desc: "A regular newsletter tracking developments in digital minds research, policy, and public debate — keeping the community current on a fast-moving field.",
+    desc: "A quarterly newsletter following developments in digital minds research, policy, and public debate.",
     href: "https://www.digitalminds.news/",
     img: "/card-newsletter.jpg",
   },
   {
+    type: "Fellowship",
+    title: "Digital Minds Fellowship",
+    desc: "An intensive residential programme for people aiming to contribute to research on the moral status and welfare of AI systems, and the science behind those questions. Run by Cambridge Digital Minds with Rethink Priorities and PRISM, it gives participants deep engagement with the relevant technical and philosophical debates, alongside strategy and hands-on project development to support future high-impact contributions.",
+    href: "https://digitalminds.cam/fellowship",
+    img: "/edu-fellowship.jpg",
+  },
+  {
+    type: "Scholarship",
+    title: "Neuromatch AI Sentience Scholarship",
+    desc: "A six-month, part-time, remote programme supporting early-career researchers working on the science and ethics of AI minds. Run by Neuromatch with PRISM and partners, it pairs each scholar with a mentor for a funded research project alongside interdisciplinary training.",
+    href: "https://neuromatch.io/ai-sentience-scholars",
+    img: "/edu-scholarship.jpg",
+  },
+  {
+    type: "Course",
+    title: "Digital Minds Online Course",
+    desc: "A facilitated introductory course, running over eight weeks for a quarterly cohort of 100 participants, that provides an overview of the core concepts and debates in digital minds. The content can also be followed independently at any time on BlueDot Impact's website.",
+    href: "#",
+    img: "/edu-course.jpg",
+  },
+  {
     type: "Events",
     title: "Expert Workshops",
-    desc: "We run regular workshops that bring the field's researchers together to sharpen thinking and seed new collaborations.",
+    desc: "Regular workshops that bring the field's researchers together to sharpen thinking and seed new collaborations.",
     img: "/card-events.jpg",
   },
 ];
@@ -65,12 +87,6 @@ const EPISODES = [
     img: "/ep-dark.jpg",
     href: "https://www.youtube.com/watch?v=r03bVSP44h8",
   },
-];
-
-// "Education" block in Our work — programs PRISM convenes / supports operationally.
-const EDUCATION = [
-  { name: "Digital Minds Fellowship", href: "https://digitalminds.cam/fellowship" },
-  { name: "Neuromatch AI Sentience Scholarship", href: "https://neuromatch.io/ai-sentience-scholars" },
 ];
 
 // Confirmed partners only (per Mitchel 2026-06-26); add the rest as confirmed.
@@ -125,11 +141,43 @@ const OPPORTUNITIES = [
   },
   {
     title: "Join the team",
-    body: "We're a small, growing non-profit scaling our research, operations, and communications. If you want to help build the field of digital minds research, we'd love to hear from you — whether or not there's a role currently advertised.",
+    body: "We're a small, growing non-profit scaling our research, operations, and communications. If you want to help build the field of digital minds research, we'd love to hear from you, whether or not there's a role currently advertised.",
     cta: "See our open roles",
     href: "#",
   },
 ];
+
+// One "Our work" card tile. An external href (http…) opens in a new tab and the bar
+// shows the host; otherwise the bar reads "More information".
+function Card({ c }: { c: (typeof CARDS)[number] }) {
+  const external = !!c.href && c.href.startsWith("http");
+  const host = external
+    ? new URL(c.href as string).hostname.replace(/^www\./, "")
+    : null;
+  return (
+    <div className={styles.card}>
+      <img className={styles.cardImg} src={`${BASE}${c.img}`} alt="" />
+      <div className={styles.cardBody}>
+        <span className={styles.cardType}>{c.type}</span>
+        <h3 className={styles.cardTitle}>{c.title}</h3>
+        <p className={styles.cardDesc}>{c.desc}</p>
+      </div>
+      {external ? (
+        <a
+          className={styles.cardBar}
+          href={c.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {host}
+          <span aria-hidden="true"> ↗</span>
+        </a>
+      ) : (
+        <div className={styles.cardBar}>More information</div>
+      )}
+    </div>
+  );
+}
 
 export function HomeContent() {
   return (
@@ -140,11 +188,10 @@ export function HomeContent() {
           <div className={styles.twoTone}>
             <div className={styles.missionLead}>
               <h2 className={styles.missionHeading}>
-                Preparing society for digital minds
+                PRISM is a non-profit helping to build the field of digital minds
               </h2>
               <p className={styles.missionBody}>
-                PRISM is a non-profit helping to build the field of digital
-                minds. We support research and educational initiatives preparing
+                We support research and educational initiatives preparing
                 society for the challenges posed by AI consciousness, digital
                 minds, and AI moral status.
               </p>
@@ -225,66 +272,16 @@ export function HomeContent() {
             </div>
           </div>
 
-          {/* Project cards */}
+          {/* Six "Our work" tiles, two rows of three (CARDS order). */}
           <div className={styles.cards}>
-            {PROJECTS.map((p) => {
-              const external = !!p.href && p.href.startsWith("http");
-              const host = external
-                ? new URL(p.href as string).hostname.replace(/^www\./, "")
-                : null;
-              return (
-                <div className={styles.card} key={p.title}>
-                  {p.img ? (
-                    <img className={styles.cardImg} src={`${BASE}${p.img}`} alt="" />
-                  ) : (
-                    <div className={styles.cardImg} aria-hidden="true" />
-                  )}
-                  <div className={styles.cardBody}>
-                    <span className={styles.cardType}>{p.type}</span>
-                    <h3 className={styles.cardTitle}>{p.title}</h3>
-                    <p className={styles.cardDesc}>{p.desc}</p>
-                  </div>
-                  {external ? (
-                    <a
-                      className={styles.cardBar}
-                      href={p.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {host}
-                      <span aria-hidden="true"> ↗</span>
-                    </a>
-                  ) : (
-                    <div className={styles.cardBar}>More information</div>
-                  )}
-                </div>
-              );
-            })}
+            {CARDS.slice(0, 3).map((c) => (
+              <Card c={c} key={c.title} />
+            ))}
           </div>
-
-          {/* Education — programs PRISM convenes / supports */}
-          <div className={styles.eduPanel}>
-            <span className={styles.kicker}>Education</span>
-            <p className={styles.eduIntro}>
-              We partner to convene and provide operational support to programs
-              that develop the field's next generation of talent, including:
-            </p>
-            <div className={styles.eduList}>
-              {EDUCATION.map((e) => (
-                <a
-                  className={styles.eduRow}
-                  key={e.name}
-                  href={e.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className={styles.eduName}>{e.name}</span>
-                  <span className={styles.eduLink} aria-hidden="true">
-                    ↗
-                  </span>
-                </a>
-              ))}
-            </div>
+          <div className={styles.cards}>
+            {CARDS.slice(3).map((c) => (
+              <Card c={c} key={c.title} />
+            ))}
           </div>
         </div>
       </section>
@@ -347,6 +344,9 @@ export function HomeContent() {
           <div className={styles.peopleBlock}>
             <div className={styles.peopleHead}>
               <h2 className={styles.missionHeading}>Who we are</h2>
+              <p className={styles.peopleIntro}>
+                Meet the people behind our work.
+              </p>
             </div>
             <div className={styles.peopleBody}>
               <div className={styles.peopleSection}>
@@ -365,12 +365,7 @@ export function HomeContent() {
                 <div className={styles.peopleGridRow}>
                   {ADVISORS.map((m) => (
                     <div className={styles.person} key={m.name}>
-                      <span className={styles.personName}>
-                        {m.name}
-                        {m.trustee && (
-                          <span className={styles.trusteeTag}> (trustee)</span>
-                        )}
-                      </span>
+                      <span className={styles.personName}>{m.name}</span>
                       <span className={styles.personRole}>{m.role}</span>
                     </div>
                   ))}

@@ -72,7 +72,7 @@
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-size: 0.66rem;
+  font-size: 0.8rem;
   color: var(--c-muted);
 }
 /* Slate-blue kicker used on the dark navy blocks (aims, featured, CTA). */
@@ -80,7 +80,7 @@
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-size: 0.66rem;
+  font-size: 0.8rem;
   color: var(--c-dark-kicker);
 }
 
@@ -297,6 +297,9 @@
      edges where a pure-white hairline would vanish on the lighter images. */
   border: 1px solid rgba(92, 100, 116, 0.72);
   border-right: none;
+  /* Slate-blue accent on the far-left edge, matching the "Featured episodes"
+     kicker (--c-dark-kicker) for cohesion. */
+  border-left: 3px solid var(--c-dark-kicker);
 }
 .episodeImg {
   position: absolute;
@@ -429,59 +432,6 @@ a.cardBar:hover {
   color: #fff;
 }
 
-/* Education — programs PRISM convenes / supports (light panel, linked rows) */
-.eduPanel {
-  background: var(--c-panel);
-  border: 1px solid var(--c-line);
-  padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1.4rem, 3vw, 2.4rem);
-}
-.eduIntro {
-  font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.4vw, 1.1rem);
-  line-height: 1.55;
-  color: var(--c-body);
-  margin: 0.7rem 0 0;
-  max-width: 60ch;
-}
-.eduList {
-  margin-top: 1.3rem;
-  border-top: 1px solid var(--c-line);
-}
-.eduRow {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.5rem 1.5rem;
-  flex-wrap: wrap;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--c-line);
-  text-decoration: none;
-}
-.eduName {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  color: var(--c-ink);
-}
-.eduLink {
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.68rem;
-  color: var(--c-muted);
-  white-space: nowrap;
-  transition: color 0.2s ease;
-}
-.eduRow:hover .eduName {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.eduRow:hover .eduLink {
-  color: var(--c-ink);
-}
-
 /* ============================== PARTNERSHIPS ============================== */
 /* Two-tone with colours swapped vs Mission: dark statement (left) | light
    org-name list (right). Reuses .twoTone + .missionHeading / .missionBody. */
@@ -558,6 +508,15 @@ a.cardBar:hover {
   color: #fff;
   margin: 0;
 }
+/* Same treatment as .workIntro — the lead line under a dark section header. */
+.peopleIntro {
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--c-dark-ink);
+  margin: 1.2rem 0 0;
+  max-width: 54ch;
+}
 /* Two stacked sections (Team, then Advisors & Trustees) inside the light block. */
 .peopleBody {
   padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1.4rem, 3vw, 2.4rem);
@@ -573,7 +532,7 @@ a.cardBar:hover {
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-size: 0.66rem;
+  font-size: 0.8rem;
   color: var(--c-muted);
 }
 /* Each section flows its people into an auto-fit grid; every cell is top-ruled so

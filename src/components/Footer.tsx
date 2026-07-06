@@ -1,14 +1,15 @@
+import Link from "next/link";
 import styles from "./Footer.module.css";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+// "/#anchor" (not "#anchor") so the links also work from subpages like /workshops.
 const EXPLORE = [
-  { label: "Mission", href: "#mission" },
-  { label: "Our work", href: "#work" },
-  { label: "Partnerships", href: "#partnerships" },
-  { label: "Values", href: "#values" },
-  { label: "Who we are", href: "#people" },
-  { label: "Opportunities", href: "#opportunities" },
+  { label: "Our work", href: "/#work" },
+  { label: "Partnerships", href: "/#partnerships" },
+  { label: "Values", href: "/#values" },
+  { label: "Who we are", href: "/#people" },
+  { label: "Opportunities", href: "/#opportunities" },
 ];
 
 const PROJECTS = [
@@ -38,9 +39,9 @@ export function Footer() {
           <div className={styles.col}>
             <span className={styles.colLabel}>Explore</span>
             {EXPLORE.map((l) => (
-              <a key={l.href} href={l.href} className={styles.link}>
+              <Link key={l.href} href={l.href} className={styles.link}>
                 {l.label}
-              </a>
+              </Link>
             ))}
           </div>
           <div className={styles.col}>
@@ -54,9 +55,6 @@ export function Footer() {
                 className={styles.link}
               >
                 {l.label}
-                <span aria-hidden="true" className={styles.ext}>
-                  &nbsp;↗
-                </span>
               </a>
             ))}
           </div>

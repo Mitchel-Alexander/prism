@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./HomeContent.module.css";
 
 // Static export: prefix public asset URLs with the project base path (empty in dev).
@@ -13,8 +14,8 @@ const HOW = [
 ];
 
 // All six "Our work" tiles, in display order across two rows of three. An external
-// `href` (http…) opens in a new tab and the dark bar shows the hostname; otherwise the
-// bar reads "More information". The Online Course href is a placeholder until confirmed.
+// An external `href` (http…) opens in a new tab via the "Find out more" bar; an
+// internal one (e.g. /workshops) navigates in-tab.
 const CARDS: {
   type: string;
   title: string;
@@ -39,28 +40,29 @@ const CARDS: {
   {
     type: "Fellowship",
     title: "Digital Minds Fellowship",
-    desc: "An intensive residential programme for people aiming to contribute to research on the moral status and welfare of AI systems, and the science behind those questions. Run by Cambridge Digital Minds with Rethink Priorities and PRISM, it gives participants deep engagement with the relevant technical and philosophical debates, alongside strategy and hands-on project development to support future high-impact contributions.",
-    href: "https://digitalminds.cam/fellowship",
+    desc: "An intensive residential programme, run by Cambridge Digital Minds with Rethink Priorities and PRISM, for people who want to work on the technical and governance aspects of digital minds research. Participants work through the field's central debates and develop their own high-impact projects.",
+    href: "https://digitalminds.cam/fellowship/",
     img: "/edu-fellowship.jpg",
   },
   {
     type: "Scholarship",
     title: "Neuromatch AI Sentience Scholarship",
     desc: "A six-month, part-time, remote programme supporting early-career researchers working on the science and ethics of AI minds. Run by Neuromatch with PRISM and partners, it pairs each scholar with a mentor for a funded research project alongside interdisciplinary training.",
-    href: "https://neuromatch.io/ai-sentience-scholars",
+    href: "https://neuromatch.io/ai-sentience-scholars/",
     img: "/edu-scholarship.jpg",
   },
   {
     type: "Course",
     title: "Digital Minds Online Course",
     desc: "A facilitated introductory course, running over eight weeks for a quarterly cohort of 100 participants, that provides an overview of the core concepts and debates in digital minds. The content can also be followed independently at any time on BlueDot Impact's website.",
-    href: "#",
+    href: "https://bluedot.org/courses/digital-minds/1/1",
     img: "/edu-course.jpg",
   },
   {
     type: "Events",
     title: "Expert Workshops",
     desc: "Regular workshops that bring the field's researchers together to sharpen thinking and seed new collaborations.",
+    href: "/workshops",
     img: "/card-events.jpg",
   },
 ];
@@ -91,8 +93,16 @@ const EPISODES = [
 
 // Confirmed partners only (per Mitchel 2026-06-26); add the rest as confirmed.
 const PARTNERS = [
-  { name: "Cambridge Digital Minds", logo: "/partner-cdm.png" },
-  { name: "Neuromatch", logo: "/partner-neuromatch.png" },
+  {
+    name: "Cambridge Digital Minds",
+    logo: "/partner-cdm.png",
+    href: "https://digitalminds.cam/",
+  },
+  {
+    name: "Neuromatch",
+    logo: "/partner-neuromatch.png",
+    href: "https://neuromatch.io/",
+  },
 ];
 
 // PRISM's stated values — rendered "<lead>. <rest>".
@@ -131,29 +141,27 @@ const ADVISORS: { name: string; role: string; trustee?: boolean }[] = [
   { name: "Mark Solms", role: "University of Cape Town" },
 ];
 
-// CTA hrefs are placeholders ("#") until the real destinations exist.
+// PRISM has no general careers page yet, so "Join the team" routes to the
+// contact form; point it at a careers page once one exists.
 const OPPORTUNITIES = [
   {
     title: "Trustee vacancy",
     body: "We're seeking trustees to help steer PRISM's mission and growth. We're especially keen to hear from people with governance, research, or non-profit leadership experience who share our commitment to taking digital minds seriously.",
     cta: "Learn about the trustee role",
-    href: "#",
+    href: "https://www.prism-global.com/trustee-vacancies",
   },
   {
     title: "Join the team",
     body: "We're a small, growing non-profit scaling our research, operations, and communications. If you want to help build the field of digital minds research, we'd love to hear from you, whether or not there's a role currently advertised.",
-    cta: "See our open roles",
-    href: "#",
+    cta: "Get in touch",
+    href: "https://www.prism-global.com/contact",
   },
 ];
 
-// One "Our work" card tile. An external href (http…) opens in a new tab and the bar
-// shows the host; otherwise the bar reads "More information".
+// One "Our work" card tile. An external href (http…) opens in a new tab via the
+// "Find out more" bar; an internal href navigates in-tab (Link adds the base path).
 function Card({ c }: { c: (typeof CARDS)[number] }) {
   const external = !!c.href && c.href.startsWith("http");
-  const host = external
-    ? new URL(c.href as string).hostname.replace(/^www\./, "")
-    : null;
   return (
     <div className={styles.card}>
       <img className={styles.cardImg} src={`${BASE}${c.img}`} alt="" />
@@ -169,11 +177,14 @@ function Card({ c }: { c: (typeof CARDS)[number] }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {host}
-          <span aria-hidden="true"> ↗</span>
+          Find out more
         </a>
+      ) : c.href ? (
+        <Link className={styles.cardBar} href={c.href}>
+          Find out more
+        </Link>
       ) : (
-        <div className={styles.cardBar}>More information</div>
+        <div className={styles.cardBar}>Find out more</div>
       )}
     </div>
   );
@@ -236,7 +247,12 @@ export function HomeContent() {
                   science, and AI to a curious general audience. Each episode
                   explores pressing issues in digital minds and AI consciousness.
                 </p>
-                <a className={`${styles.btnWhite} ${styles.btnFeatured}`} href="#">
+                <a
+                  className={`${styles.btnWhite} ${styles.btnFeatured}`}
+                  href="https://youtube.com/playlist?list=PLuTk8vjerfMNh_NDV7jMYZRRHjsa3ky-t"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Listen to every episode →
                 </a>
               </div>
@@ -303,14 +319,20 @@ export function HomeContent() {
               <span className={styles.kicker}>Our collaborators</span>
               <div className={styles.pOrgsList}>
                 {PARTNERS.map((p) => (
-                  <div className={styles.pOrgItem} key={p.name}>
+                  <a
+                    className={styles.pOrgItem}
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={p.name}
+                  >
                     <img
                       className={styles.pOrgLogo}
                       src={`${BASE}${p.logo}`}
                       alt=""
                     />
                     <p className={styles.pOrgName}>{p.name}</p>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -392,7 +414,12 @@ export function HomeContent() {
                 <div className={styles.ctaCard} key={o.title}>
                   <h3 className={styles.ctaCardTitle}>{o.title}</h3>
                   <p className={styles.ctaCardBody}>{o.body}</p>
-                  <a className={`${styles.btnWhite} ${styles.btnCta}`} href={o.href}>
+                  <a
+                    className={`${styles.btnWhite} ${styles.btnCta}`}
+                    href={o.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {o.cta} →
                   </a>
                 </div>

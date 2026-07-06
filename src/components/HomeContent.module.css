@@ -462,6 +462,7 @@ a.cardBar:hover {
   align-items: center;
   padding: 1.05rem 0;
   border-top: 1px solid var(--c-line);
+  text-decoration: none;
 }
 .pOrgLogo {
   flex: none;

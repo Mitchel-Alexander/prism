@@ -1,0 +1,158 @@
+/* ============================================================================
+   /workshops — internal about page for the Expert Workshops project stream.
+   Mirrors the homepage's warm-neutral editorial palette (tokens copied from
+   HomeContent.module.css `.below`) with a dark navy header band up top.
+   ========================================================================== */
+.page {
+  --c-page: #e6e4e2;
+  --c-ink: #24222a;
+  --c-body: #565158;
+  --c-muted: #8d877a;
+  --c-line: rgba(38, 32, 26, 0.14);
+  --c-dark: #0b0e1c;
+  --c-dark-ink: rgba(255, 255, 255, 0.74);
+  --c-dark-kicker: #9bb0d6;
+
+  background: var(--c-page);
+  color: var(--c-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Dark header band ---- */
+.head {
+  background: var(--c-dark);
+  color: var(--c-dark-ink);
+}
+.headInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(1.2rem, 2.5vw, 2rem) clamp(1rem, 4vw, 3.5rem)
+    clamp(2.4rem, 5vw, 4rem);
+}
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(2.4rem, 6vw, 4.5rem);
+}
+.logoLink {
+  display: inline-flex;
+  line-height: 0;
+}
+.logo {
+  width: 138px;
+  height: auto;
+}
+.backLink {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--c-dark-ink);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.backLink:hover {
+  color: #ffffff;
+}
+.kickerDark {
+  display: block;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  color: var(--c-dark-kicker);
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  margin: 0.9rem 0 0;
+  color: #ffffff;
+}
+.lede {
+  max-width: 44rem;
+  margin: 1.3rem 0 0;
+  font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+  line-height: 1.65;
+}
+
+/* ---- Light editorial body ---- */
+.body {
+  flex: 1;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(2.4rem, 5vw, 4rem) clamp(1rem, 4vw, 3.5rem)
+    clamp(3rem, 6vw, 5rem);
+}
+.section {
+  max-width: 46rem;
+}
+.section + .section {
+  margin-top: clamp(2.4rem, 5vw, 3.6rem);
+}
+.kicker {
+  display: block;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  color: var(--c-muted);
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--c-line);
+}
+.prose {
+  margin: 1.2rem 0 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Ruled meetup list — hairline between entries; each row links to the
+   session recording, with a mono "Watch →" cue on the right. */
+.meetupList {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+}
+.meetupItem {
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--c-line);
+  text-decoration: none;
+  color: inherit;
+}
+.meetupBody {
+  min-width: 0;
+}
+.meetupTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: var(--c-ink);
+  margin: 0;
+}
+.meetupItem .prose {
+  margin: 0.45rem 0 0;
+}
+.meetupWatch {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--c-muted);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.meetupItem:hover .meetupWatch {
+  color: var(--c-ink);
+}

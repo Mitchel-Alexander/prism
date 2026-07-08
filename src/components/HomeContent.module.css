@@ -309,18 +309,6 @@
   object-fit: cover;
   display: block;
 }
-/* Slight cool wash over the photos so the three (currently warm/gold) episode
-   images align toward the hero's blues (Hero atmospheric blue #3e507e). Kept
-   subtle to start — dial strength via opacity. Sits above .episodeImg; the
-   whole card is a link, so it must not eat pointer events. */
-.episodeImgWrap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #3e507e;
-  opacity: 0.22;
-  pointer-events: none;
-}
 .episodeMeta {
   flex: 1 1 0;
   min-width: 0;

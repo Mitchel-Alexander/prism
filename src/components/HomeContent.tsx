@@ -136,7 +136,7 @@ const ADVISORS: { name: string; role: string; trustee?: boolean }[] = [
   { name: "Cameron Berg", role: "Reciprocal Research", trustee: true },
   { name: "Lucius Caviola", role: "University of Cambridge" },
   { name: "Calum Chace", role: "Conscium", trustee: true },
-  { name: "Radhika Chadwick", role: "Nisai", trustee: true },
+  { name: "Radhika Chadwick", role: "Niscai", trustee: true },
   { name: "Karl Friston", role: "UCL" },
   { name: "Nicholas Humphrey", role: "London School of Economics" },
   { name: "Arvo Muñoz Morán", role: "Rethink Priorities", trustee: true },

@@ -94,6 +94,11 @@ const EPISODES = [
 // Confirmed partners only (per Mitchel 2026-06-26); add the rest as confirmed.
 const PARTNERS = [
   {
+    name: "Future Impact Group",
+    logo: "/partner-fig.png",
+    href: "https://futureimpact.group/",
+  },
+  {
     name: "Cambridge Digital Minds",
     logo: "/partner-cdm.png",
     href: "https://digitalminds.cam/",

@@ -266,10 +266,10 @@
   flex-direction: column;
   gap: clamp(1.6rem, 3vw, 2.4rem);
 }
-/* Each episode is a landscape letterbox strip — image (left) + meta (right) at a
-   ~50/50 split, wrapped in one slate hairline frame; the strips stack vertically.
-   The image carries the frame minus its right edge and the meta minus its left,
-   so together they read as a single continuous box with no mid-seam. */
+/* Each episode is a strip — the guest's headshot (left) + meta (right) wrapped in
+   one slate hairline frame; the strips stack vertically. The image carries the
+   frame minus its right edge and the meta minus its left, so together they read as
+   a single continuous box with no mid-seam. */
 .episodeCard {
   display: flex;
   flex-direction: row;
@@ -287,9 +287,11 @@
    driven by the meta text / min-height) and the photo absolutely fills it, so the
    image's slate border matches the meta's regardless of the photo's aspect ratio. */
 .episodeImgWrap {
-  flex: 1 1 0;
+  /* Near-square footprint so the guest's face reads properly. Kept close to the
+     source headshots' aspect ratio so cover barely crops them; the meta takes the
+     rest. */
+  flex: 0 0 clamp(104px, 15%, 124px);
   min-width: 0;
-  max-width: 560px;
   position: relative;
   overflow: hidden;
   background-color: #0c1020;

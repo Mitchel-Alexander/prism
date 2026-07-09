@@ -68,25 +68,29 @@ const CARDS: {
 ];
 
 // Featured podcast episodes, shown inside the dark "Our work" bar. Each links to
-// the episode on YouTube (opens in a new tab); images are web-sized long-exposure
-// abstracts in /public.
+// the episode on YouTube (opens in a new tab); images are the guest's headshot in
+// /public (web-sized). `pos` is the object-position that keeps the face framed in
+// the square-ish tile.
 const EPISODES = [
   {
     title: "Exotic Minds and the Design Policies for Conscious AI",
     guest: "Eric Schwitzgebel",
-    img: "/episode-1.jpg",
+    img: "/guest-eric.jpg",
+    pos: "50% 38%",
     href: "https://www.youtube.com/watch?v=bddHP58lTHA",
   },
   {
     title: "Metacognition, Neuroscience, and Tests for AI Consciousness",
     guest: "Megan Peters",
-    img: "/ep-blue.jpg",
+    img: "/guest-megan.jpg",
+    pos: "50% 50%",
     href: "https://www.youtube.com/watch?v=aHeVicEFozY",
   },
   {
     title: "A Future with Digital Minds? Expert Estimates and Societal Response",
     guest: "Lucius Caviola",
-    img: "/ep-dark.jpg",
+    img: "/guest-lucius.jpg",
+    pos: "50% 42%",
     href: "https://www.youtube.com/watch?v=r03bVSP44h8",
   },
 ];
@@ -263,8 +267,8 @@ export function HomeContent() {
               </div>
             </div>
 
-            {/* Featured episodes — landscape letterbox strips inside the dark
-                bar; each opens the episode on YouTube in a new tab. */}
+            {/* Featured episodes — a guest headshot beside the episode title
+                inside the dark bar; each opens the episode on YouTube in a new tab. */}
             <div className={styles.episodes}>
               <span className={styles.kickerDark}>Featured episodes</span>
               <div className={styles.episodeGrid}>
@@ -280,7 +284,8 @@ export function HomeContent() {
                       <img
                         className={styles.episodeImg}
                         src={`${BASE}${ep.img}`}
-                        alt=""
+                        style={{ objectPosition: ep.pos }}
+                        alt={ep.guest}
                       />
                     </div>
                     <div className={styles.episodeMeta}>

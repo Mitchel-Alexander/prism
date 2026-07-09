@@ -136,18 +136,18 @@ const TEAM = [
 // NB Lucius Caviola stays listed while the site is circulated privately — REMOVE
 // before the public launch. New advisors (Jeff / Patrick / Andreas / Rosie /
 // Winnie) to be added once full names + affiliations are confirmed.
-const ADVISORS: { name: string; role: string; trustee?: boolean }[] = [
-  { name: "Cameron Berg", role: "Reciprocal Research", trustee: true },
-  { name: "Lucius Caviola", role: "University of Cambridge" },
-  { name: "Calum Chace", role: "Conscium", trustee: true },
-  { name: "Radhika Chadwick", role: "Niscai", trustee: true },
-  { name: "Karl Friston", role: "UCL" },
-  { name: "Nicholas Humphrey", role: "London School of Economics" },
-  { name: "Arvo Muñoz Morán", role: "Rethink Priorities", trustee: true },
-  { name: "Megan Peters", role: "UCI / UCL" },
-  { name: "Susan Schneider", role: "Florida Atlantic University" },
-  { name: "Henry Shevlin", role: "University of Cambridge" },
-  { name: "Mark Solms", role: "University of Cape Town" },
+const ADVISORS: { name: string; role: string; trustee?: boolean; href: string }[] = [
+  { name: "Cameron Berg", role: "Reciprocal Research", trustee: true, href: "https://reciprocalresearch.org/team" },
+  { name: "Lucius Caviola", role: "University of Cambridge", href: "https://luciuscaviola.com/" },
+  { name: "Calum Chace", role: "Conscium", trustee: true, href: "https://calumchace.com/" },
+  { name: "Radhika Chadwick", role: "Niscai", trustee: true, href: "https://www.niscai.com/about" },
+  { name: "Karl Friston", role: "UCL", href: "https://www.fil.ion.ucl.ac.uk/~karl/" },
+  { name: "Nicholas Humphrey", role: "London School of Economics", href: "https://humphrey.org.uk/" },
+  { name: "Arvo Muñoz Morán", role: "Rethink Priorities", trustee: true, href: "https://rethinkpriorities.org/team-member/arvo-munoz-moran/" },
+  { name: "Megan Peters", role: "UCI / UCL", href: "https://profiles.ucl.ac.uk/104962-megan-peters" },
+  { name: "Susan Schneider", role: "Florida Atlantic University", href: "http://schneiderwebsite.com/" },
+  { name: "Henry Shevlin", role: "University of Cambridge", href: "https://henryshevlin.com/" },
+  { name: "Mark Solms", role: "University of Cape Town", href: "https://neuroscience.uct.ac.za/contacts/mark-solms" },
 ];
 
 // PRISM has no general careers page yet, so "Join the team" routes to the
@@ -236,18 +236,10 @@ export function HomeContent() {
       {/* ===================== OUR WORK ===================== */}
       <section id="work" className={styles.work}>
         <div className={styles.flow}>
-          {/* "Our work" header merged into the featured podcast tile — one flat
-              dark-navy module, two columns (header | podcast). */}
+          {/* Featured podcast — one flat dark-navy module, two columns: the
+              podcast promo (left) + the featured-episode headshots (right). */}
           <div className={styles.featured}>
             <div className={styles.featuredRow}>
-              <div className={styles.featuredIntro}>
-                <h2 className={styles.title}>Our work</h2>
-                <p className={styles.workIntro}>
-                  We create the infrastructure a young field needs: helping
-                  newcomers orient themselves, and keeping researchers and
-                  practitioners connected and collaborating.
-                </p>
-              </div>
               <div className={styles.featuredText}>
                 <span className={styles.kickerDark}>Podcast</span>
                 <h3 className={styles.featuredTitle}>Exploring Machine Consciousness</h3>
@@ -265,37 +257,47 @@ export function HomeContent() {
                   Listen to every episode →
                 </a>
               </div>
-            </div>
 
-            {/* Featured episodes — a guest headshot beside the episode title
-                inside the dark bar; each opens the episode on YouTube in a new tab. */}
-            <div className={styles.episodes}>
-              <span className={styles.kickerDark}>Featured episodes</span>
-              <div className={styles.episodeGrid}>
-                {EPISODES.map((ep) => (
-                  <a
-                    className={styles.episodeCard}
-                    href={ep.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    key={ep.href}
-                  >
-                    <div className={styles.episodeImgWrap}>
-                      <img
-                        className={styles.episodeImg}
-                        src={`${BASE}${ep.img}`}
-                        style={{ objectPosition: ep.pos }}
-                        alt={ep.guest}
-                      />
-                    </div>
-                    <div className={styles.episodeMeta}>
-                      <h4 className={styles.episodeTitle}>{ep.title}</h4>
-                      <span className={styles.episodeGuest}>{ep.guest}</span>
-                    </div>
-                  </a>
-                ))}
+              {/* Featured episodes — a guest headshot beside the episode title;
+                  each opens the episode on YouTube in a new tab. */}
+              <div className={styles.episodes}>
+                <span className={styles.kickerDark}>Featured episodes</span>
+                <div className={styles.episodeGrid}>
+                  {EPISODES.map((ep) => (
+                    <a
+                      className={styles.episodeCard}
+                      href={ep.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      key={ep.href}
+                    >
+                      <div className={styles.episodeImgWrap}>
+                        <img
+                          className={styles.episodeImg}
+                          src={`${BASE}${ep.img}`}
+                          style={{ objectPosition: ep.pos }}
+                          alt={ep.guest}
+                        />
+                      </div>
+                      <div className={styles.episodeMeta}>
+                        <h4 className={styles.episodeTitle}>{ep.title}</h4>
+                        <span className={styles.episodeGuest}>{ep.guest}</span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
+          </div>
+
+          {/* "Our work" heads the project tiles below. */}
+          <div className={styles.workHeader}>
+            <h2 className={styles.title}>Our work</h2>
+            <p className={styles.workIntro}>
+              We create the infrastructure a young field needs: helping
+              newcomers orient themselves, and keeping researchers and
+              practitioners connected and collaborating.
+            </p>
           </div>
 
           {/* Six "Our work" tiles, two rows of three (CARDS order). */}
@@ -396,10 +398,16 @@ export function HomeContent() {
                 <span className={styles.peopleKicker}>Advisors &amp; Trustees</span>
                 <div className={styles.peopleGridRow}>
                   {ADVISORS.map((m) => (
-                    <div className={styles.person} key={m.name}>
+                    <a
+                      className={`${styles.person} ${styles.personLink}`}
+                      href={m.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      key={m.name}
+                    >
                       <span className={styles.personName}>{m.name}</span>
                       <span className={styles.personRole}>{m.role}</span>
-                    </div>
+                    </a>
                   ))}
                 </div>
               </div>

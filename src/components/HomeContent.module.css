@@ -194,12 +194,16 @@
 }
 
 /* ============================== OUR WORK ============================== */
+/* "Our work" now heads the project tiles, on the light page background. */
+.workHeader {
+  margin-top: clamp(0.6rem, 2vw, 1.6rem);
+}
 .workIntro {
   font-family: var(--font-sans);
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
   line-height: 1.5;
-  color: var(--c-dark-ink);
-  margin: 1.2rem 0 0;
+  color: var(--c-body);
+  margin: 0.9rem 0 0;
   max-width: 54ch;
 }
 
@@ -209,8 +213,8 @@
   overflow: hidden;
   background: var(--c-dark);
 }
-/* Two-column module: "Our work" header (left) + featured podcast (right). Tops
-   aligned so the section title and the podcast line up. */
+/* Two-column module: podcast promo (left) + featured episodes (right). Tops
+   aligned so the two mono kickers line up. */
 .featuredRow {
   position: relative;
   z-index: 1;
@@ -218,15 +222,8 @@
   flex-wrap: wrap;
   align-items: flex-start;
 }
-.featuredIntro {
-  flex: 1 1 320px;
-  padding: clamp(1.9rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2.6rem);
-}
-.featuredIntro .title {
-  color: #fff;
-}
 .featuredText {
-  flex: 1.3 1 340px;
+  flex: 1 1 300px;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -250,15 +247,13 @@
   max-width: 52ch;
 }
 
-/* Featured episodes — three image tiles beneath the podcast intro, inside the
-   dark featured bar. A full-width hairline sets them off; the tiles are a row
-   that stacks to one column on narrow screens. */
+/* Featured episodes — the right column of the dark module: a guest headshot
+   beside each episode title, stacked vertically. */
 .episodes {
   position: relative;
   z-index: 1;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: clamp(1.4rem, 2.5vw, 2rem) clamp(1.5rem, 3vw, 2.6rem)
-    clamp(1.9rem, 3.5vw, 3rem);
+  flex: 1.15 1 360px;
+  padding: clamp(1.9rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2.6rem);
 }
 .episodeGrid {
   margin-top: clamp(1.2rem, 2.2vw, 1.8rem);
@@ -550,6 +545,16 @@ a.cardBar:hover {
 .person {
   padding: 0.7rem 0;
   border-top: 1px solid var(--c-line);
+}
+/* Advisor/trustee entries link to the person's page; underline the name on
+   hover as the affordance, keeping the quiet look otherwise. */
+.personLink {
+  display: block;
+  text-decoration: none;
+}
+.personLink:hover .personName {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 .personName {
   display: block;

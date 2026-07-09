@@ -146,6 +146,7 @@ const ADVISORS: { name: string; role: string; trustee?: boolean; href: string }[
   { name: "Arvo Muñoz Morán", role: "Rethink Priorities", trustee: true, href: "https://rethinkpriorities.org/team-member/arvo-munoz-moran/" },
   { name: "Megan Peters", role: "UCI / UCL", href: "https://profiles.ucl.ac.uk/104962-megan-peters" },
   { name: "Susan Schneider", role: "Florida Atlantic University", href: "http://schneiderwebsite.com/" },
+  { name: "Jeff Sebo", role: "New York University", href: "https://jeffsebo.net/" },
   { name: "Henry Shevlin", role: "University of Cambridge", href: "https://henryshevlin.com/" },
   { name: "Mark Solms", role: "University of Cape Town", href: "https://neuroscience.uct.ac.za/contacts/mark-solms" },
 ];

@@ -137,6 +137,7 @@ const TEAM = [
 // before the public launch. New advisors (Jeff / Patrick / Andreas / Rosie /
 // Winnie) to be added once full names + affiliations are confirmed.
 const ADVISORS: { name: string; role: string; trustee?: boolean; href: string }[] = [
+  { name: "Heather Alexander", role: "Lab for the Future of Citizenship", href: "https://sites.google.com/site/heatherjeanalexander/home?authuser=0" },
   { name: "Cameron Berg", role: "Reciprocal Research", trustee: true, href: "https://reciprocalresearch.org/team" },
   { name: "Lucius Caviola", role: "University of Cambridge", href: "https://luciuscaviola.com/" },
   { name: "Calum Chace", role: "Conscium", trustee: true, href: "https://calumchace.com/" },
@@ -150,6 +151,7 @@ const ADVISORS: { name: string; role: string; trustee?: boolean; href: string }[
   { name: "Susan Schneider", role: "Florida Atlantic University", href: "http://schneiderwebsite.com/" },
   { name: "Jeff Sebo", role: "New York University", href: "https://jeffsebo.net/" },
   { name: "Henry Shevlin", role: "University of Cambridge", href: "https://henryshevlin.com/" },
+  { name: "Derek Shiller", role: "Rethink Priorities", href: "https://derekshiller.com/" },
   { name: "Mark Solms", role: "University of Cape Town", href: "https://neuroscience.uct.ac.za/contacts/mark-solms" },
   { name: "Winnie Street", role: "Google", href: "https://www.linkedin.com/in/winniestreet/" },
 ];

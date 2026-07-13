@@ -125,10 +125,10 @@ const VALUES = [
 
 // "Who we are" — three groups of people (name + role / affiliation).
 const TEAM = [
-  { name: "Will Millership", role: "CEO" },
-  { name: "Mitch Alexander", role: "Special Projects" },
-  { name: "Güney Ulaş Türker", role: "Field Building" },
-  { name: "Ria Viswanathan", role: "Field Building and Research" },
+  { name: "Will Millership", role: "CEO", href: "https://www.linkedin.com/in/will-millership-98393b58/" },
+  { name: "Mitch Alexander", role: "Special Projects", href: "https://www.linkedin.com/in/mitch-alexander-52524b159/" },
+  { name: "Güney Ulaş Türker", role: "Field Building", href: "https://www.linkedin.com/in/guney-ulas-turker/" },
+  { name: "Ria Viswanathan", role: "Field Building and Research", href: "https://www.linkedin.com/in/ria-viswanathan/" },
 ];
 
 // One combined advisors + trustees list (per Will, confirmed by Lucius), placed
@@ -393,10 +393,16 @@ export function HomeContent() {
                 <span className={styles.peopleKicker}>Team</span>
                 <div className={styles.peopleGridRow}>
                   {TEAM.map((m) => (
-                    <div className={styles.person} key={m.name}>
+                    <a
+                      className={`${styles.person} ${styles.personLink}`}
+                      href={m.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      key={m.name}
+                    >
                       <span className={styles.personName}>{m.name}</span>
                       <span className={styles.personRole}>{m.role}</span>
-                    </div>
+                    </a>
                   ))}
                 </div>
               </div>

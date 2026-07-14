@@ -112,6 +112,11 @@ const PARTNERS = [
     logo: "/partner-neuromatch.png",
     href: "https://neuromatch.io/",
   },
+  {
+    name: "Rethink Priorities",
+    logo: "/partner-rethink.png",
+    href: "https://rethinkpriorities.org/",
+  },
 ];
 
 // PRISM's stated values — rendered "<lead>. <rest>".

@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Open_Sans } from "next/font/google";
 import "./globals.css";
+
+// Analytics carried over from the Squarespace site so tracking survives the
+// domain migration. Google Ads id is known; GA4 id is a placeholder —
+// TODO(mitchel): replace G-XXXXXXX with the real GA4 Measurement ID (same
+// property already installed on the old site) before cutover.
+const GA4_ID = "G-XXXXXXX";
+const ADS_ID = "AW-17158899995";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -67,6 +75,17 @@ export default function RootLayout({
       className={`${inter.variable} ${headFont.variable} antialiased`}
     >
       <body>{children}</body>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA4_ID}');
+gtag('config', '${ADS_ID}');`}
+      </Script>
     </html>
   );
 }

@@ -1,0 +1,186 @@
+/* ============================================================================
+   Shared layout for migrated content pages (podcast index + episode pages).
+   Same warm-neutral editorial palette + dark navy header band as /workshops.
+   ========================================================================== */
+.page {
+  --c-page: #e6e4e2;
+  --c-ink: #24222a;
+  --c-body: #565158;
+  --c-muted: #8d877a;
+  --c-line: rgba(38, 32, 26, 0.14);
+  --c-dark: #0b0e1c;
+  --c-dark-ink: rgba(255, 255, 255, 0.74);
+  --c-dark-kicker: #9bb0d6;
+
+  background: var(--c-page);
+  color: var(--c-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Dark header band ---- */
+.head {
+  background: var(--c-dark);
+  color: var(--c-dark-ink);
+}
+.headInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(1.2rem, 2.5vw, 2rem) clamp(1rem, 4vw, 3.5rem) clamp(2.4rem, 5vw, 4rem);
+}
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(2.4rem, 6vw, 4.5rem);
+}
+.logoLink { display: inline-flex; line-height: 0; }
+.logo { width: 138px; height: auto; }
+.backLink {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--c-dark-ink);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.backLink:hover { color: #ffffff; }
+.kickerDark {
+  display: block;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  color: var(--c-dark-kicker);
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4.4vw, 3.1rem);
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  margin: 0.9rem 0 0;
+  color: #ffffff;
+  max-width: 40rem;
+}
+.meta {
+  margin: 1.1rem 0 0;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.74rem;
+  color: var(--c-dark-kicker);
+}
+.lede {
+  max-width: 44rem;
+  margin: 1.3rem 0 0;
+  font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+  line-height: 1.65;
+}
+
+/* ---- Light editorial body ---- */
+.body {
+  flex: 1;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(2.4rem, 5vw, 4rem) clamp(1rem, 4vw, 3.5rem) clamp(3rem, 6vw, 5rem);
+}
+
+/* ---- Episode index list (ruled rows, mono date) ---- */
+.list { list-style: none; margin: 0; padding: 0; max-width: 46rem; }
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--c-line);
+  text-decoration: none;
+  color: inherit;
+}
+.list li:last-child .row { border-bottom: 1px solid var(--c-line); }
+.rowTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: var(--c-ink);
+  margin: 0;
+  transition: color 0.2s ease;
+}
+.row:hover .rowTitle { color: #0b0e1c; text-decoration: underline; text-underline-offset: 3px; }
+.rowDate {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--c-muted);
+  white-space: nowrap;
+}
+
+/* ---- Article prose (rendered Markdown body) ---- */
+.prose {
+  max-width: 42rem;
+  font-size: 1.03rem;
+  line-height: 1.75;
+}
+.prose h2, .prose h3 {
+  font-family: var(--font-display);
+  color: var(--c-ink);
+  line-height: 1.25;
+  margin: 2.4rem 0 0.2rem;
+}
+.prose h2 { font-size: 1.4rem; font-weight: 600; }
+.prose h3 { font-size: 1.12rem; font-weight: 600; }
+.prose p { margin: 1.1rem 0 0; }
+.prose a { color: #2f4b7c; text-underline-offset: 2px; }
+.prose a:hover { color: #0b0e1c; }
+.prose strong { color: var(--c-ink); }
+.prose ul, .prose ol { margin: 1.1rem 0 0; padding-left: 1.3rem; }
+.prose li { margin: 0.35rem 0; }
+.prose img { max-width: 100%; height: auto; border-radius: 4px; }
+.prose hr { border: 0; border-top: 1px solid var(--c-line); margin: 2.4rem 0; }
+
+/* ---- Contact form ---- */
+.form { max-width: 34rem; margin: 2rem 0 0; }
+.field { margin: 0 0 1.2rem; }
+.label {
+  display: block;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--c-muted);
+  margin: 0 0 0.5rem;
+}
+.input,
+.textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--c-ink);
+  background: #fff;
+  border: 1px solid var(--c-line);
+  border-radius: 4px;
+  padding: 0.7rem 0.85rem;
+}
+.input:focus,
+.textarea:focus { outline: 2px solid var(--c-dark-kicker); outline-offset: 1px; }
+.textarea { min-height: 8rem; resize: vertical; }
+.submit {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  color: #fff;
+  background: var(--c-dark);
+  border: 0;
+  border-radius: 4px;
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.submit:hover { opacity: 0.88; }

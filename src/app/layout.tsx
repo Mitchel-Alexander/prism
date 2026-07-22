@@ -27,8 +27,13 @@ const SITE_TITLE =
   "PRISM — Partnership for Research Into Sentient Machines";
 const SITE_DESCRIPTION =
   "A non-profit fostering responsible research into AI consciousness, moral status, and digital minds.";
-// Canonical production URL (GitHub Pages project site). Update if a custom domain is added.
-const SITE_URL = "https://mitchel-alexander.github.io/prism";
+// Canonical site URL. The root/production build (no BASE_PATH) is the real
+// domain; the /prism preview build (BASE_PATH=/prism in CI) uses the github.io
+// project path so its canonical/OG tags stay self-consistent.
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const SITE_URL = BASE_PATH
+  ? `https://mitchel-alexander.github.io${BASE_PATH}`
+  : "https://www.prism-global.com";
 // Social share card (Open Graph / Twitter). Absolute URL — crawlers don't resolve relative paths.
 const OG_IMAGE = `${SITE_URL}/og.png`;
 
@@ -38,7 +43,7 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   icons: {
     // ?v=2 busts browsers' sticky favicon cache after the icon was changed.
-    icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon.png?v=2`,
+    icon: `${BASE_PATH}/favicon.png?v=2`,
   },
   openGraph: {
     type: "website",

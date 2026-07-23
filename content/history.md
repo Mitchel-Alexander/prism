@@ -1,8 +1,3 @@
-## PRISM News: July 2025
-*July 2025*
-
-Our July 2025 community update. <!-- TODO: summary to be written -->
-
 ## Founding partners at #Ai2Peace
 *April 2025*
 

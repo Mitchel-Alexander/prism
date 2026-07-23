@@ -4,5 +4,5 @@
 // so the preview's canonical/OG/sitemap stay self-consistent.
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export const SITE_URL = BASE_PATH
-  ? `https://mitchel-alexander.github.io${BASE_PATH}`
+  ? `https://prism-special-projects.github.io${BASE_PATH}`
   : "https://www.prism-global.com";

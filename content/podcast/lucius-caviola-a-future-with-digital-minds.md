@@ -7,10 +7,6 @@ Lucius Caviola is an Assistant Professor in the Social Science of AI at the Univ
 
 Listen or watch this episode below; you can also find it on [YouTube](https://youtube.com/playlist?list=PLuTk8vjerfMNh_NDV7jMYZRRHjsa3ky-t&feature=shared), [Spotify](https://open.spotify.com/show/3UIunv0XnAke98WPRSzM48?si=b4050071242d4079), [Apple Podcasts](https://podcasts.apple.com/us/podcast/exploring-machine-consciousness/id1817108529), or wherever you find your podcasts. Full [transcript available here](/podcast-transcripts/lucius-caviola).
 
-### Listen
-
-### Watch
-
 ### Summary
 
 In this episode we discuss:

@@ -9,10 +9,6 @@ In this episode, we spoke to Jeff Sebo of New York University. Jeff is the autho
 
 In it, he challenges us to expand our moral concern beyond the boundaries of species and substrate. He has also co-authored a number of papers arguing that AI welfare is an issue that needs to be taken seriously today.
 
-## Listen
-
-## Watch
-
 ## **Links:**
 
 - The Moral Circle: Who Matters, What Matters and Why. [Book](https://en.wikipedia.org/wiki/The_Moral_Circle).

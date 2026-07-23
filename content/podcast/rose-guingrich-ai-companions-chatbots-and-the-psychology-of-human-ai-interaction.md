@@ -5,10 +5,6 @@ date: 2026-02-16
 ---
 Rose Guingrich is a PhD candidate in Psychology and Social Policy at Princeton University, where she is a National Science Foundation Graduate Research Fellow. Her research examines human-AI interaction through the lens of social psychology and ethics, focusing on how people perceive minds in machines and how those perceptions shape behavior toward AI and other humans. Rose is founder of Ethicom, a consulting initiative providing tools and information for responsible AI use and development, and co-hosts the Our Lives with Bots podcast with Angy Watson. 
 
-# Listen
-
-# Watch
-
 # Summary
 
 In this episode, Rose explains why she focuses not on whether AI is conscious, but on the consequences of people perceiving AI as conscious. We discuss:

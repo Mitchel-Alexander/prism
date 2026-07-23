@@ -7,10 +7,6 @@ Henry Shevlin is a researcher at the Leverhulme Centre for the Future of Intelli
 
 He will soon join Google DeepMind, working on AGI readiness and the philosophical foundations of artificial intelligence. His work bridges philosophy, cognitive science, and AI development, making him a leading voice in understanding the implications of increasingly advanced AI systems.
 
-# Listen
-
-# Watch
-
 # Summary
 
 In this episode of Exploring Machine Consciousness, Dr. Henry Shevlin returns to explore how our understanding of consciousness is evolving in the age of advanced AI. From philosophy and neuroscience to the rapid progress of modern language models, Henry examines whether intelligence alone is enough, or whether something deeper (like continuous experience) is required for consciousness. Henry argues that consciousness is no longer just a philosophical or scientific puzzle, but a question that will increasingly be shaped by technological development and societal choice. As AI systems become more capable, more autonomous, and more socially embedded, how we interpret and respond to them. We discuss:

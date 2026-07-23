@@ -7,8 +7,6 @@ redirect_from:
 ---
 In the latest episode of Exploring Machine Consciousness, we welcomed Professor Mark Solms.
 
-### Listen
-
 ### Transcript
 
 **Will Millership (00:02.87)**

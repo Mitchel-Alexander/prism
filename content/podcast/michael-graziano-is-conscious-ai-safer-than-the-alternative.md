@@ -5,10 +5,6 @@ date: 2026-03-02
 ---
 Michael Graziano is Professor of Psychology and Neuroscience at Princeton University and one of the most distinctive voices in consciousness science. His lab at Princeton investigates how information-processing systems arrive at the conclusion that they have an inner subjective experience; treating consciousness as a mechanistic, scientific question rather than an intractable mystery. That approach drives his Attention Schema Theory (AST) and its direct applications to machine consciousness. He is the author of several books including *Rethinking Consciousness* (2019) and *Consciousness and the Social Brain* (2014).
 
-# Listen
-
-# Watch
-
 # Summary
 
 In this episode, Michael walks us through the core claims of AST and why he thinks the brain's simplified internal model of attention is what generates the experience of being conscious. We discuss:

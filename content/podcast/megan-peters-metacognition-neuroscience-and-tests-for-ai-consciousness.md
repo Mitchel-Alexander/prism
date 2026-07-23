@@ -7,10 +7,6 @@ Megan Peters is Associate Professor in the Department of Cognitive Sciences at t
 
 She is also a Fellow in the CIFAR Brain, Mind & Consciousness Program, an elected board member of the Association for the Scientific Study of Consciousness, and co-founder and president of Neuromatch, a global educational and research community spanning neuroscience, AI, and computational science.
 
-# Listen
-
-# Watch
-
 # Summary
 
 In this episode, Megan discusses the relationship between metacognition and consciousness, the limits of current AI systems, and the scientific challenges involved in testing for consciousness beyond biological organisms. Drawing from neuroscience, philosophy, and science fiction, she argues that machine consciousness is no longer a purely speculative topic, but an increasingly urgent scientific and societal question. We discuss:

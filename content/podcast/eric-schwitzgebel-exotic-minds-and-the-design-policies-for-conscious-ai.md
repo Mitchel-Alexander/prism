@@ -5,10 +5,6 @@ date: 2026-06-24
 ---
 Eric Schwitzgebel is the Professor of Philosophy at the University of California, Riverside and one of the most distinctive voices working at the intersection of philosophy of mind, consciousness, ethics, and epistemology. His work is known for questioning assumptions about introspection, expertise, and the limits of human understanding; themes explored in books including The Weirdness of the World and The Unreliability of Naive Introspection. His forthcoming book, AI and Consciousness: A Skeptical Overview, examines how rapid progress in AI complicates long-standing debates about conscious experience and moral status.
 
-# Listen
-
-# Watch
-
 # Summary
 
 In this episode, Eric joins Henry Shevlin and Calum Chace for a wide-ranging discussion on machine consciousness, philosophical uncertainty, and whether humanity may be forced to make ethical decisions before science gives us definitive answers. We discuss:

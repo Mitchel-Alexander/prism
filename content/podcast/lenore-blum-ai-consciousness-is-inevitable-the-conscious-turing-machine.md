@@ -9,11 +9,7 @@ In this episode of Exploring Machine Consciousness, we speak to distinguished ma
 
 Listen or watch this episode below; you can also find it on [YouTube](https://youtube.com/playlist?list=PLuTk8vjerfMNh_NDV7jMYZRRHjsa3ky-t&feature=shared), [Spotify](https://open.spotify.com/show/3UIunv0XnAke98WPRSzM48?si=b4050071242d4079), [Apple Podcasts](https://podcasts.apple.com/us/podcast/exploring-machine-consciousness/id1817108529), or wherever you find your podcasts.
 
-## Listen
-
 *\*Lenore refers to a few slides in this episode; you can see them* [*here*](https://www.prism-global.com/lenore-blum-slides)*.*
-
-## Watch
 
 ## Summary
 

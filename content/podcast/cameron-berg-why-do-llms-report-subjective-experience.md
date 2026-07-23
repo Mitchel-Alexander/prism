@@ -5,10 +5,6 @@ date: 2025-12-08
 ---
 Cameron Berg is Research Director at AE Studio, where he leads research exploring markers for subjective experience in machine learning systems. With a background in cognitive science from Yale and previous work at Meta AI, Cameron investigates the intersection of AI alignment and potential consciousness.
 
-## Listen
-
-## Watch
-
 ## **Summary**
 
 In this episode, Cameron shares his empirical research into whether current Large Language Models are merely mimicking human text, or potentially developing internal states that resemble subjective experience. We discuss:

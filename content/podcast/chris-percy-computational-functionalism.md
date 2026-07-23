@@ -5,10 +5,6 @@ date: 2026-01-19
 ---
 Chris Percy is Director of the CoSentience Initiative and lead researcher on a grant-funded project investigating artificial consciousness. He has authored academic papers on consciousness published in leading academic journals. His applied AI research includes a patent in machine learning and publications at NeurIPS workshops, and the European Conference on Artificial Intelligence. He holds visiting research affiliations with the Universities of Warwick and Derby in the UK and the Qualia Research Institute in the US.
 
-# Listen
-
-# Watch
-
 # Summary
 
 In this episode, Chris outlines his team's research programme and argues that we should take the possibility of artificial consciousness seriously whilst remaining humble about our current understanding. We discuss:

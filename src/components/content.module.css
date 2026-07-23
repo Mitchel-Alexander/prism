@@ -145,32 +145,9 @@
 .prose img { max-width: 100%; height: auto; border-radius: 4px; }
 .prose hr { border: 0; border-top: 1px solid var(--c-line); margin: 2.4rem 0; }
 
-/* ---- Contact form ---- */
-.form { max-width: 34rem; margin: 2rem 0 0; }
-.field { margin: 0 0 1.2rem; }
-.label {
-  display: block;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.72rem;
-  color: var(--c-muted);
-  margin: 0 0 0.5rem;
-}
-.input,
-.textarea {
-  width: 100%;
-  font: inherit;
-  color: var(--c-ink);
-  background: #fff;
-  border: 1px solid var(--c-line);
-  border-radius: 4px;
-  padding: 0.7rem 0.85rem;
-}
-.input:focus,
-.textarea:focus { outline: 2px solid var(--c-dark-kicker); outline-offset: 1px; }
-.textarea { min-height: 8rem; resize: vertical; }
+/* ---- Email CTA button (dark pill, used on the contact page) ---- */
 .submit {
+  display: inline-block;
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -180,7 +157,11 @@
   border: 0;
   border-radius: 4px;
   padding: 0.8rem 1.6rem;
+  text-decoration: none;
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
-.submit:hover { opacity: 0.88; }
+/* Win over `.prose a` colour when the button sits inside prose. */
+.prose a.submit,
+.prose a.submit:hover { color: #fff; }
+.submit:hover { opacity: 0.88; color: #fff; }

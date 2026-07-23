@@ -11,10 +11,6 @@ export const metadata: Metadata = {
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// TODO(mitchel): create the form at formspree.io (notifications → will@prism-global.com)
-// and replace YOUR_FORM_ID with the real form id. Until then the form won't deliver.
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
-
 export default function Contact() {
   return (
     <main className={styles.page}>
@@ -44,10 +40,15 @@ export default function Contact() {
           <p>
             If you&rsquo;re interested in getting involved with the Partnership
             for Research Into Sentient Machines, we&rsquo;d love to hear from
-            you. Fill out the form below and one of our team will be in touch.
+            you. Send us an email and one of our team will be in touch.
           </p>
           <p>
-            In the meantime, you can sign up to the{" "}
+            <a className={styles.submit} href="mailto:info@prism-global.com">
+              Email us
+            </a>
+          </p>
+          <p>
+            You can also sign up to the{" "}
             <a
               href="https://mailchi.mp/849f2f02ad2d/prism-newsletter"
               target="_blank"
@@ -55,25 +56,8 @@ export default function Contact() {
             >
               PRISM Newsletter
             </a>{" "}
-            for our latest news, events, and opportunities, or email us directly
-            at <a href="mailto:info@prism-global.com">info@prism-global.com</a>.
+            for our latest news, events, and opportunities.
           </p>
-
-          <form className={styles.form} action={FORMSPREE_ENDPOINT} method="POST">
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="name">Name</label>
-              <input className={styles.input} type="text" id="name" name="name" required />
-            </div>
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="email">Email</label>
-              <input className={styles.input} type="email" id="email" name="email" required />
-            </div>
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="message">Message</label>
-              <textarea className={styles.textarea} id="message" name="message" required />
-            </div>
-            <button className={styles.submit} type="submit">Send message</button>
-          </form>
         </div>
       </div>
 

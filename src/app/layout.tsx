@@ -7,7 +7,7 @@ import "./globals.css";
 // domain migration. Google Ads id is known; GA4 id is a placeholder —
 // TODO(mitchel): replace G-XXXXXXX with the real GA4 Measurement ID (same
 // property already installed on the old site) before cutover.
-const GA4_ID = "G-XXXXXXX";
+const GA4_ID = "G-E5XPRWE50C";
 const ADS_ID = "AW-17158899995";
 
 const inter = Inter({

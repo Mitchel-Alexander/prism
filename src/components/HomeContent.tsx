@@ -88,11 +88,11 @@ const EPISODES = [
     href: "https://www.youtube.com/watch?v=aHeVicEFozY",
   },
   {
-    title: "A Future with Digital Minds? Expert Estimates and Societal Response",
-    guest: "Lucius Caviola",
-    img: "/guest-lucius.jpg",
-    pos: "50% 42%",
-    href: "https://www.youtube.com/watch?v=r03bVSP44h8",
+    title: "AI Rights and Legal Personhood",
+    guest: "Heather Alexander",
+    img: "/guest-heather.jpg",
+    pos: "50% 40%",
+    href: "https://www.youtube.com/watch?v=deLFbouSs6Y",
   },
 ];
 

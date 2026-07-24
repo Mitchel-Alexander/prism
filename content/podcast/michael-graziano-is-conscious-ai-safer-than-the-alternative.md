@@ -2,6 +2,7 @@
 title: "Michael Graziano: Is Conscious AI Safer Than The Alternative?"
 layout: post
 date: 2026-03-02
+youtube: https://www.youtube.com/watch?v=HV5a9EC551Q
 ---
 Michael Graziano is Professor of Psychology and Neuroscience at Princeton University and one of the most distinctive voices in consciousness science. His lab at Princeton investigates how information-processing systems arrive at the conclusion that they have an inner subjective experience; treating consciousness as a mechanistic, scientific question rather than an intractable mystery. That approach drives his Attention Schema Theory (AST) and its direct applications to machine consciousness. He is the author of several books including *Rethinking Consciousness* (2019) and *Consciousness and the Social Brain* (2014).
 

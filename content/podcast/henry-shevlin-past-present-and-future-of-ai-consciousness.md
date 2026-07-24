@@ -2,6 +2,7 @@
 title: "Henry Shevlin: Past, Present, and Future of AI Consciousness"
 layout: post
 date: 2026-04-29
+youtube: https://www.youtube.com/watch?v=QK0kGocT4bA
 ---
 Henry Shevlin is a researcher at the Leverhulme Centre for the Future of Intelligence at the University of Cambridge, where he focuses on machine consciousness, AI ethics, and human - AI relationships.
 

@@ -66,15 +66,46 @@ export default async function Episode({
       </header>
 
       <div className={styles.body}>
-        {entry.image && (
-          <img
-            src={`${BASE}${entry.image}`}
-            alt={`${entry.title} — episode artwork`}
-            className={styles.episodeArt}
-            width={1672}
-            height={941}
-          />
-        )}
+        {entry.image &&
+          (entry.youtube ? (
+            <a href={entry.youtube} target="_blank" rel="noopener noreferrer">
+              <img
+                src={`${BASE}${entry.image}`}
+                alt={`${entry.title} — watch on YouTube`}
+                className={styles.episodeArt}
+                width={1672}
+                height={941}
+              />
+            </a>
+          ) : (
+            <img
+              src={`${BASE}${entry.image}`}
+              alt={`${entry.title} — episode artwork`}
+              className={styles.episodeArt}
+              width={1672}
+              height={941}
+            />
+          ))}
+        <div className={styles.listenRow}>
+          {entry.youtube && (
+            <a
+              className={styles.submit}
+              href={entry.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ▶ Watch on YouTube
+            </a>
+          )}
+          <a
+            className={styles.submit}
+            href="https://open.spotify.com/show/3UIunv0XnAke98WPRSzM48"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Listen on Spotify
+          </a>
+        </div>
         <article
           className={styles.prose}
           dangerouslySetInnerHTML={{ __html: entry.html }}

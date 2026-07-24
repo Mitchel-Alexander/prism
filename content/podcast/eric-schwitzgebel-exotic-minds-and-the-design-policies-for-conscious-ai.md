@@ -3,6 +3,7 @@ title: "Eric Schwitzgebel: Exotic Minds and the Design Policies for Conscious AI
 layout: post
 date: 2026-06-24
 image: /ep-eric-episode.jpg
+youtube: https://www.youtube.com/watch?v=bddHP58lTHA
 ---
 Eric Schwitzgebel is the Professor of Philosophy at the University of California, Riverside and one of the most distinctive voices working at the intersection of philosophy of mind, consciousness, ethics, and epistemology. His work is known for questioning assumptions about introspection, expertise, and the limits of human understanding; themes explored in books including The Weirdness of the World and The Unreliability of Naive Introspection. His forthcoming book, AI and Consciousness: A Skeptical Overview, examines how rapid progress in AI complicates long-standing debates about conscious experience and moral status.
 

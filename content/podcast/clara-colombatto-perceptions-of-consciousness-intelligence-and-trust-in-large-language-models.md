@@ -2,6 +2,7 @@
 title: "Clara Colombatto: Perceptions of Consciousness, Intelligence, and Trust in Large Language Models"
 layout: post
 date: 2025-10-13
+youtube: https://www.youtube.com/watch?v=31mW7GC8muA
 ---
 
 In this episode of Exploring Machine Consciousness, we spoke with Clara Colombatto, Assistant Professor of Psychology at the University of Waterloo and director of the Vision and Cognition Lab. Clara studies how we perceive other minds, why that perception feels so effortless in daily life, and how those same habits of mind spill over to nonhuman agents, from bouncing triangles to large language models.

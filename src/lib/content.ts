@@ -18,6 +18,8 @@ export interface Entry {
   html: string;
   /** Optional episode/post artwork, front-matter `image:` — a /public path. */
   image: string | null;
+  /** Optional episode video, front-matter `youtube:` — a full watch URL. */
+  youtube: string | null;
 }
 
 function readCollectionDir(collection: string): string[] {
@@ -41,6 +43,10 @@ function parseFile(collection: string, file: string): Entry {
     published: data.published !== false,
     redirectFrom: normalizeRedirects(data.redirect_from),
     image: typeof data.image === "string" && data.image.startsWith("/") ? data.image : null,
+    youtube:
+      typeof data.youtube === "string" && data.youtube.startsWith("https://www.youtube.com/")
+        ? data.youtube
+        : null,
     excerpt: firstPara.replace(/[#*_`>[\]]/g, "").replace(/\(https?:\/\/[^)]+\)/g, "").trim(),
     html: marked.parse(body, { async: false }) as string,
   };

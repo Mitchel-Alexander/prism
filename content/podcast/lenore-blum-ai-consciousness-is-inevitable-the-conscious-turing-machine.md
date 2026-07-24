@@ -4,6 +4,7 @@ layout: post
 date: 2025-11-03
 redirect_from:
   - /lenore-blum-slides
+youtube: https://www.youtube.com/watch?v=Wn1Qq6PZJ-g
 ---
 In this episode of Exploring Machine Consciousness, we speak to distinguished mathematician and computer scientist Lenore Blum about building the Conscious Turing Model and why she believes AI consciousness is inevitable.
 

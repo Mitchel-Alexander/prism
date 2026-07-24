@@ -2,6 +2,7 @@
 title: "Megan Peters: Metacognition, Neuroscience, and Tests for AI Consciousness"
 layout: post
 date: 2026-05-15
+youtube: https://www.youtube.com/watch?v=aHeVicEFozY
 ---
 Megan Peters is Associate Professor in the Department of Cognitive Sciences at the University of California, Irvine, and incoming faculty at University College London, where her lab investigates consciousness, metacognition, uncertainty, and the computational principles underlying subjective experience.
 

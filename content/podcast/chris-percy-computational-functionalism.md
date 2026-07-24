@@ -2,6 +2,7 @@
 title: "Chris Percy: Computational Functionalism, Philosophy, and the Future of AI Consciousness"
 layout: post
 date: 2026-01-19
+youtube: https://www.youtube.com/watch?v=4WzbrdggsDk
 ---
 Chris Percy is Director of the CoSentience Initiative and lead researcher on a grant-funded project investigating artificial consciousness. He has authored academic papers on consciousness published in leading academic journals. His applied AI research includes a patent in machine learning and publications at NeurIPS workshops, and the European Conference on Artificial Intelligence. He holds visiting research affiliations with the Universities of Warwick and Derby in the UK and the Qualia Research Institute in the US.
 

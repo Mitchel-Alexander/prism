@@ -185,10 +185,12 @@
 .prose a { color: #2f4b7c; text-underline-offset: 2px; }
 .prose a:hover { color: #0b0e1c; }
 .prose strong { color: var(--c-ink); }
-/* Tailwind's reset zeroes list-style; restore it so Markdown bullets show. */
+/* Tailwind's reset zeroes list-style; restore it so Markdown bullets show.
+   NB: use the list-style-type longhand — the CSS minifier strips `list-style: disc`
+   (disc is the property's initial value), which would silently drop the bullets. */
 .prose ul, .prose ol { margin: 1.1rem 0 0; padding-left: 1.3rem; }
-.prose ul { list-style: disc; }
-.prose ol { list-style: decimal; }
+.prose ul { list-style-type: disc; }
+.prose ol { list-style-type: decimal; }
 .prose li { margin: 0.35rem 0; }
 .prose img { max-width: 100%; height: auto; border-radius: 4px; }
 .prose hr { border: 0; border-top: 1px solid var(--c-line); margin: 2.4rem 0; }

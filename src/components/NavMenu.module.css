@@ -1,82 +1,16 @@
-/* ---- Trigger (hamburger) — lives in the hero nav ---- */
-.trigger {
-  background: none;
-  border: none;
-  padding: 6px;
-  margin: -6px;
-  cursor: pointer;
-  color: #ffffff;
-  display: inline-flex;
-  transition: opacity 0.2s ease;
-}
-.trigger:hover {
-  opacity: 0.65;
-}
-
-/* ---- Menu = a horizontal bar that drops in along the top (dark, echoes the
-   hero); the section links lay out in a row across it. ---- */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  background: rgba(8, 11, 24, 0.97);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  color: #ffffff;
-  transform: translateY(-100%);
-  opacity: 0;
-  visibility: hidden;
-  transition: transform 0.35s ease, opacity 0.35s ease, visibility 0s 0.35s;
-}
-.overlay.open {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-  transition: transform 0.35s ease, opacity 0.35s ease;
-}
-
-/* The bar = logo (left) · links (centre) · close (right), one row. */
-.bar {
-  display: flex;
-  align-items: center;
-  gap: clamp(1.25rem, 3vw, 2.5rem);
-  padding: clamp(0.9rem, 1.8vw, 1.3rem) clamp(1.25rem, 5vw, 4rem);
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
-}
-.logo {
-  height: 30px;
-  width: auto;
-  display: block;
-}
-.close {
-  background: none;
-  border: none;
-  padding: 6px;
-  margin: -6px;
-  cursor: pointer;
-  color: #ffffff;
-  display: inline-flex;
-  transition: opacity 0.2s ease;
-}
-.close:hover {
-  opacity: 0.65;
-}
-
-/* Section links in a horizontal row, centred between logo and close. */
+/* Inline primary nav — a row of homepage section links that sits in the hero's
+   semi-transparent top bar (replaces the old hamburger + drop-in overlay). */
 .links {
-  flex: 1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: clamp(1rem, 2.5vw, 2.25rem);
+  justify-content: flex-end;
+  gap: clamp(1rem, 2.2vw, 2rem);
 }
 .link {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(0.95rem, 1.2vw, 1.12rem);
+  font-size: clamp(0.92rem, 1vw, 1.02rem);
   letter-spacing: -0.01em;
   color: #ffffff;
   text-decoration: none;
@@ -84,18 +18,19 @@
   opacity: 0.82;
   transition: opacity 0.2s ease;
 }
-.link:hover {
+.link:hover,
+.link:focus-visible {
   opacity: 1;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .overlay,
-  .overlay.open {
-    transition: opacity 0.001s;
+/* No hamburger, so on narrow screens the links wrap/centre under the logo
+   (the hero nav stacks — see Hero.module.css). */
+@media (max-width: 640px) {
+  .links {
+    justify-content: center;
+    gap: 0.6rem 1rem;
   }
-}
-
-.logoLink {
-  display: inline-flex;
-  line-height: 0;
+  .link {
+    font-size: 0.9rem;
+  }
 }

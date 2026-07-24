@@ -1,0 +1,122 @@
+[
+  {
+    "files": [
+      "hexaflake-894602508-prism.png"
+    ],
+    "species": "hexaflake",
+    "seed": "894602508",
+    "palette": "prism",
+    "background": "ink",
+    "spread": 0.55,
+    "width": 1200,
+    "height": 2000
+  },
+  {
+    "files": [
+      "fern-816169884-prism.png"
+    ],
+    "species": "fern",
+    "seed": "816169884",
+    "palette": "prism",
+    "background": "ink",
+    "spread": 0.55,
+    "width": 1200,
+    "height": 2000
+  },
+  {
+    "files": [
+      "dragon-155119308-prism.png"
+    ],
+    "species": "dragon",
+    "seed": "155119308",
+    "palette": "prism",
+    "background": "ink",
+    "spread": 0.55,
+    "width": 1200,
+    "height": 2000
+  },
+  {
+    "files": [
+      "dust-886649857-prism.png"
+    ],
+    "species": "dust",
+    "seed": "886649857",
+    "palette": "prism",
+    "background": "ink",
+    "spread": 0.55,
+    "width": 1200,
+    "height": 2000
+  },
+  {
+    "files": [
+      "crystal-177700389-prism.png"
+    ],
+    "species": "crystal",
+    "seed": "177700389",
+    "palette": "prism",
+    "background": "ink",
+    "spread": 0.55,
+    "width": 1200,
+    "height": 2000
+  },
+  {
+    "files": [
+      "hexaflake-643153478-prism.png"
+    ],
+    "species": "hexaflake",
+    "seed": "643153478",
+    "palette": "prism",
+    "background": "ink",
+    "spread": 0.55,
+    "width": 1200,
+    "height": 2000
+  },
+  {
+    "files": [
+      "fern-585119498-prism.png"
+    ],
+    "species": "fern",
+    "seed": "585119498",
+    "palette": "prism",
+    "background": "ink",
+    "spread": 0.55,
+    "width": 1200,
+    "height": 2000
+  },
+  {
+    "files": [
+      "dragon-363771489-prism.png"
+    ],
+    "species": "dragon",
+    "seed": "363771489",
+    "palette": "prism",
+    "background": "ink",
+    "spread": 0.55,
+    "width": 1200,
+    "height": 2000
+  },
+  {
+    "files": [
+      "dust-468192904-prism.png"
+    ],
+    "species": "dust",
+    "seed": "468192904",
+    "palette": "prism",
+    "background": "ink",
+    "spread": 0.55,
+    "width": 1200,
+    "height": 2000
+  },
+  {
+    "files": [
+      "crystal-905351853-prism.png"
+    ],
+    "species": "crystal",
+    "seed": "905351853",
+    "palette": "prism",
+    "background": "ink",
+    "spread": 0.55,
+    "width": 1200,
+    "height": 2000
+  }
+]

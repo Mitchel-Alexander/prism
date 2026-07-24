@@ -5,7 +5,7 @@ XLSX = "/Users/mitchel/Desktop/PRISM website migration/prism-redirect-map.xlsx"
 
 # Pages kept as real routes (destinations must be among these or homepage anchors).
 KEEP = {"/", "/contact", "/history", "/are-current-llms-conscious",
-        "/trustee-vacancies", "/blog", "/podcast", "/podcast-transcripts"}
+        "/blog", "/podcast", "/podcast-transcripts"}
 RETIRED_BLOG = {
     "/blog/the-role-of-transparency-in-detecting-ai-consciousness",
     "/blog/prism-confronting-a-future-with-conscious-machines",
@@ -14,7 +14,7 @@ RETIRED_BLOG = {
 PEOPLE = ["/will-millership","/team","/mark-solms","/radhika-chadwick","/mitch-pass",
           "/calum-chace","/daniel-hulme","/ed-charvet","/nicholas-humphrey","/megan-peters",
           "/karl-friston","/irakli-beridze","/john-higgins","/susan-schneider"]
-JOBS = ["/field-building-ops-coordinator","/researcher"]
+JOBS = ["/field-building-ops-coordinator","/researcher","/trustee-vacancies"]
 EXPLICIT = {**{p: "/#people" for p in PEOPLE},
             **{p: "/#opportunities" for p in JOBS},
             "/principles": "/#values",

@@ -166,12 +166,6 @@ const ADVISORS: { name: string; role: string; trustee?: boolean; href: string }[
 // contact form; point it at a careers page once one exists.
 const OPPORTUNITIES = [
   {
-    title: "Trustee vacancy",
-    body: "We're seeking trustees to help steer PRISM's mission and growth. We're especially keen to hear from people with governance, research, or non-profit leadership experience who share our commitment to taking digital minds seriously.",
-    cta: "Learn about the trustee role",
-    href: "/trustee-vacancies",
-  },
-  {
     title: "Join the team",
     body: "We're a small, growing non-profit scaling our research, operations, and communications. If you want to help build the field of digital minds research, we'd love to hear from you, whether or not there's a role currently advertised.",
     cta: "Get in touch",

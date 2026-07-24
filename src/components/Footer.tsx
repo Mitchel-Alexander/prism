@@ -4,13 +4,15 @@ import styles from "./Footer.module.css";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// Mirrors the nav. "/#anchor" (not "#anchor") so links also work from subpages.
+// Mirrors the nav (same order). "/#anchor" (not "#anchor") so links also work
+// from subpages — a full load to the homepage, then the browser jumps to the
+// section. Podcast points at the featured podcast block, matching the nav.
 const EXPLORE = [
   { label: "About", href: "/#mission" },
+  { label: "Podcast", href: "/#podcast" },
   { label: "Partnerships", href: "/#partnerships" },
   { label: "Who we are", href: "/#people" },
   { label: "Opportunities", href: "/#opportunities" },
-  { label: "Podcast", href: "/podcast" },
 ];
 
 const PROJECTS = [

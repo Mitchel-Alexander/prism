@@ -7,14 +7,16 @@ import styles from "./NavMenu.module.css";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// Nav items: "#…" are in-page anchors (homepage sections, smooth-scrolled);
-// "/…" are real routes (Podcast is its own page).
+// Nav items: all "#…" in-page anchors (homepage sections, smooth-scrolled),
+// ordered to match the order the sections appear down the page. Podcast points
+// at the featured podcast block near the top of "Our work"; the block itself
+// links onward to the full episode list.
 const LINKS = [
   { label: "About", href: "#mission" },
+  { label: "Podcast", href: "#podcast" },
   { label: "Partnerships", href: "#partnerships" },
   { label: "Who we are", href: "#people" },
   { label: "Opportunities", href: "#opportunities" },
-  { label: "Podcast", href: "/podcast" },
 ];
 
 export function NavMenu() {

@@ -244,8 +244,9 @@ export function HomeContent() {
       <section id="work" className={styles.work}>
         <div className={styles.flow}>
           {/* Featured podcast — one flat dark-navy module, two columns: the
-              podcast promo (left) + the featured-episode headshots (right). */}
-          <div className={styles.featured}>
+              podcast promo (left) + the featured-episode headshots (right).
+              #podcast is the nav's Podcast anchor. */}
+          <div id="podcast" className={styles.featured}>
             <div className={styles.featuredRow}>
               <div className={styles.featuredText}>
                 <span className={styles.kickerDark}>Podcast</span>

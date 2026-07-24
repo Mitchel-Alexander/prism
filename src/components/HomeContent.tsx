@@ -259,14 +259,12 @@ export function HomeContent() {
                   science, and AI to a curious general audience. Each episode
                   explores pressing issues in digital minds and AI consciousness.
                 </p>
-                <a
+                <Link
                   className={`${styles.btnWhite} ${styles.btnFeatured}`}
-                  href="https://youtube.com/playlist?list=PLuTk8vjerfMNh_NDV7jMYZRRHjsa3ky-t"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/podcast"
                 >
-                  Listen to every episode →
-                </a>
+                  See more episodes →
+                </Link>
               </div>
 
               {/* Featured episodes — a guest headshot beside the episode title;

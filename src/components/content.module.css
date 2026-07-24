@@ -132,6 +132,37 @@
   margin: 0 0 clamp(1.6rem, 3vw, 2.4rem);
 }
 
+/* ---- Platform buttons (podcast index header, dark band) ---- */
+.platformRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 1.6rem 0 0;
+}
+.platformBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.74rem;
+  color: #ffffff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 4px;
+  padding: 0.65rem 1.1rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.platformBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.platformBtn svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
 /* ---- Listen / watch buttons on episode pages ---- */
 .listenRow {
   display: flex;

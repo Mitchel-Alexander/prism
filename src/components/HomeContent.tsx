@@ -86,8 +86,13 @@ const EPISODES = [
     pos: "50% 50%",
     href: "https://www.youtube.com/watch?v=aHeVicEFozY",
   },
-  // Lucius Caviola's episode tile removed 2026-07-24 per Will — restore once
-  // Lucius has OK'd being featured on the site.
+  {
+    title: "A Future with Digital Minds? Expert Estimates and Societal Response",
+    guest: "Lucius Caviola",
+    img: "/guest-lucius.jpg",
+    pos: "50% 42%",
+    href: "https://www.youtube.com/watch?v=r03bVSP44h8",
+  },
 ];
 
 // Confirmed partners only (per Mitchel 2026-06-26); add the rest as confirmed.

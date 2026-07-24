@@ -10,6 +10,7 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const EXPLORE = [
   { label: "About", href: "/#mission" },
   { label: "Podcast", href: "/#podcast" },
+  { label: "Our work", href: "/#our-work" },
   { label: "Partnerships", href: "/#partnerships" },
   { label: "Who we are", href: "/#people" },
   { label: "Opportunities", href: "/#opportunities" },

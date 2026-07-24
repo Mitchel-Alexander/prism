@@ -9,6 +9,7 @@ import styles from "./NavMenu.module.css";
 const LINKS = [
   { label: "About", href: "#mission" },
   { label: "Podcast", href: "#podcast" },
+  { label: "Our work", href: "#our-work" },
   { label: "Partnerships", href: "#partnerships" },
   { label: "Who we are", href: "#people" },
   { label: "Opportunities", href: "#opportunities" },

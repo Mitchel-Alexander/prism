@@ -295,8 +295,9 @@ export function HomeContent() {
             </div>
           </div>
 
-          {/* "Our work" heads the project tiles below. */}
-          <div className={styles.workHeader}>
+          {/* "Our work" heads the project tiles below. #our-work is the nav's
+              Our work anchor (distinct from #podcast at the top of this section). */}
+          <div id="our-work" className={styles.workHeader}>
             <h2 className={styles.title}>Our work</h2>
             <p className={styles.workIntro}>
               We create the infrastructure a young field needs: helping

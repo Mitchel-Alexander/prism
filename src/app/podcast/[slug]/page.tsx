@@ -23,6 +23,12 @@ export async function generateMetadata({
   return {
     title: `${entry.title} — PRISM`,
     description: entry.excerpt.slice(0, 155),
+    // Episode artwork becomes the page's own share card when present
+    // (falls back to the site-wide og.png from the root layout otherwise).
+    ...(entry.image && {
+      openGraph: { images: [{ url: entry.image }] },
+      twitter: { images: [entry.image] },
+    }),
   };
 }
 
@@ -60,6 +66,15 @@ export default async function Episode({
       </header>
 
       <div className={styles.body}>
+        {entry.image && (
+          <img
+            src={`${BASE}${entry.image}`}
+            alt={`${entry.title} — episode artwork`}
+            className={styles.episodeArt}
+            width={1672}
+            height={941}
+          />
+        )}
         <article
           className={styles.prose}
           dangerouslySetInnerHTML={{ __html: entry.html }}

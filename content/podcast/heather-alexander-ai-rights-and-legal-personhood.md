@@ -1,6 +1,7 @@
 ---
 title: "Heather Alexander: AI Rights and Legal Personhood"
 date: 2026-07-22
+image: /ep-heather.jpg
 ---
 Heather Alexander is a lawyer, researcher, and scholar specializing in nationality law, citizenship, legal identity, and the governance of emerging technologies. She began her career with the United Nations Refugee Agency, working extensively on asylum and statelessness before completing academic research on legal identity and the rights of nomadic peoples.
 

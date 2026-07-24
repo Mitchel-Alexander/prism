@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CookieSettingsButton } from "./CookieSettingsButton";
 import styles from "./Footer.module.css";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -65,7 +66,11 @@ export function Footer() {
         <p className={styles.copy}>
           © 2026 Partnership for Research Into Sentient Machines
         </p>
-        <p className={styles.tag}>A UK non-profit</p>
+        <p className={styles.legal}>
+          <Link href="/privacy" className={styles.link}>Privacy Policy</Link>
+          <CookieSettingsButton className={styles.cookieBtn} />
+          <span className={styles.tag}>A UK non-profit</span>
+        </p>
       </div>
     </footer>
   );

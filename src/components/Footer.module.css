@@ -90,3 +90,26 @@
   color: rgba(255, 255, 255, 0.4);
   margin: 0;
 }
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 0;
+}
+.legal .link,
+.cookieBtn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.legal .link:hover,
+.cookieBtn:hover {
+  color: #ffffff;
+}

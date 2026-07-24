@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Inter, Open_Sans } from "next/font/google";
 import { SITE_URL, BASE_PATH } from "@/lib/site";
+import { CookieConsent } from "@/components/CookieConsent";
 import "./globals.css";
 
-// Analytics carried over from the Squarespace site so tracking survives the
-// domain migration — same GA4 property + Ads tag already on the old site.
-const GA4_ID = "G-E5XPRWE50C";
-const ADS_ID = "AW-17158899995";
+// Analytics (GA4 + Google Ads, carried over from the Squarespace site) is loaded
+// by CookieConsent ONLY after the visitor accepts — nothing tracking-related
+// fires without consent (UK PECR / GDPR).
 
 const inter = Inter({
   variable: "--font-inter",
@@ -73,18 +72,10 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${headFont.variable} antialiased`}
     >
-      <body>{children}</body>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script id="gtag-init" strategy="afterInteractive">
-        {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${GA4_ID}');
-gtag('config', '${ADS_ID}');`}
-      </Script>
+      <body>
+        {children}
+        <CookieConsent />
+      </body>
     </html>
   );
 }

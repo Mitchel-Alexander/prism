@@ -1,0 +1,68 @@
+.banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  /* 20% transparent (80% opaque) over a blur so text stays legible. */
+  background: rgba(11, 14, 28, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.82);
+}
+.inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1rem clamp(1rem, 4vw, 3.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+}
+.text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  max-width: 46rem;
+}
+.link {
+  color: #9bb0d6;
+  text-underline-offset: 2px;
+}
+.link:hover {
+  color: #ffffff;
+}
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+.accept,
+.reject {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.74rem;
+  border-radius: 4px;
+  padding: 0.6rem 1.3rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+.accept {
+  color: #0b0e1c;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+}
+.accept:hover {
+  opacity: 0.88;
+}
+.reject {
+  color: #ffffff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+}
+.reject:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+}

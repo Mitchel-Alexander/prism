@@ -74,6 +74,13 @@ const CARDS: {
 // the square-ish tile.
 const EPISODES = [
   {
+    title: "AI Rights and Legal Personhood",
+    guest: "Heather Alexander",
+    img: "/guest-heather.jpg",
+    pos: "50% 40%",
+    href: "https://www.youtube.com/watch?v=deLFbouSs6Y",
+  },
+  {
     title: "Exotic Minds and the Design Policies for Conscious AI",
     guest: "Eric Schwitzgebel",
     img: "/guest-eric.jpg",
@@ -86,13 +93,6 @@ const EPISODES = [
     img: "/guest-megan.jpg",
     pos: "50% 50%",
     href: "https://www.youtube.com/watch?v=aHeVicEFozY",
-  },
-  {
-    title: "AI Rights and Legal Personhood",
-    guest: "Heather Alexander",
-    img: "/guest-heather.jpg",
-    pos: "50% 40%",
-    href: "https://www.youtube.com/watch?v=deLFbouSs6Y",
   },
 ];
 

@@ -86,13 +86,8 @@ const EPISODES = [
     pos: "50% 50%",
     href: "https://www.youtube.com/watch?v=aHeVicEFozY",
   },
-  {
-    title: "A Future with Digital Minds? Expert Estimates and Societal Response",
-    guest: "Lucius Caviola",
-    img: "/guest-lucius.jpg",
-    pos: "50% 42%",
-    href: "https://www.youtube.com/watch?v=r03bVSP44h8",
-  },
+  // Lucius Caviola's episode tile removed 2026-07-24 per Will — restore once
+  // Lucius has OK'd being featured on the site.
 ];
 
 // Confirmed partners only (per Mitchel 2026-06-26); add the rest as confirmed.
@@ -136,15 +131,15 @@ const TEAM = [
   { name: "Ria Viswanathan", role: "Field Building and Research", href: "https://www.linkedin.com/in/ria-viswanathan/" },
 ];
 
-// One combined advisors + trustees list (per Will, confirmed by Lucius), placed
-// below Team as a grid; trustees carry a "(trustee)" tag. Ordered by surname.
-// NB Lucius Caviola stays listed while the site is circulated privately — REMOVE
-// before the public launch. New advisors (Jeff / Patrick / Andreas / Rosie /
+// One combined advisors + trustees list, placed below Team as a grid; trustees
+// carry a "(trustee)" tag. Ordered by surname.
+// NB Lucius Caviola REMOVED 2026-07-24 per Will — restore ({ name: "Lucius
+// Caviola", role: "University of Cambridge", href: "https://luciuscaviola.com/" })
+// once he's OK'd appearing. New advisors (Jeff / Patrick / Andreas / Rosie /
 // Winnie) to be added once full names + affiliations are confirmed.
 const ADVISORS: { name: string; role: string; trustee?: boolean; href: string }[] = [
   { name: "Heather Alexander", role: "Lab for the Future of Citizenship", href: "https://sites.google.com/site/heatherjeanalexander/home?authuser=0" },
   { name: "Cameron Berg", role: "Reciprocal Research", trustee: true, href: "https://reciprocalresearch.org/team" },
-  { name: "Lucius Caviola", role: "University of Cambridge", href: "https://luciuscaviola.com/" },
   { name: "Calum Chace", role: "Conscium", trustee: true, href: "https://calumchace.com/" },
   { name: "Radhika Chadwick", role: "Niscai", trustee: true, href: "https://www.niscai.com/about" },
   { name: "Sofia Fogel", role: "New York University", href: "https://nonhumanminds.org/team/sofia-fogel/" },

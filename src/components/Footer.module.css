@@ -113,3 +113,8 @@
 .cookieBtn:hover {
   color: #ffffff;
 }
+
+.logoLink {
+  display: inline-flex;
+  line-height: 0;
+}

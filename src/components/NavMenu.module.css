@@ -94,3 +94,8 @@
     transition: opacity 0.001s;
   }
 }
+
+.logoLink {
+  display: inline-flex;
+  line-height: 0;
+}

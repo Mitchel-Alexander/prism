@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./Hero.module.css";
 import { NavMenu } from "./NavMenu";
 
@@ -121,13 +122,15 @@ export function Hero() {
       <div className={styles.grain} aria-hidden="true" />
 
       <header className={styles.nav}>
-        <img
-          src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo-prism-white.png`}
-          alt="PRISM — Partnership for Research Into Sentient Machines"
-          className={styles.logo}
-          width={138}
-          height={30}
-        />
+        <Link href="/" aria-label="PRISM — home" className={styles.logoLink}>
+          <img
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo-prism-white.png`}
+            alt="PRISM — Partnership for Research Into Sentient Machines"
+            className={styles.logo}
+            width={138}
+            height={30}
+          />
+        </Link>
         <NavMenu />
       </header>
 

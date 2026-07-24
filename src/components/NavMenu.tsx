@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "./NavMenu.module.css";
@@ -92,13 +93,20 @@ export function NavMenu() {
             aria-hidden={!open}
           >
             <div className={styles.bar}>
-              <img
-                src={`${BASE}/logo-prism-white.png`}
-                alt="PRISM"
-                className={styles.logo}
-                width={138}
-                height={30}
-              />
+              <Link
+                href="/"
+                aria-label="PRISM — home"
+                className={styles.logoLink}
+                onClick={() => setOpen(false)}
+              >
+                <img
+                  src={`${BASE}/logo-prism-white.png`}
+                  alt="PRISM"
+                  className={styles.logo}
+                  width={138}
+                  height={30}
+                />
+              </Link>
               <nav className={styles.links} aria-label="Primary">
                 {LINKS.map((l) => (
                   <a

@@ -23,13 +23,15 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.brand}>
-          <img
-            src={`${BASE}/logo-prism-white.png`}
-            alt="PRISM — Partnership for Research Into Sentient Machines"
-            className={styles.logo}
-            width={150}
-            height={33}
-          />
+          <Link href="/" aria-label="PRISM — home" className={styles.logoLink}>
+            <img
+              src={`${BASE}/logo-prism-white.png`}
+              alt="PRISM — Partnership for Research Into Sentient Machines"
+              className={styles.logo}
+              width={150}
+              height={33}
+            />
+          </Link>
           <p className={styles.brandLine}>
             A registered CIO (Charitable Incorporated Organisation) supporting
             research into AI consciousness, digital minds, and AI moral status.

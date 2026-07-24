@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PodcastPlatforms } from "./PodcastPlatforms";
 import styles from "./HomeContent.module.css";
 
 // Static export: prefix public asset URLs with the project base path (empty in dev).
@@ -265,6 +266,7 @@ export function HomeContent() {
                 >
                   See more episodes →
                 </Link>
+                <PodcastPlatforms />
               </div>
 
               {/* Featured episodes — a guest headshot beside the episode title;
@@ -410,7 +412,7 @@ export function HomeContent() {
                 </div>
               </div>
               <div className={styles.peopleSection}>
-                <span className={styles.peopleKicker}>Advisors &amp; Trustees</span>
+                <span className={styles.peopleKicker}>Advisors</span>
                 <div className={styles.peopleGridRow}>
                   {ADVISORS.map((m) => (
                     <a

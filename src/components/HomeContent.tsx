@@ -76,7 +76,8 @@ const EPISODES = [
   {
     title: "AI Rights and Legal Personhood",
     guest: "Heather Alexander",
-    img: "/guest-heather.jpg",
+    // ?v=2: headshot was flipped in place — bust caches holding the old orientation.
+    img: "/guest-heather.jpg?v=2",
     pos: "50% 40%",
     href: "https://www.youtube.com/watch?v=deLFbouSs6Y",
   },

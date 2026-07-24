@@ -47,9 +47,6 @@ export default function Workshops() {
                 height={30}
               />
             </Link>
-            <Link href="/#work" className={styles.backLink}>
-              ← Back to the homepage
-            </Link>
           </div>
           <span className={styles.kickerDark}>Our work</span>
           <h1 className={styles.title}>Expert workshops</h1>

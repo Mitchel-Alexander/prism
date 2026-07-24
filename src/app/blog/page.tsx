@@ -29,9 +29,6 @@ export default function BlogIndex() {
                 height={30}
               />
             </Link>
-            <Link href="/#work" className={styles.backLink}>
-              ← Back to the homepage
-            </Link>
           </div>
           <span className={styles.kickerDark}>Blog</span>
           <h1 className={styles.title}>Writing</h1>

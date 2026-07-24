@@ -29,9 +29,6 @@ export default function Privacy() {
                 height={30}
               />
             </Link>
-            <Link href="/" className={styles.backLink}>
-              ← Back to the homepage
-            </Link>
           </div>
           <span className={styles.kickerDark}>Legal</span>
           <h1 className={styles.title}>Privacy Policy &amp; Cookies</h1>

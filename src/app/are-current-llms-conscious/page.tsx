@@ -29,9 +29,6 @@ export default function AreCurrentLLMsConscious() {
                 height={30}
               />
             </Link>
-            <Link href="/#work" className={styles.backLink}>
-              ← Back to the homepage
-            </Link>
           </div>
           <span className={styles.kickerDark}>Explainer</span>
           <h1 className={styles.title}>Are current LLMs conscious?</h1>

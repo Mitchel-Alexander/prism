@@ -26,9 +26,6 @@ export default function Contact() {
                 height={30}
               />
             </Link>
-            <Link href="/#work" className={styles.backLink}>
-              ← Back to the homepage
-            </Link>
           </div>
           <span className={styles.kickerDark}>Get in touch</span>
           <h1 className={styles.title}>Contact us</h1>

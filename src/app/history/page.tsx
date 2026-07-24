@@ -29,9 +29,6 @@ export default function History() {
                 height={30}
               />
             </Link>
-            <Link href="/#work" className={styles.backLink}>
-              ← Back to the homepage
-            </Link>
           </div>
           <span className={styles.kickerDark}>Archive</span>
           <h1 className={styles.title}>Past events &amp; projects</h1>

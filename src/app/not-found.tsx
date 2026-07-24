@@ -21,9 +21,6 @@ export default function NotFound() {
                 height={30}
               />
             </Link>
-            <Link href="/" className={styles.backLink}>
-              ← Back to the homepage
-            </Link>
           </div>
           <span className={styles.kickerDark}>404</span>
           <h1 className={styles.title}>Page not found</h1>

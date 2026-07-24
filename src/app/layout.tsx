@@ -27,7 +27,9 @@ const SITE_TITLE =
 const SITE_DESCRIPTION =
   "A non-profit fostering responsible research into AI consciousness, moral status, and digital minds.";
 // Social share card (Open Graph / Twitter). Absolute URL — crawlers don't resolve relative paths.
-const OG_IMAGE = `${SITE_URL}/og.png`;
+// ?v=2: tagline removed 2026-07-24 — the version bump makes share-platform
+// scrapers treat it as a new image instead of serving their cached card.
+const OG_IMAGE = `${SITE_URL}/og.png?v=2`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

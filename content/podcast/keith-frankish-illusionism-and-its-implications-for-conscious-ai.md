@@ -1,5 +1,6 @@
 ---
 title: "Keith Frankish: Illusionism and Its Implications for Conscious AI"
+image: /thumbnails/keith-frankish-illusionism-and-its-implications-for-conscious-ai.jpg
 layout: post
 date: 2025-09-10
 buzzsprout: 17815347-keith-frankish-illusionism-and-its-implications-for-conscious-ai

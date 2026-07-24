@@ -1,5 +1,6 @@
 ---
 title: "Mark Solms: Engineering Consciousness – Can Robots 'Give a Damn?'"
+image: /thumbnails/mark-solms-engineering-consciousness-can-robots-give-a-damn.jpg
 layout: post
 date: 2025-09-09
 redirect_from:

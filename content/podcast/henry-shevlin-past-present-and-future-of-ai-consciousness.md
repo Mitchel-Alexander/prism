@@ -1,5 +1,6 @@
 ---
 title: "Henry Shevlin: Past, Present, and Future of AI Consciousness"
+image: /thumbnails/henry-shevlin-past-present-and-future-of-ai-consciousness.jpg
 layout: post
 date: 2026-04-29
 youtube: https://www.youtube.com/watch?v=QK0kGocT4bA

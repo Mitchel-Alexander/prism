@@ -1,5 +1,6 @@
 ---
 title: "Megan Peters: Metacognition, Neuroscience, and Tests for AI Consciousness"
+image: /thumbnails/megan-peters-metacognition-neuroscience-and-tests-for-ai-consciousness.jpg
 layout: post
 date: 2026-05-15
 youtube: https://www.youtube.com/watch?v=aHeVicEFozY

@@ -1,5 +1,6 @@
 ---
 title: "Jeff Sebo: AI Sentience, Welfare and Moral Status"
+image: /thumbnails/jeff-sebo-ai-sentience-welfare-and-moral-status.jpg
 layout: post
 date: 2025-07-14
 redirect_from:

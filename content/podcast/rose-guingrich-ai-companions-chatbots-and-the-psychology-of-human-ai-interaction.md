@@ -1,5 +1,6 @@
 ---
 title: "AI Companions: Chatbots and the Psychology of Human-AI Interaction"
+image: /thumbnails/rose-guingrich-ai-companions-chatbots-and-the-psychology-of-human-ai-interaction.jpg
 layout: post
 date: 2026-02-16
 youtube: https://www.youtube.com/watch?v=0HsdLEblB54

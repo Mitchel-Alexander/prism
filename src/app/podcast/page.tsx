@@ -42,16 +42,27 @@ export default function PodcastIndex() {
       </header>
 
       <div className={styles.body}>
-        <ul className={styles.list}>
+        <div className={styles.cardGrid}>
           {episodes.map((e) => (
-            <li key={e.slug}>
-              <Link href={`/podcast/${e.slug}`} className={styles.row}>
-                <h2 className={styles.rowTitle}>{e.title}</h2>
-                <span className={styles.rowDate}>{displayDate(e.date)}</span>
-              </Link>
-            </li>
+            <Link href={`/podcast/${e.slug}`} className={styles.card} key={e.slug}>
+              {e.image && (
+                <div className={styles.cardThumb}>
+                  <img
+                    src={`${BASE}${e.image}`}
+                    alt={e.title}
+                    width={800}
+                    height={450}
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <div className={styles.cardMeta}>
+                <h2 className={styles.cardTitle}>{e.title}</h2>
+                <span className={styles.cardDate}>{displayDate(e.date)}</span>
+              </div>
+            </Link>
           ))}
-        </ul>
+        </div>
       </div>
 
       <Footer />

@@ -2,7 +2,7 @@
 title: "Eric Schwitzgebel: Exotic Minds and the Design Policies for Conscious AI"
 layout: post
 date: 2026-06-24
-image: /ep-eric-episode.jpg
+image: /thumbnails/eric-schwitzgebel-exotic-minds-and-the-design-policies-for-conscious-ai.jpg
 youtube: https://www.youtube.com/watch?v=bddHP58lTHA
 buzzsprout: 19395457-15-eric-schwitzgebel-exotic-minds-and-the-design-policies-for-conscious-ai
 ---

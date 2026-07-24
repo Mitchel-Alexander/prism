@@ -1,5 +1,6 @@
 ---
 title: "Lenore Blum: AI Consciousness is Inevitable: The Conscious Turing Machine"
+image: /thumbnails/lenore-blum-ai-consciousness-is-inevitable-the-conscious-turing-machine.jpg
 layout: post
 date: 2025-11-03
 redirect_from:

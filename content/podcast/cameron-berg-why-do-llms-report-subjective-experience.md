@@ -1,5 +1,6 @@
 ---
 title: "Cameron Berg: Why Do LLMs Report Subjective Experience?"
+image: /thumbnails/cameron-berg-why-do-llms-report-subjective-experience.jpg
 layout: post
 date: 2025-12-08
 youtube: https://www.youtube.com/watch?v=2mjvwTrxuAU

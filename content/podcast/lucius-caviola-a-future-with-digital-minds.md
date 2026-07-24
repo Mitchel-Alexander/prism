@@ -1,5 +1,6 @@
 ---
 title: "Lucius Caviola: A Future with Digital Minds? Expert Estimates and Societal Response"
+image: /thumbnails/lucius-caviola-a-future-with-digital-minds.jpg
 layout: post
 date: 2025-11-19
 youtube: https://www.youtube.com/watch?v=r03bVSP44h8

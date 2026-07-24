@@ -1,5 +1,6 @@
 ---
 title: "Chris Percy: Computational Functionalism, Philosophy, and the Future of AI Consciousness"
+image: /thumbnails/chris-percy-computational-functionalism.jpg
 layout: post
 date: 2026-01-19
 youtube: https://www.youtube.com/watch?v=4WzbrdggsDk

@@ -1,7 +1,7 @@
 ---
 title: "Heather Alexander: AI Rights and Legal Personhood"
 date: 2026-07-22
-image: /ep-heather.jpg
+image: /thumbnails/heather-alexander-ai-rights-and-legal-personhood.jpg
 youtube: https://www.youtube.com/watch?v=deLFbouSs6Y
 buzzsprout: 19531585-16-heather-alexander-ai-rights-and-legal-personhood
 ---

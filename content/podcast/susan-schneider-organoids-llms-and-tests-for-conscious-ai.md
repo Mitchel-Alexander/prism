@@ -1,5 +1,6 @@
 ---
 title: "Susan Schneider: Organoids, LLMs, and tests for Conscious AI"
+image: /thumbnails/susan-schneider-organoids-llms-and-tests-for-conscious-ai.jpg
 layout: post
 date: 2025-06-23
 redirect_from:

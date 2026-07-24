@@ -122,6 +122,60 @@
   white-space: nowrap;
 }
 
+/* ---- Podcast index: thumbnail card grid ---- */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: clamp(1.4rem, 3vw, 2.2rem);
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+.cardThumb {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #0c1020;
+  border: 1px solid var(--c-line);
+}
+.cardThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.card:hover .cardThumb img {
+  transform: scale(1.04);
+}
+.cardMeta {
+  padding: 0.85rem 0.15rem 0;
+}
+.cardTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.32;
+  color: var(--c-ink);
+  margin: 0;
+}
+.card:hover .cardTitle {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cardDate {
+  display: block;
+  margin-top: 0.45rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  color: var(--c-muted);
+}
+
 /* ---- Platform buttons (podcast index header, dark band) ---- */
 .platformRow {
   display: flex;

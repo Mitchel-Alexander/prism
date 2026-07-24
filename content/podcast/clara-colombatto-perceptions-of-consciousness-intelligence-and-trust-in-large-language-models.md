@@ -1,5 +1,6 @@
 ---
 title: "Clara Colombatto: Perceptions of Consciousness, Intelligence, and Trust in Large Language Models"
+image: /thumbnails/clara-colombatto-perceptions-of-consciousness-intelligence-and-trust-in-large-language-models.jpg
 layout: post
 date: 2025-10-13
 youtube: https://www.youtube.com/watch?v=31mW7GC8muA

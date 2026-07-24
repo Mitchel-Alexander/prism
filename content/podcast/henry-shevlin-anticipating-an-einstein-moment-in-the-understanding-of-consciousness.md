@@ -1,5 +1,6 @@
 ---
 title: "Henry Shevlin: Anticipating an Einstein moment in the understanding of consciousness"
+image: /thumbnails/henry-shevlin-anticipating-an-einstein-moment-in-the-understanding-of-consciousness.jpg
 layout: post
 date: 2025-05-28
 redirect_from:

@@ -1,5 +1,6 @@
 ---
 title: "Michael Graziano: Is Conscious AI Safer Than The Alternative?"
+image: /thumbnails/michael-graziano-is-conscious-ai-safer-than-the-alternative.jpg
 layout: post
 date: 2026-03-02
 youtube: https://www.youtube.com/watch?v=HV5a9EC551Q

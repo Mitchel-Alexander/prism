@@ -4,13 +4,13 @@ import styles from "./Footer.module.css";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// "/#anchor" (not "#anchor") so the links also work from subpages like /workshops.
+// Mirrors the nav. "/#anchor" (not "#anchor") so links also work from subpages.
 const EXPLORE = [
-  { label: "Our work", href: "/#work" },
+  { label: "About", href: "/#mission" },
   { label: "Partnerships", href: "/#partnerships" },
-  { label: "Values", href: "/#values" },
   { label: "Who we are", href: "/#people" },
   { label: "Opportunities", href: "/#opportunities" },
+  { label: "Podcast", href: "/podcast" },
 ];
 
 const PROJECTS = [

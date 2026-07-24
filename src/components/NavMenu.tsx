@@ -7,14 +7,14 @@ import styles from "./NavMenu.module.css";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// In-page sections — only the Home page exists today, so these anchor to it.
-// (When the multi-page plan lands, swap these for real routes.)
+// Nav items: "#…" are in-page anchors (homepage sections, smooth-scrolled);
+// "/…" are real routes (Podcast is its own page).
 const LINKS = [
-  { label: "Our work", href: "#work" },
+  { label: "About", href: "#mission" },
   { label: "Partnerships", href: "#partnerships" },
-  { label: "Values", href: "#values" },
   { label: "Who we are", href: "#people" },
   { label: "Opportunities", href: "#opportunities" },
+  { label: "Podcast", href: "/podcast" },
 ];
 
 export function NavMenu() {
@@ -108,16 +108,27 @@ export function NavMenu() {
                 />
               </Link>
               <nav className={styles.links} aria-label="Primary">
-                {LINKS.map((l) => (
-                  <a
-                    key={l.href}
-                    href={l.href}
-                    className={styles.link}
-                    onClick={handleNav(l.href)}
-                  >
-                    {l.label}
-                  </a>
-                ))}
+                {LINKS.map((l) =>
+                  l.href.startsWith("#") ? (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      className={styles.link}
+                      onClick={handleNav(l.href)}
+                    >
+                      {l.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={l.href}
+                      href={l.href}
+                      className={styles.link}
+                      onClick={() => setOpen(false)}
+                    >
+                      {l.label}
+                    </Link>
+                  ),
+                )}
               </nav>
               <button
                 ref={closeRef}

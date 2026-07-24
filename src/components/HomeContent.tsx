@@ -79,21 +79,21 @@ const EPISODES = [
     // ?v=2: headshot was flipped in place — bust caches holding the old orientation.
     img: "/guest-heather.jpg?v=2",
     pos: "50% 40%",
-    href: "https://www.youtube.com/watch?v=deLFbouSs6Y",
+    href: "/podcast/heather-alexander-ai-rights-and-legal-personhood",
   },
   {
     title: "Exotic Minds and the Design Policies for Conscious AI",
     guest: "Eric Schwitzgebel",
     img: "/guest-eric.jpg",
     pos: "50% 38%",
-    href: "https://www.youtube.com/watch?v=bddHP58lTHA",
+    href: "/podcast/eric-schwitzgebel-exotic-minds-and-the-design-policies-for-conscious-ai",
   },
   {
     title: "Metacognition, Neuroscience, and Tests for AI Consciousness",
     guest: "Megan Peters",
     img: "/guest-megan.jpg",
     pos: "50% 50%",
-    href: "https://www.youtube.com/watch?v=aHeVicEFozY",
+    href: "/podcast/megan-peters-metacognition-neuroscience-and-tests-for-ai-consciousness",
   },
 ];
 
@@ -270,11 +270,9 @@ export function HomeContent() {
                 <span className={styles.kickerDark}>Featured episodes</span>
                 <div className={styles.episodeGrid}>
                   {EPISODES.map((ep) => (
-                    <a
+                    <Link
                       className={styles.episodeCard}
                       href={ep.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       key={ep.href}
                     >
                       <div className={styles.episodeImgWrap}>
@@ -289,7 +287,7 @@ export function HomeContent() {
                         <h4 className={styles.episodeTitle}>{ep.title}</h4>
                         <span className={styles.episodeGuest}>{ep.guest}</span>
                       </div>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>

@@ -4,6 +4,7 @@ layout: post
 date: 2025-09-09
 redirect_from:
   - /news/engineering-consciousness-can-robots-give-a-damn
+buzzsprout: 17624514-mark-solms-engineering-consciousness-can-robots-give-a-damn
 ---
 In the latest episode of Exploring Machine Consciousness, we welcomed Professor Mark Solms.
 

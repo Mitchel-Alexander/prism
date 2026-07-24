@@ -4,6 +4,7 @@ layout: post
 date: 2025-06-23
 redirect_from:
   - /news/podcast-prof-susan-schneider
+buzzsprout: 17368723-prof-susan-schneider-organoids-llms-and-tests-for-ai-consciousness
 ---
 In the second episode of *Exploring Machine Consciousness*, we welcomed philosopher and AI expert **Professor Susan Schneider** to discuss consciousness, quantum physics, and the future of intelligent machines.
 

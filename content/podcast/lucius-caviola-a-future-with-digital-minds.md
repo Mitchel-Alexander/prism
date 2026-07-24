@@ -3,6 +3,7 @@ title: "Lucius Caviola: A Future with Digital Minds? Expert Estimates and Societ
 layout: post
 date: 2025-11-19
 youtube: https://www.youtube.com/watch?v=r03bVSP44h8
+buzzsprout: 18217130-lucius-caviola-a-future-with-digital-minds-expert-estimates-and-societal-response
 ---
 Lucius Caviola is an Assistant Professor in the Social Science of AI at the University of Cambridge's Leverhulme Centre for the Future of Intelligence and a Research Associate in Psychology at Harvard University. His research explores how the potential arrival of conscious AI will reshape our social and moral norms. In today's interview, Lucius examines the psychological and social factors that will determine whether this transition unfolds well, or ends in moral catastrophe.
 

@@ -3,6 +3,7 @@ title: "Cameron Berg: Why Do LLMs Report Subjective Experience?"
 layout: post
 date: 2025-12-08
 youtube: https://www.youtube.com/watch?v=2mjvwTrxuAU
+buzzsprout: 18316747-cameron-berg-why-do-llms-report-subjective-experience
 ---
 Cameron Berg is Research Director at AE Studio, where he leads research exploring markers for subjective experience in machine learning systems. With a background in cognitive science from Yale and previous work at Meta AI, Cameron investigates the intersection of AI alignment and potential consciousness.
 

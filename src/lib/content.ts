@@ -20,6 +20,8 @@ export interface Entry {
   image: string | null;
   /** Optional episode video, front-matter `youtube:` — a full watch URL. */
   youtube: string | null;
+  /** Optional Buzzsprout embed path (`<id>-<slug>`), front-matter `buzzsprout:`. */
+  buzzsprout: string | null;
 }
 
 function readCollectionDir(collection: string): string[] {
@@ -47,6 +49,8 @@ function parseFile(collection: string, file: string): Entry {
       typeof data.youtube === "string" && data.youtube.startsWith("https://www.youtube.com/")
         ? data.youtube
         : null,
+    buzzsprout:
+      typeof data.buzzsprout === "string" && /^\d+-/.test(data.buzzsprout) ? data.buzzsprout : null,
     excerpt: firstPara.replace(/[#*_`>[\]]/g, "").replace(/\(https?:\/\/[^)]+\)/g, "").trim(),
     html: marked.parse(body, { async: false }) as string,
   };

@@ -86,6 +86,10 @@ When you first visit our website, you are asked whether to allow non-essential c
 
 - Google Ads — `_gcl_au` — used to measure the effectiveness of our advertising.
 
+**Embedded podcast player**
+
+- Our podcast episode pages include an embedded player from Buzzsprout, our podcast host, so you can listen without leaving the site. Buzzsprout may set cookies to enable playback and measure listens. See [Buzzsprout's privacy policy](https://www.buzzsprout.com/privacy) for details.
+
 Most browsers also let you block or delete cookies through their settings; disabling some cookies may affect how the website functions.
 
 ## Links to other websites

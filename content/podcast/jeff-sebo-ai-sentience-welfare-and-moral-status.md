@@ -5,6 +5,7 @@ date: 2025-07-14
 redirect_from:
   - /news/ai-welfare-and-moral-status
 youtube: https://www.youtube.com/watch?v=xSObDUMzlKs
+buzzsprout: 17500552-jeff-sebo-ai-welfare-and-moral-status
 ---
 In this episode, we spoke to Jeff Sebo of New York University. Jeff is the author of the recently published book *The Moral Circle: Who Matters, What Matters and Why*.
 

@@ -3,6 +3,7 @@ title: "AI Companions: Chatbots and the Psychology of Human-AI Interaction"
 layout: post
 date: 2026-02-16
 youtube: https://www.youtube.com/watch?v=0HsdLEblB54
+buzzsprout: 18691682-rose-guingrich-ai-companions-chatbots-and-the-psychology-of-human-ai-interaction
 ---
 Rose Guingrich is a PhD candidate in Psychology and Social Policy at Princeton University, where she is a National Science Foundation Graduate Research Fellow. Her research examines human-AI interaction through the lens of social psychology and ethics, focusing on how people perceive minds in machines and how those perceptions shape behavior toward AI and other humans. Rose is founder of Ethicom, a consulting initiative providing tools and information for responsible AI use and development, and co-hosts the Our Lives with Bots podcast with Angy Watson. 
 

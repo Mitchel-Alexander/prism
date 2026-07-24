@@ -2,6 +2,7 @@
 title: "Keith Frankish: Illusionism and Its Implications for Conscious AI"
 layout: post
 date: 2025-09-10
+buzzsprout: 17815347-keith-frankish-illusionism-and-its-implications-for-conscious-ai
 ---
 In this episode of the "Exploring Machine Consciousness" podcast, we discuss the theory of illusionism with philosopher [Keith Frankish](https://en.wikipedia.org/wiki/Keith_Frankish). Frankish challenges the traditional understanding of consciousness by suggesting that our perception of it as a mysterious, non-physical phenomenon is an illusion. He argues that consciousness should be viewed as a complex set of functions and capacities, much like life itself.
 

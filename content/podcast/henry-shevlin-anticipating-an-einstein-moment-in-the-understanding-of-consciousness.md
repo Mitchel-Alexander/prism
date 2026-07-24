@@ -4,6 +4,7 @@ layout: post
 date: 2025-05-28
 redirect_from:
   - /news/understanding-of-consciousness-podcast-with-henry-shevlin
+buzzsprout: 17231657-anticipating-an-einstein-moment-in-the-understanding-of-consciousness-with-henry-shevlin
 ---
 Earlier this month, PRISM teamed up with the London Futurist Podcast for the very first episode of Exploring Machine Consciousness. We spoke with Dr. Henry Shevlin, a philosopher and consciousness researcher at the University of Cambridge, to discuss one of the most pressing questions of our time: **can machines be conscious?**
 

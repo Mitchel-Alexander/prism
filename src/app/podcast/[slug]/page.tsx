@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
+import { BuzzsproutPlayer } from "@/components/BuzzsproutPlayer";
 import { getSlugs, getEntry, displayDate } from "@/lib/content";
 import styles from "@/components/content.module.css";
 
@@ -86,6 +87,11 @@ export default async function Episode({
               height={941}
             />
           ))}
+        {entry.buzzsprout && (
+          <div className={styles.player}>
+            <BuzzsproutPlayer episode={entry.buzzsprout} />
+          </div>
+        )}
         <div className={styles.listenRow}>
           {entry.youtube && (
             <a

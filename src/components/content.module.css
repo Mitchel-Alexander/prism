@@ -163,6 +163,12 @@
   height: 1.05rem;
 }
 
+/* ---- Buzzsprout episode player ---- */
+.player {
+  max-width: 42rem;
+  margin: 0 0 clamp(1.6rem, 3vw, 2.4rem);
+}
+
 /* ---- Listen / watch buttons on episode pages ---- */
 .listenRow {
   display: flex;

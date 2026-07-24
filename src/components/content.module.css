@@ -213,6 +213,47 @@
   margin: 0 0 clamp(1.6rem, 3vw, 2.4rem);
 }
 
+/* ---- Player fallback (shown when the Buzzsprout embed is blocked/unavailable) ---- */
+.playerFallback {
+  max-width: 42rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--c-line);
+  border-radius: 8px;
+  background: #efeeec;
+}
+.playerFallbackArt {
+  width: 96px;
+  height: 96px;
+  flex: none;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.playerFallbackBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 0;
+}
+.playerFallbackNote {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--c-ink);
+}
+.playerFallbackLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+@media (max-width: 520px) {
+  .playerFallback {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /* ---- Listen / watch buttons on episode pages ---- */
 .listenRow {
   display: flex;

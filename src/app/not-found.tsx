@@ -6,9 +6,19 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 // Branded 404 — replaces Next's default error screen. Served by GitHub Pages
 // as 404.html for any path that isn't a page or redirect stub.
+// Runs synchronously as the browser parses the body, before the 404 UI paints.
+// GitHub Pages serves this page (404.html) with a 404 status for any unmatched
+// path — including episode/blog URLs that arrive with a stray trailing slash,
+// since the static export emits flat `slug.html` files (no `slug/index.html`).
+// Strip the trailing slash and forward to the canonical extensionless URL so a
+// copy-pasted `…/heather-alexander…/` still lands on the real page.
+const RECOVER_TRAILING_SLASH =
+  "(function(){var p=location.pathname;if(p.length>1&&/\\/$/.test(p)){location.replace(p.replace(/\\/+$/,'')+location.search+location.hash);}})();";
+
 export default function NotFound() {
   return (
     <main className={styles.page}>
+      <script dangerouslySetInnerHTML={{ __html: RECOVER_TRAILING_SLASH }} />
       <header className={styles.head}>
         <div className={styles.headInner}>
           <div className={styles.topBar}>

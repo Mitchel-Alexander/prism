@@ -71,7 +71,12 @@ export default async function Episode({
             entry.image is still used as the page's og:image share card. */}
         {entry.buzzsprout && (
           <div className={styles.player}>
-            <BuzzsproutPlayer episode={entry.buzzsprout} />
+            <BuzzsproutPlayer
+              episode={entry.buzzsprout}
+              image={entry.image}
+              youtube={entry.youtube}
+              title={entry.title}
+            />
           </div>
         )}
         <div className={styles.listenRow}>

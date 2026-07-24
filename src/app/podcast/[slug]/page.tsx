@@ -67,26 +67,8 @@ export default async function Episode({
       </header>
 
       <div className={styles.body}>
-        {entry.image &&
-          (entry.youtube ? (
-            <a href={entry.youtube} target="_blank" rel="noopener noreferrer">
-              <img
-                src={`${BASE}${entry.image}`}
-                alt={`${entry.title} — watch on YouTube`}
-                className={styles.episodeArt}
-                width={1672}
-                height={941}
-              />
-            </a>
-          ) : (
-            <img
-              src={`${BASE}${entry.image}`}
-              alt={`${entry.title} — episode artwork`}
-              className={styles.episodeArt}
-              width={1672}
-              height={941}
-            />
-          ))}
+        {/* Episode artwork isn't shown here — the Buzzsprout player carries it.
+            entry.image is still used as the page's og:image share card. */}
         {entry.buzzsprout && (
           <div className={styles.player}>
             <BuzzsproutPlayer episode={entry.buzzsprout} />

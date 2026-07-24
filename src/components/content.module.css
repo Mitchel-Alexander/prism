@@ -122,16 +122,6 @@
   white-space: nowrap;
 }
 
-/* ---- Episode artwork (front-matter `image:`) ---- */
-.episodeArt {
-  display: block;
-  width: 100%;
-  max-width: 42rem;
-  height: auto;
-  border-radius: 6px;
-  margin: 0 0 clamp(1.6rem, 3vw, 2.4rem);
-}
-
 /* ---- Platform buttons (podcast index header, dark band) ---- */
 .platformRow {
   display: flex;
